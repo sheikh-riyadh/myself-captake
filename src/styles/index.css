@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .my_container {
+    @apply px-4  sm:px-7 md:max-w-full md:px-[50px] lg:px-16 xl:px-[30px] 2xl:max-w-[1372px] 2xl:px-0 sm:max-w-xl mx-auto;
+  }
+}
+
+/* Number input arrow button hide */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Here we hide scrollbar */
+.bar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Up and down animation */
+
+.up-and-down {
+  background-color: var(--primary);
+  border-radius: 50%;
+  position: relative;
+  animation: moveUpDown 2s infinite ease-in-out;
+}
+
+@keyframes moveUpDown {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--primary);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* Default color */
+body {
+  --primary: #ef4a23;
+  --secondary: #1877f2;
+  --success: #198754;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #0dcaf0;
+  --white: #fff;
+  --black: #222;
+  background-color: #f3f4f8;
+}
