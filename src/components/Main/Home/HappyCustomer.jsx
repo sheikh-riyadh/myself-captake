@@ -2,8 +2,8 @@ import { FaGrinHearts } from "react-icons/fa";
 const HappyCustomer = () => {
   return (
     <div className="p-10 bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] rounded-xl">
-      <div className="flex justify-between items-center ">
-        <div className="flex items-center gap-5 text-white">
+      <div className="flex flex-wrap justify-between items-center gap-5">
+        <div className="flex flex-wrap items-center gap-5 text-white">
           <div>
             <FaGrinHearts className="text-6xl up-and-down" />
           </div>

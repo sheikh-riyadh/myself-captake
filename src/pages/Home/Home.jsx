@@ -1,7 +1,9 @@
-import FeatureCategory from "../../components/Home/FeatureCategory";
-import FeatureProducts from "../../components/Home/FeatureProducts";
-import HappyCustomer from "../../components/Home/HappyCustomer";
-import SliderBanner from "../../components/Home/SliderBanner";
+import FeatureCategory from "../../components/Main/Home/FeatureCategory";
+import FeatureProducts from "../../components/Main/Home/FeatureProducts";
+import HappyCustomer from "../../components/Main/Home/HappyCustomer";
+import SliderBanner from "../../components/Main/Home/SliderBanner";
+import BottomNavigation from "../../components/Mobile/Main/BottomNavigation";
+import MainFooter from "../../layout/Main/Footer/MainFooter";
 import MainHeader from "../../layout/Main/Header/MainHeader";
 
 const Home = () => {
@@ -14,6 +16,9 @@ const Home = () => {
         <HappyCustomer />
         <FeatureProducts />
       </div>
+      <MainFooter />
+
+      <BottomNavigation />
     </div>
   );
 };

@@ -7,7 +7,7 @@ const FeatureProducts = () => {
         <h2 className="font-bold text-lg">Featured Products</h2>
         <span>Check & Get Your Desired Product!</span>
       </div>
-      <div className="grid grid-cols-5 gap-5">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-5">
         {[...Array(16).keys()].map((category) => (
           <FeatureProductCard key={category}/>
         ))}
