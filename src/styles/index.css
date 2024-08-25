@@ -4,7 +4,7 @@
 
 @layer components {
   .my_container {
-    @apply px-4  sm:px-7 md:max-w-full md:px-[30px] lg:px-[30px] xl:px-[30px] 2xl:max-w-[1372px] 2xl:px-0 sm:max-w-xl mx-auto;
+    @apply px-4  sm:px-7 md:max-w-full md:px-[15px] lg:px-[15px] xl:px-[30px] 2xl:max-w-[1372px] 2xl:px-0 sm:max-w-xl mx-auto;
   }
 }
 

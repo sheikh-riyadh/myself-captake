@@ -1,7 +1,7 @@
 const FeatureCategory = () => {
   return (
-    <div className="my-20">
-      <div className="flex flex-col justify-center items-center my-7">
+    <div className="my-10 xl:my-20">
+      <div className="flex flex-col justify-center items-center my-7 text-center">
         <h2 className="font-bold text-lg">Featured Category</h2>
         <span>Get Your Desired Product from Featured Category!</span>
       </div>
