@@ -1,4 +1,4 @@
-import FeatureProductCard from "./FeatureProductCard";
+import ProductCard from "../../Common/ProductCard";
 
 const FeatureProducts = () => {
   return (
@@ -9,7 +9,7 @@ const FeatureProducts = () => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-5">
         {[...Array(16).keys()].map((category) => (
-          <FeatureProductCard key={category}/>
+          <ProductCard key={category}/>
         ))}
       </div>
     </div>
