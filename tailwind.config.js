@@ -12,6 +12,8 @@ export default {
         info: "var(--info)", // #0dcaf0
         white: "var(--white)", // #ffffff
         black: "var(--black)", // #000000
+        slate: "var(--slate)",
+        stech:"var(--stech)"
       },
       my_linear_gradient: `linear-gradient(125deg,#0bc1e9,#3749bb,#00237e)`,
     },

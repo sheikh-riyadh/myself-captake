@@ -2,7 +2,7 @@ import Marquee from "react-fast-marquee";
 
 const Brands = () => {
   return (
-    <div className="bg-[#081621] p-10">
+    <div className="bg-stech p-10 mb-20">
       <div className="my_container">
       <Marquee>
         <div className="flex items-center gap-10">

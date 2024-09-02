@@ -41,6 +41,7 @@ input::-webkit-inner-spin-button {
   }
 }
 
+
 /* Default color */
 body {
   --primary: #ef4a23;
@@ -50,6 +51,9 @@ body {
   --warning: #ffc107;
   --info: #0dcaf0;
   --white: #fff;
-  --black: #222;
+  --black: #222325;
+  --slate: #74767e;
+  --stech: #081621;
   background-color: #f3f4f8;
+  color: var(--black);
 }

@@ -11,7 +11,7 @@ const StoreCard = () => {
           <div className="xl:col-span-4 flex flex-col gap-3">
             <div>
               <img
-                className="rounded-lg h-60 w-full"
+                className="rounded-xl h-60 w-full"
                 src="https://d3cn6pl0719mpa.cloudfront.net/04jlYF4fsF2M5cejiU8lw7G-2-1716442859902.jpg"
                 alt="store_image"
               />
@@ -20,7 +20,7 @@ const StoreCard = () => {
               {[...Array(4).keys()].map((keys) => (
                 <div key={keys}>
                   <img
-                    className="w-full h-16 rounded-lg"
+                    className="w-full h-16 rounded-xl"
                     src="https://d3cn6pl0719mpa.cloudfront.net/04jlYF4fsF2M5cejiU8lw7G-2-1716442859902.jpg"
                     alt="store_banner_image"
                   />
@@ -28,7 +28,7 @@ const StoreCard = () => {
               ))}
             </div>
             <div>
-              <button className="text-center font-bold w-full bg-[#081621] text-white py-2.5 rounded-lg">
+              <button className="text-center font-bold w-full bg-stech text-white py-2.5 rounded-xl">
                 <span>View Store</span>
               </button>
             </div>

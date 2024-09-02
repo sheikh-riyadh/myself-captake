@@ -6,7 +6,7 @@ import {
 } from "react-icons/fa";
 const MainHeader = () => {
   return (
-    <div className="bg-[#081621]  fixed w-full z-50 top-0">
+    <header className="bg-stech  fixed w-full z-50 top-0">
       <div className="my_container py-3">
         <div className="grid grid-cols-12 gap-10">
           <div className="col-span-7 flex items-center gap-10">
@@ -32,7 +32,7 @@ const MainHeader = () => {
                   <FaHeart className="text-2xl xl:text-xl text-primary" />
                   <div>
                     <span className="text-white">Wishlist</span>
-                    <p className="text-sm text-[#ffffff80]">Items (0)</p>
+                    <p className="text-sm text-slate">Items (0)</p>
                   </div>
                 </div>
               </div>
@@ -41,7 +41,7 @@ const MainHeader = () => {
                   <FaShoppingBasket className="text-2xl xl:text-xl text-primary" />
                   <div>
                     <span className="text-white">My Cart</span>
-                    <p className="text-sm text-[#ffffff80]">Items (0)</p>
+                    <p className="text-sm text-slate">Items (0)</p>
                   </div>
                 </div>
               </div>
@@ -50,7 +50,7 @@ const MainHeader = () => {
                   <FaUserCircle className="text-2xl xl:text-xl text-primary" />
                   <div>
                     <span className="text-white">Account</span>
-                    <p className="text-sm xl:text-xs text-[#ffffff80]">
+                    <p className="text-sm xl:text-xs text-slate">
                       Register or Login
                     </p>
                   </div>
@@ -67,7 +67,7 @@ const MainHeader = () => {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

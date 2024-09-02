@@ -2,7 +2,7 @@ import { FaSearch, FaShoppingBasket } from "react-icons/fa";
 
 const MobileHeader = () => {
   return (
-    <div className="bg-[#081621] py-2  fixed w-full z-50 top-0 block xl:hidden">
+    <div className="bg-stech py-2  fixed w-full z-50 top-0 block xl:hidden">
       <div className="my_container">
         <div className="flex items-center justify-between">
           <div>
