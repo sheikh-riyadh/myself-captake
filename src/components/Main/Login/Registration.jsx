@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { FaFacebookF, FaGithub, FaGooglePlusG } from "react-icons/fa";
+import Button from "../../Common/Button";
+import Input from "../../Common/Input";
 
 const Registration = () => {
   const { handleSubmit, register } = useForm();
@@ -16,9 +18,7 @@ const Registration = () => {
           <span>
             Enter your personal details to use all of the site features
           </span>
-          <button className="font-medium border text-white py-2 rounded-md w-32 text-sm uppercase">
-            Sign In
-          </button>
+          <Button className="uppercase w-32">Sign In</Button>
         </div>
 
         <form
@@ -32,28 +32,23 @@ const Registration = () => {
             <FaGithub className="border text-3xl p-1 rounded-md" />
           </div>
           <div className="w-full flex flex-col gap-5">
-            <input
-              {...register("Name")}
-              className="focus:outline-none bg-gray-100 w-full py-1.5 px-2 rounded-md"
-              placeholder="Name"
-              type="text"
+            <Input {...register("Name")} placeholder="Name *" required />
+            <Input
+              {...register("Email")}
+              placeholder="Email *"
+              type="email"
+              required
             />
-            <input
-            {...register("Email")}
-              className="focus:outline-none bg-gray-100 w-full py-1.5 px-2 rounded-md"
-              placeholder="Email"
-              type="text"
-            />
-            <input
-            {...register("Password")}
-              className="focus:outline-none bg-gray-100 w-full py-1.5 px-2 rounded-md"
+            <Input
+              {...register("Password")}
               placeholder="*******"
               type="password"
+              required
             />
           </div>
-          <button className="font-medium bg-secondary text-white py-2 rounded-md uppercase text-sm w-36">
-            Sign Up
-          </button>
+          <Button className="font-medium uppercase text-sm w-36">
+            Sing Up
+          </Button>
         </form>
       </div>
     </div>

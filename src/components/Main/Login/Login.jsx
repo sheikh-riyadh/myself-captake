@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { FaFacebookF, FaGithub, FaGooglePlusG } from "react-icons/fa";
+import Button from "../../Common/Button";
+import Input from "../../Common/Input";
 
 const Login = () => {
   const { handleSubmit, register } = useForm();
@@ -22,24 +24,22 @@ const Login = () => {
             <FaGithub className="border text-3xl p-1 rounded-md" />
           </div>
           <div className="w-full flex flex-col gap-5">
-            <input
+            <Input
               {...register("Email")}
-              className="focus:outline-none bg-gray-100 w-full py-1.5 px-2 rounded-md"
-              placeholder="Email"
-              type="text"
+              placeholder="Email *"
+              type="email"
+              required
             />
-            <input
+            <Input
               {...register("Password")}
-              className="focus:outline-none bg-gray-100 w-full py-1.5 px-2 rounded-md"
               placeholder="*******"
               type="password"
+              required
             />
           </div>
           <div className="flex flex-col gap-5">
             <span className="text-sm">Forget Your Password?</span>
-            <button className="font-medium bg-secondary text-white py-2 rounded-md uppercase text-sm">
-              Sign In
-            </button>
+            <Button>Sign In</Button>
           </div>
         </form>
         <div className="bg-secondary md:rounded-l-[30%] flex flex-col gap-5 items-center justify-center p-7 text-center text-white order-first md:order-none">
@@ -47,9 +47,7 @@ const Login = () => {
           <span>
             Register with your personal details to use all of the site features
           </span>
-          <button className="font-medium border text-white py-2 rounded-md w-32 text-sm uppercase">
-            Sign Up
-          </button>
+          <Button className="uppercase w-32">Sign Up</Button>
         </div>
       </div>
     </div>
