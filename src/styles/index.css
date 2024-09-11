@@ -21,12 +21,26 @@ input::-webkit-inner-spin-button {
 }
 
 /* Up and down animation */
-
 .up-and-down {
   background-color: var(--primary);
   border-radius: 50%;
   position: relative;
   animation: moveUpDown 2s infinite ease-in-out;
+}
+
+/* Remove number input default arrow sign */
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 @keyframes moveUpDown {
