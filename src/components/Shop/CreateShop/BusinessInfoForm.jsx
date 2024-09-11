@@ -63,7 +63,7 @@ const BusinessInfoForm = ({ setIsBusinessFormVisible, formData }) => {
 };
 
 BusinessInfoForm.propTypes = {
-  setIsBusinessFormVisible: PropTypes.bool.isRequired,
+  setIsBusinessFormVisible: PropTypes.func,
   formData: PropTypes.object,
 };
 
