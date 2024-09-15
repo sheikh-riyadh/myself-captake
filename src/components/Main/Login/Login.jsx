@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { FaFacebookF, FaGithub, FaGooglePlusG } from "react-icons/fa";
 import Button from "../../Common/Button";
 import Input from "../../Common/Input";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const { handleSubmit, register } = useForm();
@@ -47,7 +48,9 @@ const Login = () => {
           <span>
             Register with your personal details to use all of the site features
           </span>
-          <Button className="uppercase w-32">Sign Up</Button>
+          <Link to="/sign-up">
+            <Button className="uppercase w-32">Sign Up</Button>
+          </Link>
         </div>
       </div>
     </div>

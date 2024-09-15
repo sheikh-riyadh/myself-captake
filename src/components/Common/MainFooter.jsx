@@ -14,7 +14,7 @@ const MainFooter = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className=" bg-stech pt-10">
+    <footer className=" bg-stech pt-10 mb-[68px] xl:mb-0">
       <div className="my_container">
         <div className="flex flex-col gap-5">
           <div className="flex flex-col md:flex-row md:items-center  md:justify-between gap-5">

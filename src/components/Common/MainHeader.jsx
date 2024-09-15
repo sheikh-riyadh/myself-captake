@@ -4,18 +4,21 @@ import {
   FaShoppingBasket,
   FaUserCircle,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const MainHeader = () => {
   return (
     <header className="bg-stech  fixed w-full z-50 top-0">
       <div className="my_container py-3">
         <div className="grid grid-cols-12 gap-10">
           <div className="col-span-7 flex items-center gap-10">
-            <div>
-              <img
-                src="https://www.startech.com.bd/image/catalog/logo.png"
-                alt="logo"
-              />
-            </div>
+            <Link to="/">
+              <div>
+                <img
+                  src="https://www.startech.com.bd/image/catalog/logo.png"
+                  alt="logo"
+                />
+              </div>
+            </Link>
             <div className="flex items-center justify-between bg-white w-full p-2 rounded-md">
               <input
                 className="w-full focus:outline-none px-1"
@@ -50,9 +53,9 @@ const MainHeader = () => {
                   <FaUserCircle className="text-2xl xl:text-xl text-primary" />
                   <div>
                     <span className="text-white">Account</span>
-                    <p className="text-sm xl:text-xs text-slate">
-                      Register or Login
-                    </p>
+                    <div className="text-sm xl:text-xs text-slate">
+                      <Link to="/sign-up">Register</Link> or <Link to="/sign-in">Login</Link>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -5,6 +5,7 @@ import SelectInput from "../../Common/SelectInput";
 import { FaStore, FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
 import BusinessInfoForm from "./BusinessInfoForm";
+import { Link } from "react-router-dom";
 
 const BasicInfoForm = () => {
   const [isBusinessFormVisible, setIsBusinessFormVisible] = useState(false);
@@ -38,7 +39,7 @@ const BasicInfoForm = () => {
               className="flex flex-col items-center justify-center gap-5 w-full p-7"
             >
               <h1 className="font-bold text-3xl text-start">
-                Sing-up as a <span className="text-secondary">{role}</span>
+                Register as a <span className="text-secondary">{role}</span>
               </h1>
               <div className="w-full flex flex-col gap-5">
                 <SelectInput {...register("Role")} required>
@@ -77,9 +78,11 @@ const BasicInfoForm = () => {
                   <FaUserCircle />
                   <span className="text-sm">
                     have an account?{" "}
+                    <Link to="sign-in">
                     <strong className="hover:underline cursor-pointer text-secondary">
-                      Login
+                      Sign-in
                     </strong>
+                    </Link>
                   </span>
                 </div>
                 <Button className="font-medium uppercase text-sm w-36">

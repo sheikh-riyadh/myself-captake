@@ -6,7 +6,7 @@ import {
 } from "react-icons/fa";
 const BottomNavigation = () => {
   return (
-    <div className="flex items-center bg-stech my_container py-3 justify-between gap-5  w-full fixed bottom-0 z-50 border-t xl:hidden ">
+    <div className="flex items-center bg-stech my_container py-3 justify-between gap-5  w-full fixed bottom-0 z-50 border-t xl:hidden">
       <div className="flex flex-col items-center">
         <FaShoppingBasket className="text-xl text-white" />
         <span className="text-[#ffffff80]">Cart (0)</span>
