@@ -15,9 +15,35 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+/* Handle */
+.custom-bar::-webkit-scrollbar-thumb {
+  background: var(--stech); 
+  border-radius: 10px;
+}
+.custom-bar::-webkit-scrollbar {
+  width: 10px;
+}
+
 /* Here we hide scrollbar */
 .bar-hidden::-webkit-scrollbar {
   display: none;
+}
+
+/* Zoom-in animation */
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1); /* Slight zoom effect */
+    opacity: 1;
+  }
+}
+
+/* Apply the zoom-in animation to an element */
+.zoom-in-element {
+  animation: zoomIn 0.5s ease-in-out;
 }
 
 /* Up and down animation */
@@ -30,7 +56,6 @@ input::-webkit-inner-spin-button {
 
 /* Remove number input default arrow sign */
 
-
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -39,7 +64,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -54,7 +79,6 @@ input[type=number] {
     background-color: transparent;
   }
 }
-
 
 /* Default color */
 body {

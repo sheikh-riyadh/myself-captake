@@ -7,6 +7,7 @@ import NotFound from "../pages/Main/NotFound/NotFound";
 import SingleProduct from "../pages/Main/SingleProduct/SingleProduct";
 import CreateShop from "../pages/Shop/CreateShop";
 import Store from "../pages/Main/Store/Store";
+import SingleShopHome from "../pages/Shop/SingleShopHome";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path:"store/:id",
         element:<Store/>
+      },
+      {
+        path:"single-store/:id",
+        element:<SingleShopHome/>
       },
     ],
   },

@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { FaFacebookF, FaGithub, FaGooglePlusG } from "react-icons/fa";
+import { FaFacebookF, FaGithub, FaGooglePlusG, FaHome } from "react-icons/fa";
 import Button from "../../Common/Button";
 import Input from "../../Common/Input";
 import { Link } from "react-router-dom";
@@ -44,6 +44,9 @@ const Login = () => {
           </div>
         </form>
         <div className="bg-secondary md:rounded-l-[30%] flex flex-col gap-5 items-center justify-center p-7 text-center text-white order-first md:order-none">
+          <Link to="/" title="Return main website">
+            <FaHome className="text-5xl border p-2 rounded-full" />
+          </Link>
           <h2 className="font-bold text-3xl capitalize">Hello, Friend</h2>
           <span>
             Register with your personal details to use all of the site features

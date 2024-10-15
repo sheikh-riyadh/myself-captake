@@ -57,7 +57,7 @@ const SingleShopReviews = () => {
         <button className="bg-stech px-4 py-1 text-white rounded-md font-semibold">
           Prev
         </button>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           {[...Array(5).keys()].map((key) => (
             <span
               className="bg-stech px-4 py-1 text-white rounded-md font-semibold"

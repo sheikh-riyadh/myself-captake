@@ -11,6 +11,7 @@ import { numberWithCommas } from "../../../../utils/numberWithComma";
 import { FaBasketShopping } from "react-icons/fa6";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import { PiKeyReturnFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const RightSide = () => {
   return (
@@ -88,9 +89,14 @@ const RightSide = () => {
               <FaBasketShopping className="border text-xl w-full p-2.5 h-10 rounded bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] text-white" />
               <FaHeart className="border text-xl w-full p-2.5 h-10 rounded bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] text-white" />
             </div>
-            <button className="py-2 font-semibold w-full rounded bg-stech text-white">
-              View Store
-            </button>
+            <Link
+              to="/single-store/123"
+              className="font-semibold w-full rounded bg-stech text-white"
+            >
+              <button className="py-2 font-semibold w-full rounded bg-stech text-white">
+                View Store
+              </button>
+            </Link>
           </div>
         </div>
 
@@ -126,7 +132,7 @@ const RightSide = () => {
           </div>
           <div>
             <div className="flex items-center gap-3 text-violet-900">
-              <AiFillSafetyCertificate/>
+              <AiFillSafetyCertificate />
               <span>100% Authentic from Trusted Brand</span>
             </div>
           </div>

@@ -5,14 +5,17 @@ import Notice from "../../components/Shop/SingleShopHome/Notice";
 import SingleShopBanner from "../../components/Shop/SingleShopHome/SingleShopBanner";
 import SingleShopProductCard from "../../components/Shop/SingleShopHome/SingleShopProductCard";
 import SingleShopReviews from "../../components/Shop/SingleShopHome/SingleShopReviews";
+import { smoothScroll } from "../../utils/scrollToTop";
 
 const SingleShopHome = () => {
+  smoothScroll();
+
   return (
     <div>
       <div className="my_container">
         <SingleShopBanner />
         <Notice />
-        <div className="grid grid-cols-5 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5">
           {[...Array(5).keys()].map((keys) => (
             <div key={keys}>
               <SingleShopProductCard />
