@@ -17,7 +17,7 @@ input::-webkit-inner-spin-button {
 
 /* Handle */
 .custom-bar::-webkit-scrollbar-thumb {
-  background: var(--stech); 
+  background: var(--stech);
   border-radius: 10px;
 }
 .custom-bar::-webkit-scrollbar {
@@ -29,21 +29,18 @@ input::-webkit-inner-spin-button {
   display: none;
 }
 
-/* Zoom-in animation */
-@keyframes zoomIn {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1); /* Slight zoom effect */
-    opacity: 1;
-  }
-}
-
 /* Apply the zoom-in animation to an element */
 .zoom-in-element {
-  animation: zoomIn 0.5s ease-in-out;
+  
+  animation: zoomIn 0.5s ease forwards;
+}
+
+.rtl-animation {
+  animation: fadeInRight 0.5s ease-in-out;
+}
+
+.ltr-animation {
+  animation: fadeInLeft 0.5s ease forwards;
 }
 
 /* Up and down animation */
@@ -77,6 +74,39 @@ input[type="number"] {
   }
   100% {
     background-color: transparent;
+  }
+}
+
+/* Zoom-in animation */
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5); /* Start at half size */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); /* Zoom to full size */
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px); /* Start 100px from the right */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* End at the original position */
+  }
+}
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px); /* Start 100px to the left */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* End at the original position */
   }
 }
 

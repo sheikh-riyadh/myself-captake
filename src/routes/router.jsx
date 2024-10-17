@@ -8,6 +8,8 @@ import SingleProduct from "../pages/Main/SingleProduct/SingleProduct";
 import CreateShop from "../pages/Shop/CreateShop";
 import Store from "../pages/Main/Store/Store";
 import SingleShopHome from "../pages/Shop/SingleShopHome";
+import Wishlist from "../pages/Main/Wishlist/Wishlist";
+import Reviews from "../pages/Main/Reviews/Reviews";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,10 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "cart",
+        element: <Wishlist />,
+      },
+      {
         path: "/home",
         element: <Home />,
       },
@@ -27,12 +33,20 @@ const router = createBrowserRouter([
         element: <SingleProduct />,
       },
       {
-        path:"store/:id",
-        element:<Store/>
+        path: "reviews",
+        element: <Reviews />,
       },
       {
-        path:"single-store/:id",
-        element:<SingleShopHome/>
+        path: "store/:id",
+        element: <Store />,
+      },
+      {
+        path: "single-store/:id",
+        element: <SingleShopHome />,
+      },
+      {
+        path: "wishlist",
+        element: <Wishlist />,
       },
     ],
   },

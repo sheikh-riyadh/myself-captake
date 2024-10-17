@@ -8,7 +8,7 @@ const HappyCustomer = () => {
             <FaGrinHearts className="text-6xl up-and-down" />
           </div>
           <div>
-            <h2 className="font-medium text-3xl leading-normal">
+            <h2 className="font-medium text-3xl leading-normal capitalize">
               happy customers
             </h2>
             <span className="text-xl">
@@ -16,11 +16,11 @@ const HappyCustomer = () => {
             </span>
           </div>
         </div>
-        <di>
-          <button className=" border px-10 py-4 rounded-xl text-white">
+        <div>
+          <button className="border px-10 py-4 rounded-xl text-white animate-bounce">
             See Reviews
           </button>
-        </di>
+        </div>
       </div>
     </div>
   );

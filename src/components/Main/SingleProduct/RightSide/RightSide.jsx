@@ -12,8 +12,19 @@ import { FaBasketShopping } from "react-icons/fa6";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import { PiKeyReturnFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const RightSide = () => {
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncreament = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
+  const handleDecreament = () => {
+    if (quantity >= 2) setQuantity((prev) => prev - 1);
+  };
+
   return (
     <div>
       <div>
@@ -68,11 +79,14 @@ const RightSide = () => {
           {/* Update product quantity button */}
           <div className="grid grid-cols-2 gap-5 items-center justify-between">
             <div className="grid grid-cols-3 border items-center text-center rounded">
-              <button className="p-3">
+              <button onClick={handleDecreament} className="p-3">
                 <FaMinus />
               </button>
-              <input className="focus:outline-none text-center " value="1" />
-              <button className="p-3">
+              <input
+                className="focus:outline-none text-center "
+                value={quantity}
+              />
+              <button onClick={handleIncreament} className="p-3">
                 <FaPlus />
               </button>
             </div>

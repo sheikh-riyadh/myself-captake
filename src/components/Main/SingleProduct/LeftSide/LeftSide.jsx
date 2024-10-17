@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { FaPlay } from "react-icons/fa";
+import ProductViewModal from "../../../Modals/ProductViewModal";
 
 const LeftSide = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="p-10 flex flex-col gap-5 items-center justify-center">
       <img
@@ -10,8 +14,11 @@ const LeftSide = () => {
       />
 
       <div className="flex items-center gap-3">
-        <FaPlay className="border w-14 h-14 rounded p-3" />
-        {[...Array(4)].map((key) => (
+        <FaPlay
+          className="border w-14 h-14 rounded p-3"
+          onClick={() => setIsOpen((prev) => !prev)}
+        />
+        {[...Array(4).keys()].map((key) => (
           <div key={key}>
             <img
               className="border w-14 h-14 rounded p-1"
@@ -20,7 +27,9 @@ const LeftSide = () => {
             />
           </div>
         ))}
-        <div></div>
+        <div>
+          {isOpen && <ProductViewModal onClose={setIsOpen} isOpen={isOpen} />}
+        </div>
       </div>
     </div>
   );

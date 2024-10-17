@@ -14,7 +14,7 @@ const Registration = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen w-full my_container">
       <div className="md:w-4/5 lg:w-4/6 xl:w-7/12 bg-white border shadow-lg rounded-xl grid grid-cols-1 md:grid-cols-2 overflow-hidden md:h-2/5 lg:h-[420px] xl:h-4/6">
-        <div className="bg-secondary md:rounded-r-[30%] flex flex-col gap-5 items-center justify-center p-7 text-center text-white">
+        <div className="bg-secondary md:rounded-r-[30%] flex flex-col gap-5 items-center justify-center p-7 text-center text-white relative ltr-animation">
           <Link to="/" title="Return main website">
             <FaHome className="text-5xl border p-2 rounded-full" />
           </Link>

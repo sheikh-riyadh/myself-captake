@@ -43,7 +43,7 @@ const Login = () => {
             <Button>Sign In</Button>
           </div>
         </form>
-        <div className="bg-secondary md:rounded-l-[30%] flex flex-col gap-5 items-center justify-center p-7 text-center text-white order-first md:order-none">
+        <div className="bg-secondary md:rounded-l-[30%] flex flex-col gap-5 items-center justify-center p-7 text-center text-white order-first md:order-none rtl-animation relative">
           <Link to="/" title="Return main website">
             <FaHome className="text-5xl border p-2 rounded-full" />
           </Link>

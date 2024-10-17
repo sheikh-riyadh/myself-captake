@@ -30,7 +30,7 @@ const MainHeader = () => {
           </div>
           <div className="col-span-5">
             <div className="flex items-center justify-between gap-5">
-              <div>
+              <Link to={'/wishlist'}>
                 <div className="flex items-center justify-center gap-2">
                   <FaHeart className="text-2xl xl:text-xl text-primary" />
                   <div>
@@ -38,8 +38,8 @@ const MainHeader = () => {
                     <p className="text-sm text-slate">Items (0)</p>
                   </div>
                 </div>
-              </div>
-              <div>
+              </Link>
+              <Link to={'/cart'}>
                 <div className="flex items-center justify-center gap-2">
                   <FaShoppingBasket className="text-2xl xl:text-xl text-primary" />
                   <div>
@@ -47,7 +47,7 @@ const MainHeader = () => {
                     <p className="text-sm text-slate">Items (0)</p>
                   </div>
                 </div>
-              </div>
+              </Link>
               <div>
                 <div className="flex items-center justify-center gap-2">
                   <FaUserCircle className="text-2xl xl:text-xl text-primary" />
