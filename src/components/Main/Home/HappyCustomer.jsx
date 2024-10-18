@@ -1,4 +1,6 @@
 import { FaGrinHearts } from "react-icons/fa";
+import Button from "../../Common/Button";
+import { Link } from "react-router-dom";
 const HappyCustomer = () => {
   return (
     <div className="p-10 bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] rounded-xl">
@@ -16,11 +18,11 @@ const HappyCustomer = () => {
             </span>
           </div>
         </div>
-        <div>
-          <button className="border px-10 py-4 rounded-xl text-white animate-bounce">
+        <Link to={'/reviews'}>
+          <Button className="border px-10 py-4 rounded-xl text-white animate-bounce">
             See Reviews
-          </button>
-        </div>
+          </Button>
+        </Link>
       </div>
     </div>
   );

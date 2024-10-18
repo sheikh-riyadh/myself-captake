@@ -7,13 +7,13 @@ import comma from "../../../assets/Main/Review/drop-red-bc80918e.svg";
 import customSliderBullets from "../../../utils/customSliderBullets";
 const ReviewCarousel = () => {
   return (
-    <div className="mb-10 xl:mb-20">
+    <div className="mb-10 xl:mb-20 my_container">
       <div className="flex flex-col justify-center gap-2 items-center my-7 text-center">
         <h2 className="font-bold text-3xl">{`Customer Love`}</h2>
         <span>Get Your Desired Product from Featured Category!</span>
       </div>
       <Swiper
-        slidesPerView={4}
+        slidesPerView={1}
         spaceBetween={10}
         autoplay={{
           delay: 2500,
@@ -26,19 +26,24 @@ const ReviewCarousel = () => {
         }}
         breakpoints={{
           640: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 10,
           },
           768: {
-            slidesPerView: 4,
+            slidesPerView: 2,
             spaceBetween: 10,
           },
           1024: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          1280: {
             slidesPerView: 4,
             spaceBetween: 10,
           },
         }}
         modules={[Autoplay, Pagination]}
+        className="mySwiper"
       >
         <div>
           {[...Array(10).keys()].map((key) => (
