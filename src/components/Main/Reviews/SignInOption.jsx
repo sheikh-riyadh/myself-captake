@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../Common/Button";
 
 const SignInOption = () => {
@@ -13,11 +14,11 @@ const SignInOption = () => {
               <span className="text-xl">Signing up takes only 2 mins</span>
             </div>
           </div>
-          <div>
-            <Button className="border px-10 py-4 rounded-xl text-white">
+          <Link to={'/sign-up'}>
+            <Button className="border px-10 py-4 rounded-xl text-white animate-bounce">
               Sign up now
             </Button>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

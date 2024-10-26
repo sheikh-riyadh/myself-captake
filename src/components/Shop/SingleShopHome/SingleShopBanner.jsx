@@ -28,11 +28,13 @@ const SingleShopBanner = () => {
                   <FaPlayCircle className=" animate-ping" />
                   <span>Live</span>
                 </div>
-                <span className="px-10 pb-5 xl:px-16 w-full text-center font-semibold">2025 Followers 85% Positive Store Rating</span>
+                <span className="px-10 pb-5 xl:px-16 w-full text-center font-semibold">
+                  2025 Followers 85% Positive Store Rating
+                </span>
               </div>
               <div className="border-t w-full flex flex-col items-center justify-center">
                 <button className="w-full p-3 text-primary font-semibold text-lg">
-                  Follow
+                  Report
                 </button>
               </div>
             </div>

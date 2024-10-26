@@ -3,12 +3,15 @@ import { FaFacebookF, FaGithub, FaGooglePlusG, FaHome } from "react-icons/fa";
 import Button from "../../Common/Button";
 import Input from "../../Common/Input";
 import { Link } from "react-router-dom";
+import { useCreateUserMutation } from "../../../store/main/service/user/auth_api_service";
 
 const Login = () => {
   const { handleSubmit, register } = useForm();
+  const [createUser] = useCreateUserMutation();
 
-  const handleLogin = (data) => {
-    console.log(data);
+  const handleLogin = async (data) => {
+    const res = await createUser(data);
+    console.log(res);
   };
 
   return (
@@ -26,13 +29,13 @@ const Login = () => {
           </div>
           <div className="w-full flex flex-col gap-5">
             <Input
-              {...register("Email")}
+              {...register("email")}
               placeholder="Email *"
               type="email"
               required
             />
             <Input
-              {...register("Password")}
+              {...register("password")}
               placeholder="*******"
               type="password"
               required

@@ -13,6 +13,7 @@ import {
   persistReducer,
 } from "redux-persist";
 import { baseApi } from "../api/baseApi";
+import userReducer from "../main/features/user/userSlice";
 
 const persistConfig = {
   key: "root",
@@ -27,9 +28,13 @@ const sessionConfig = {
   storage: storageSession,
 };
 
-const rootPersistReducers = combineReducers({});
+const rootPersistReducers = combineReducers({
+  userReducer,
+});
 
-const sessionReducers = combineReducers({});
+const sessionReducers = combineReducers({
+  userReducer,
+});
 
 const persistedReducers = persistReducer(persistConfig, rootPersistReducers);
 

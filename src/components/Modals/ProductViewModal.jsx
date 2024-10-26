@@ -2,12 +2,14 @@ import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { FaCircleXmark } from "react-icons/fa6";
 import Button from "../Common/Button";
+import cn from "../../utils/cn";
 
 const ProductViewModal = ({
   isOpen = true,
   onClose,
   productDetails = null,
   src = null,
+  className,
 }) => {
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -29,7 +31,7 @@ const ProductViewModal = ({
         isOpen ? "" : "hidden"
       }`}
     >
-      <div className="bg-white rounded-lg p-5 shadow-lg w-[350px] md:w-[700px] md:h-[450px] lg:w-[750px] lg:h-[465px]  overflow-y-auto custom-bar">
+      <div className={cn("bg-white rounded-lg p-5 shadow-lg w-[350px] md:w-[700px] md:h-[450px] lg:w-[750px] lg:h-[465px]  overflow-y-auto custom-bar",className)}>
         <div className="flex flex-col">
           <div className="flex items-end justify-end">
             <FaCircleXmark
@@ -83,6 +85,7 @@ ProductViewModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   productDetails: PropTypes.object,
   src: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default ProductViewModal;
