@@ -1,17 +1,53 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import { FaFacebookF, FaGithub, FaGooglePlusG, FaHome } from "react-icons/fa";
-import Button from "../../Common/Button";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { addUser } from "../../../store/main/features/user/userSlice";
+import { auth } from "../../../firebase/firebase.config";
 import Input from "../../Common/Input";
-import { Link } from "react-router-dom";
-import { useCreateUserMutation } from "../../../store/main/service/user/auth_api_service";
+import SubmitButton from "../../Common/SubmitButton";
+import Button from "../../Common/Button";
+import CommonModal from "../../Modals/CommonModal";
+import ForgetPassword from "./ForgetPassword";
+import { useLazyGetUserQuery } from "../../../store/main/service/user/auth_api_service";
+import { FaHome } from "react-icons/fa";
 
 const Login = () => {
-  const { handleSubmit, register } = useForm();
-  const [createUser] = useCreateUserMutation();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleLogin = async (data) => {
-    const res = await createUser(data);
-    console.log(res);
+  const { handleSubmit, register } = useForm();
+
+  const navigate = useNavigate();
+  const disptach = useDispatch();
+  const [getUser] = useLazyGetUserQuery();
+
+  const handleLogin = async ({ email, password }) => {
+    setIsLoading(true);
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      if (result?.user?.accessToken && result.user.email) {
+        const res = await getUser(result.user.email);
+        if (res?.data?.email) {
+          disptach(addUser({ ...res?.data }));
+          setIsLoading(false);
+          navigate("/");
+        } else {
+          toast.error("Something went wrong 😓", { id: "error" });
+          setIsLoading(false);
+        }
+      }
+    } catch (error) {
+      if (error.message == "Firebase: Error (auth/invalid-credential).") {
+        toast.error("Invalid credential", { id: "invalid" });
+        setIsLoading(false);
+      } else {
+        toast.error("Something went wrong 😓", { id: "error" });
+        setIsLoading(false);
+      }
+    }
   };
 
   return (
@@ -22,11 +58,6 @@ const Login = () => {
           className="flex flex-col items-center justify-center gap-5 w-full p-7"
         >
           <h1 className="font-bold text-3xl capitalize">Sign In</h1>
-          <div className="flex items-center gap-3">
-            <FaGooglePlusG className="border text-3xl p-1 rounded-md" />
-            <FaFacebookF className="border text-3xl p-1 rounded-md" />
-            <FaGithub className="border text-3xl p-1 rounded-md" />
-          </div>
           <div className="w-full flex flex-col gap-5">
             <Input
               {...register("email")}
@@ -42,8 +73,15 @@ const Login = () => {
             />
           </div>
           <div className="flex flex-col gap-5">
-            <span className="text-sm">Forget Your Password?</span>
-            <Button>Sign In</Button>
+            <span
+              onClick={() => setIsModalOpen((prev) => !prev)}
+              className="text-sm cursor-pointer"
+            >
+              Forget Your Password?
+            </span>
+            <SubmitButton isLoading={isLoading} className="w-40">
+              Sign In
+            </SubmitButton>
           </div>
         </form>
         <div className="bg-secondary md:rounded-l-[30%] flex flex-col gap-5 items-center justify-center p-7 text-center text-white order-first md:order-none rtl-animation relative">
@@ -55,10 +93,20 @@ const Login = () => {
             Register with your personal details to use all of the site features
           </span>
           <Link to="/sign-up">
-            <Button className="uppercase w-32">Sign Up</Button>
+            <Button className="w-40 bg-transparent">Sign Up</Button>
           </Link>
         </div>
       </div>
+      {isModalOpen && (
+        <CommonModal
+          isOpen={isModalOpen}
+          onClose={setIsModalOpen}
+          className="w-[350px]"
+          title="Forget Password"
+        >
+          <ForgetPassword />
+        </CommonModal>
+      )}
     </div>
   );
 };

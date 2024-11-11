@@ -1,14 +1,55 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { FaFacebookF, FaGithub, FaGooglePlusG, FaHome } from "react-icons/fa";
+import toast from "react-hot-toast";
+import { FaHome } from "react-icons/fa";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import Button from "../../Common/Button";
 import Input from "../../Common/Input";
-import { Link } from "react-router-dom";
+import { useCreateUserMutation } from "../../../store/main/service/user/auth_api_service";
+import { auth } from "../../../firebase/firebase.config";
+import { addUser } from "../../../store/main/features/user/userSlice";
+import SubmitButton from "../../Common/SubmitButton";
 
 const Registration = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { handleSubmit, register } = useForm();
 
-  const handleRegistration = (data) => {
-    console.log(data);
+  const navigate = useNavigate();
+  const disptach = useDispatch();
+  const [createUser] = useCreateUserMutation();
+
+  const handleRegistration = async (data) => {
+    setIsLoading(true);
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      if (result?.user?.accessToken && result.user.email) {
+        const res = await createUser(data);
+        if (res?.data?.acknowledged) {
+          disptach(addUser({ ...res?.data }));
+          setIsLoading(false);
+          navigate("/");
+        } else {
+          toast.error("Something went wrong 😓", { id: "error" });
+          setIsLoading(false);
+        }
+      }
+    } catch (error) {
+      if (error.message == "Firebase: Error (auth/email-already-in-use).") {
+        toast.error(`Email ${data?.email} already used`, { id: "email_error" });
+      } else {
+        toast.error("Something went wrong please try again letter", {
+          id: "try_again_letter",
+        });
+      }
+
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -32,29 +73,27 @@ const Registration = () => {
           className="flex flex-col items-center justify-center gap-5 w-full p-7"
         >
           <h1 className="font-bold text-3xl capitalize">Create Account</h1>
-          <div className="flex items-center gap-x-3">
-            <FaGooglePlusG className="border text-3xl p-1 rounded-md" />
-            <FaFacebookF className="border text-3xl p-1 rounded-md" />
-            <FaGithub className="border text-3xl p-1 rounded-md" />
-          </div>
           <div className="w-full flex flex-col gap-5">
-            <Input {...register("Name")} placeholder="Name *" required />
+            <Input {...register("fullName")} placeholder="Name *" required />
             <Input
-              {...register("Email")}
+              {...register("email")}
               placeholder="Email *"
               type="email"
               required
             />
             <Input
-              {...register("Password")}
+              {...register("password")}
               placeholder="*******"
               type="password"
               required
             />
           </div>
-          <Button className="font-medium uppercase text-sm w-36">
+          <SubmitButton
+            isLoading={isLoading}
+            className="font-medium uppercase text-sm w-36"
+          >
             Sing Up
-          </Button>
+          </SubmitButton>
         </form>
       </div>
     </div>
