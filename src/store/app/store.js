@@ -14,6 +14,8 @@ import {
 } from "redux-persist";
 import { baseApi } from "../api/baseApi";
 import userReducer from "../main/features/user/userSlice";
+import userCartReducer from "../main/features/cart/userCartSlice.js";
+import userWishlistReducer from "../main/features/wishlist/wishlistSlice.js";
 
 const persistConfig = {
   key: "root",
@@ -30,6 +32,8 @@ const sessionConfig = {
 
 const rootPersistReducers = combineReducers({
   userReducer,
+  userCartReducer,
+  userWishlistReducer,
 });
 
 const sessionReducers = combineReducers({

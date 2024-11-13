@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import {
   FaAngleRight,
   FaExclamationCircle,
@@ -11,18 +14,47 @@ import { numberWithCommas } from "../../../../utils/numberWithComma";
 import { FaBasketShopping } from "react-icons/fa6";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import { PiKeyReturnFill } from "react-icons/pi";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { add_to_cart } from "../../../../store/main/features/cart/userCartSlice";
+import { useGetCart } from "../../../../hooks/useGetCart";
+import { useGetWishlist } from "../../../../hooks/useGetWishlist";
+import { add_to_wishlist } from "../../../../store/main/features/wishlist/wishlistSlice";
 
-const RightSide = () => {
-  const [quantity, setQuantity] = useState(1);
+const RightSide = ({ product }) => {
+  const [buyQnt, setBuyQnt] = useState(1);
+
+  const disptach = useDispatch();
+  const { userCart } = useGetCart();
+  const { userWishlist } = useGetWishlist();
 
   const handleIncreament = () => {
-    setQuantity((prev) => prev + 1);
+    setBuyQnt((prev) => prev + 1);
   };
 
   const handleDecreament = () => {
-    if (quantity >= 2) setQuantity((prev) => prev - 1);
+    if (buyQnt >= 2) setBuyQnt((prev) => prev - 1);
+  };
+
+  const handleCart = () => {
+    const cartData = {
+      title: product?.title,
+      price: product?.price,
+      sellerId: product?.sellerId,
+      _id: product?._id,
+      buyQnt,
+    };
+    disptach(add_to_cart(cartData));
+  };
+
+  const handleWishlist = () => {
+    const wishlistData = {
+      title: product?.title,
+      price: product?.price,
+      sellerId: product?.sellerId,
+      _id: product?._id,
+      buyQnt,
+    };
+    disptach(add_to_wishlist(wishlistData));
   };
 
   return (
@@ -76,7 +108,7 @@ const RightSide = () => {
             )}৳`}</span>
           </div>
 
-          {/* Update product quantity button */}
+          {/* Update product buyQnt button */}
           <div className="grid grid-cols-2 gap-5 items-center justify-between">
             <div className="grid grid-cols-3 border items-center text-center rounded">
               <button onClick={handleDecreament} className="p-3">
@@ -84,7 +116,7 @@ const RightSide = () => {
               </button>
               <input
                 className="focus:outline-none text-center "
-                value={quantity}
+                value={buyQnt}
               />
               <button onClick={handleIncreament} className="p-3">
                 <FaPlus />
@@ -100,8 +132,22 @@ const RightSide = () => {
           {/* View store ,wishlist, add to card button */}
           <div className="flex gap-5 w-full">
             <div className="flex items-center justify-between gap-5 w-full">
-              <FaBasketShopping className="border text-xl w-full p-2.5 h-10 rounded bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] text-white" />
-              <FaHeart className="border text-xl w-full p-2.5 h-10 rounded bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] text-white" />
+              <FaBasketShopping
+                onClick={handleCart}
+                className={`border text-xl w-full p-2.5 h-10 rounded ${
+                  userCart?.find((cart) => cart?._id === product?._id)
+                    ? " bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] text-white"
+                    : null
+                }`}
+              />
+              <FaHeart
+                onClick={handleWishlist}
+                className={`border text-xl w-full p-2.5 h-10 rounded ${
+                  userWishlist?.find((list) => list?._id === product?._id)
+                    ? " bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] text-white"
+                    : null
+                }`}
+              />
             </div>
             <Link
               to="/single-store/123"
@@ -163,4 +209,7 @@ const RightSide = () => {
   );
 };
 
+RightSide.propTypes = {
+  product: PropTypes.object,
+};
 export default RightSide;

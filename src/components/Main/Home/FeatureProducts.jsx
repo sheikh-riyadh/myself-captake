@@ -1,3 +1,4 @@
+import { products } from "../../../data/product";
 import ProductCard from "../../Common/ProductCard";
 
 const FeatureProducts = () => {
@@ -8,8 +9,8 @@ const FeatureProducts = () => {
         <span>Check & Get Your Desired Product!</span>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-5">
-        {[...Array(15).keys()].map((category) => (
-          <ProductCard key={category}/>
+        {products.map((product) => (
+          <ProductCard key={product?._id} product={product} />
         ))}
       </div>
     </div>

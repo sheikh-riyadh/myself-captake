@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { FaPlay } from "react-icons/fa";
+import PropTypes from "prop-types";
 import ProductViewModal from "../../../Modals/ProductViewModal";
 
-const LeftSide = () => {
+const LeftSide = ({ product }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="p-10 flex flex-col gap-5 items-center justify-center">
       <img
         className="w-[400px] md:h-[400px]"
-        src="https://www.startech.com.bd/image/cache/catalog/digital-camera/sony/alpha-a6400/alpha-a6400-1-500x500.jpg"
+        src={product?.productImages?.[0]}
         alt="product_image"
       />
 
@@ -33,6 +34,10 @@ const LeftSide = () => {
       </div>
     </div>
   );
+};
+
+LeftSide.propTypes = {
+  product: PropTypes.object,
 };
 
 export default LeftSide;

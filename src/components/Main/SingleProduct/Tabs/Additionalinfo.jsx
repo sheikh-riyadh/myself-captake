@@ -1,9 +1,12 @@
-const Additionalinfo = () => {
+import PropTypes from "prop-types";
+const Additionalinfo = ({ additionalinfo }) => {
   return (
     <div>
-      <h1>Additional Info</h1>
+      <h1>{additionalinfo}</h1>
     </div>
   );
 };
-
+Additionalinfo.propTypes = {
+  additionalinfo: PropTypes.object,
+};
 export default Additionalinfo;

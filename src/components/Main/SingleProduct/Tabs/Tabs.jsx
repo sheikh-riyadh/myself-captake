@@ -1,19 +1,20 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import Description from "./Description";
 import Additionalinfo from "./Additionalinfo";
 import Questions from "./Questions";
 import Reviews from "./Reviews";
 import MoreFromSeller from "./MoreFromSeller";
 
-const Tabs = () => {
+const Tabs = ({product}) => {
   const [tab, setTab] = useState("Description");
 
   let tabContainer;
 
   if (tab == "Description") {
-    tabContainer = <Description />;
+    tabContainer = <Description description={product?.description} />;
   } else if (tab == "Additional info") {
-    tabContainer = <Additionalinfo />;
+    tabContainer = <Additionalinfo additionalinfo={product?.additionalinfo} />;
   } else if (tab == "Questions") {
     tabContainer = <Questions />;
   } else if (tab == "Reviews") {
@@ -48,4 +49,7 @@ const Tabs = () => {
   );
 };
 
+Tabs.propTypes = {
+  product: PropTypes.object,
+};
 export default Tabs;
