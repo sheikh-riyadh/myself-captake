@@ -11,7 +11,7 @@ const SingleShopHome = () => {
   smoothScroll();
 
   return (
-    <div>
+    <section>
       <div className="my_container">
         <SingleShopBanner />
         <Notice />
@@ -29,7 +29,7 @@ const SingleShopHome = () => {
       <div className="my_container">
         <SingleShopReviews />
       </div>
-    </div>
+    </section>
   );
 };
 

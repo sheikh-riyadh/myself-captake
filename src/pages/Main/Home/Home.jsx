@@ -5,14 +5,14 @@ import SliderBanner from "../../../components/Main/Home/SliderBanner";
 
 const Home = () => {
   return (
-    <div>
+    <section>
       <div className="my_container">
         <SliderBanner />
         <FeatureCategory />
         <HappyCustomer />
         <FeatureProducts />
       </div>
-    </div>
+    </section>
   );
 };
 

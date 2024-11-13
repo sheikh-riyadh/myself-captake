@@ -3,12 +3,12 @@ import StoreCard from "../../../components/Main/Store/StoreCard";
 
 const Store = () => {
   return (
-    <div>
+    <section>
       <div className="my_container mt-[68px] lg:mt-28 xl:mt-[100px]">
         <StoreBanner />
         <StoreCard />
       </div>
-    </div>
+    </section>
   );
 };
 

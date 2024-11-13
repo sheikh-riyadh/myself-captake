@@ -4,9 +4,9 @@ import { smoothScroll } from "../../utils/scrollToTop";
 const CreateShop = () => {
   smoothScroll();
   return (
-    <div>
+    <section>
       <BasicInfoForm />
-    </div>
+    </section>
   );
 };
 

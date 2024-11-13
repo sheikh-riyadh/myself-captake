@@ -74,7 +74,8 @@ const Registration = () => {
         >
           <h1 className="font-bold text-3xl capitalize">Create Account</h1>
           <div className="w-full flex flex-col gap-5">
-            <Input {...register("fullName")} placeholder="Name *" required />
+            <Input {...register("fName")} placeholder="First name *" required />
+            <Input {...register("lName")} placeholder="Last name *" required />
             <Input
               {...register("email")}
               placeholder="Email *"

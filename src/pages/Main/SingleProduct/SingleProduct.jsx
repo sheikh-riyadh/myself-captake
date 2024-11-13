@@ -8,14 +8,14 @@ const SingleProduct = () => {
   const location = useLocation();
   const product = location?.state?.payload;
   return (
-    <>
+    <section>
       <div>
         <Product product={product}/>
       </div>
       <div className="my_container">
         <Tabs product={product}/>
       </div>
-    </>
+    </section>
   );
 };
 

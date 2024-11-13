@@ -18,7 +18,7 @@ const Wishlist = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center my-20 my_container">
+    <section className="flex flex-col items-center justify-center my-20 my_container">
       <div className="lg:w-8/12 min-h-[350px] bg-white mt-20 rounded-md shadow p-5">
         <div className="flex flex-col items-center justify-center gap-5">
           {pathname == "/cart" ? (
@@ -73,7 +73,7 @@ const Wishlist = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

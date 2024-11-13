@@ -1,7 +1,7 @@
 import { forwardRef, useState } from "react";
 import PropTypes from "prop-types";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 import cn from "../../utils/cn";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Input = forwardRef(
   ({ className, label = "", type = "text", ...rest }, ref) => {

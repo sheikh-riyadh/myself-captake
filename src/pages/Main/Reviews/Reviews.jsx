@@ -7,12 +7,12 @@ import { smoothScroll } from "../../../utils/scrollToTop";
 const Reviews = () => {
   smoothScroll();
   return (
-    <div>
+    <section>
       <ReviewHeroSection />
       <MapSection />
       <ReviewCarousel />
       <SignInOption />
-    </div>
+    </section>
   );
 };
 
