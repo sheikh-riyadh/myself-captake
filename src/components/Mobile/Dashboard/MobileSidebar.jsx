@@ -31,13 +31,13 @@ const MobileSidebar = ({
 
   return (
     <div
-      className={`fixed  top-0 left-0 z-50 bg-[#2222227c] overflow-x-hidden overflow-y-auto inset-0 h-[calc(100%)] max-h-full bg-black/90 flex flex-col items-start modal-overlay ltr-animation ${
-        isOpen ? "block" : "hidden"
+      className={`fixed  top-0 left-0 z-50 bg-[#2222227c] overflow-x-hidden overflow-y-auto inset-0 h-[calc(100%)] max-h-full bg-black/90 flex flex-col items-start modal-overlay ${
+        isOpen ? "block ltr-animation" : "hidden rtl-animation"
       }`}
     >
       <div
         className={cn(
-          "bg-white rounded-lg shadow-lg  overflow-y-auto custom-bar",
+          "bg-white shadow-lg  overflow-y-auto custom-bar",
           className
         )}
       >

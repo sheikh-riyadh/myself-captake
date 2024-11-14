@@ -4,8 +4,12 @@ import {
   FaShoppingBasket,
   FaUserCircle,
 } from "react-icons/fa";
+import { MdWindow } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { useGetUser } from "../../hooks/useGetUser";
 const MainHeader = () => {
+  const { user } = useGetUser();
+
   return (
     <header className="bg-stech  fixed w-full z-50 top-0">
       <div className="my_container py-3">
@@ -49,16 +53,28 @@ const MainHeader = () => {
                 </div>
               </Link>
               <div>
-                <div className="flex items-center justify-center gap-2">
-                  <FaUserCircle className="text-2xl xl:text-xl text-primary" />
-                  <div>
-                    <span className="text-white">Account</span>
-                    <div className="text-sm xl:text-xs text-slate">
-                      <Link to="/sign-up">Register</Link> or{" "}
-                      <Link to="/sign-in">Login</Link>
+                {!user ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <FaUserCircle className="text-2xl xl:text-xl text-primary" />
+                    <div>
+                      <span className="text-white">Account</span>
+                      <div className="text-sm xl:text-xs text-slate">
+                        <Link to="/sign-up">Register</Link> or{" "}
+                        <Link to="/sign-in">Login</Link>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="flex items-center justify-center gap-2">
+                    <MdWindow className="text-2xl xl:text-xl text-primary" />
+                    <div>
+                      <span className="text-white">Dashboard</span>
+                      <div className="text-sm xl:text-xs text-slate">
+                        <Link to={"/dashboard"}>Go to dashbaord</Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
               <div>
                 <div className="bg-secondary p-3 rounded-md flex items-center justify-center bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] text-white">
