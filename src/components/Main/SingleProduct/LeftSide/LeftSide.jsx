@@ -9,7 +9,7 @@ const LeftSide = ({ product }) => {
   return (
     <div className="p-10 flex flex-col gap-5 items-center justify-center">
       <img
-        className="w-[400px] md:h-[400px]"
+        className="md:max-w-[400px] md:max-h-[400px]"
         src={product?.productImages?.[0]}
         alt="product_image"
       />

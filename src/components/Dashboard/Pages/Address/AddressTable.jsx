@@ -1,90 +1,63 @@
-import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
-import { users } from "../../../../data/users";
 import Table from "../../../Common/Table";
-import SelectInput from "../../../Common/SelectInput";
-import { FaStreetView, FaTrash } from "react-icons/fa";
+
+import { useGetAddressQuery } from "../../../../store/dashboard/service/address/addressApi";
+import { useGetUser } from "../../../../hooks/useGetUser";
+import LoadingSpinner from "../../../Common/LoadingSpinner";
+import UpdateAddress from "./UpdateAddress";
+import DeleteAddress from "./DeleteAddress";
 
 const AddressTable = () => {
-  const navigate = useNavigate();
-
-  const redirectUserDetailsHandler = (items) => {
-    if (items) {
-      navigate("/user-details", {
-        state: {
-          payload: { ...items },
-        },
-      });
-    } else {
-      toast.error("Data missing!. Please try again!");
-    }
-  };
+  const { user } = useGetUser();
+  const { data, isLoading } = useGetAddressQuery({ userId: user?._id });
 
   return (
     <div className="overflow-hidden">
-      <Table
-        className="font-normal"
-        tableData={users.allUser}
-        columns={[
-          {
-            name: "Name",
-            dataIndex: "name",
-            key: "name",
-          },
-          {
-            name: "Phone",
-            dataIndex: "phone",
-            key: "phone",
-          },
-          {
-            name: "Email",
-            dataIndex: "email",
-            key: "email",
-          },
-          {
-            name: "Role",
-            dataIndex: "role",
-            key: "role",
-          },
-          {
-            name: "Status",
-            render: () => {
-              return (
-                <div>
-                  <SelectInput className="border bg-transparent rounded-full p-0 px-2 capitalize">
-                    <option value="active" selected>
-                      active
-                    </option>
-                    <option value="block">block</option>
-                  </SelectInput>
-                </div>
-              );
+      {!isLoading ? (
+        <Table
+          className="font-normal"
+          tableData={data}
+          columns={[
+            {
+              name: "Name",
+              dataIndex: "fullName",
+              key: "fullName",
             },
-          },
-          {
-            name: "Actions",
-            render: ({ item }) => {
-              return (
-                <div className="flex items-center gap-2">
-                  <span
-                    onClick={() => redirectUserDetailsHandler(item)}
-                    className="text-stech cursor-pointer border border-stech text-center p-2 rounded-full"
-                    title="View"
-                  >
-                    <FaStreetView />
-                  </span>
-                  <span
-                    className="text-danger cursor-pointer border border-danger text-center p-2 rounded-full hover:bg-red-300 hover:text-white duration-300"
-                    title="Delete"
-                  >
-                    <FaTrash />
-                  </span>
-                </div>
-              );
+            {
+              name: "Phone",
+              dataIndex: "phoneNumber",
+              key: "phoneNumber",
             },
-          },
-        ]}
-      />
+            {
+              name: "Country",
+              dataIndex: "country",
+              key: "country",
+            },
+            {
+              name: "State",
+              dataIndex: "state",
+              key: "state",
+            },
+            {
+              name: "City",
+              dataIndex: "city",
+              key: "city",
+            },
+            {
+              name: "Actions",
+              render: ({ item }) => {
+                return (
+                  <div className="flex items-center gap-2">
+                    <UpdateAddress item={item} />
+                    <DeleteAddress userId={user?._id} _id={item?._id}/>
+                  </div>
+                );
+              },
+            },
+          ]}
+        />
+      ) : (
+        <LoadingSpinner />
+      )}
     </div>
   );
 };

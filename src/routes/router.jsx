@@ -19,6 +19,7 @@ import Review from "../pages/Dashboard/Review/Review";
 import Order from "../pages/Dashboard/Order/Order";
 import Report from "../pages/Dashboard/Report/Report";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
+import DashboardWishlist from "../pages/Dashboard/DashboardWishlist/DashboardWishlist";
 
 const router = createBrowserRouter([
   {
@@ -95,7 +96,7 @@ const router = createBrowserRouter([
           },
           {
             path: "wishlist",
-            element:  <Cart />,
+            element:  <DashboardWishlist />,
           },
         ],
       },

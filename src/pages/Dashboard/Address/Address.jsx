@@ -29,11 +29,12 @@ const Address = () => {
       {isModalOpen && (
         <CommonModal
           title={"Add new delivery address"}
-          className="w-[500px]"
+          className="w-[330px] md:w-[500px]"
           onClose={setIsModalOpen}
           isOpen={isModalOpen}
+          key={"address"}
         >
-          <AddressForm />
+          <AddressForm setIsModalOpen={setIsModalOpen} />
         </CommonModal>
       )}
     </section>

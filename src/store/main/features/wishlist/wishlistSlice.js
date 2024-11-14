@@ -21,8 +21,14 @@ const userWishlistSlice = createSlice({
         state.userWishlist.push(payload);
       }
     },
+    remove_wishlist: (state, { payload }) => {
+      const filteredList = state.userWishlist.filter(
+        (cart) => cart?._id !== payload
+      );
+      state.userWishlist = filteredList;
+    },
   },
 });
 
-export const { add_to_wishlist } = userWishlistSlice.actions;
+export const { add_to_wishlist,remove_wishlist } = userWishlistSlice.actions;
 export default userWishlistSlice.reducer;

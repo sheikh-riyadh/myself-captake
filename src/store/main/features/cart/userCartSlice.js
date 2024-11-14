@@ -19,8 +19,29 @@ const userCartSlice = createSlice({
         state.userCart.push(payload);
       }
     },
+    remove_cart: (state, { payload }) => {
+      const filteredCart = state.userCart.filter(
+        (cart) => cart?._id !== payload
+      );
+      state.userCart = filteredCart;
+    },
+    increament: (state, { payload }) => {
+      const increamentProduct = state.userCart.find(
+        (cart) => cart?._id === payload
+      );
+      increamentProduct.buyQnt++;
+    },
+    decreament: (state, { payload }) => {
+      const decreamentProduct = state.userCart.find(
+        (cart) => cart?._id === payload
+      );
+      if (decreamentProduct?.buyQnt > 1) {
+        decreamentProduct.buyQnt--;
+      }
+    },
   },
 });
 
-export const { add_to_cart } = userCartSlice.actions;
+export const { add_to_cart, remove_cart, increament, decreament } =
+  userCartSlice.actions;
 export default userCartSlice.reducer;

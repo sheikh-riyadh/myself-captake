@@ -28,5 +28,9 @@ const auth_api_service = baseApi.injectEndpoints({
   overrideExisting: false,
 });
 
-export const { useCreateUserMutation, useGetUserQuery, useLazyGetUserQuery } =
-  auth_api_service;
+export const {
+  useCreateUserMutation,
+  useGetUserQuery,
+  useLazyGetUserQuery,
+  useUpdateUserMutation,
+} = auth_api_service;

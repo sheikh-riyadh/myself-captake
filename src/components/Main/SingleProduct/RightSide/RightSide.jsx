@@ -41,6 +41,7 @@ const RightSide = ({ product }) => {
       price: product?.price,
       sellerId: product?.sellerId,
       _id: product?._id,
+      image:product?.productImages?.[0],
       buyQnt,
     };
     disptach(add_to_cart(cartData));

@@ -1,16 +1,47 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import SelectInput from "../../../Common/SelectInput";
-import Input from "../../../Common/Input";
 import JoditTextArea from "../../../Common/JoditTextArea";
-import Button from "../../../Common/Button";
-
+import SubmitButton from "../../../Common/SubmitButton";
+import CommonModal from "../../../Modals/CommonModal";
+import FeedbackMessage from "./FeedbackMessage";
+import { useGetUser } from "../../../../hooks/useGetUser";
+import { useFeedbackMutation } from "../../../../store/dashboard/service/feedback/feedbackApi";
 
 const FeedbackForm = () => {
   const [content, setContent] = useState("");
-  const { handleSubmit, register } = useForm();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleFeedback = () => {};
+  const { user } = useGetUser();
+  const [feedback, { isLoading }] = useFeedbackMutation();
+
+  const { handleSubmit, register, reset } = useForm();
+
+  const handleFeedback = async (data) => {
+    if (content.length < 20) {
+      toast.error("Feedback too short", { id: "error" });
+      return;
+    }
+    const newData = {
+      ...data,
+      feedbackMessage: content,
+      user,
+    };
+
+    try {
+      const res = await feedback(newData);
+      if (!res?.error) {
+        setIsModalOpen(true);
+        setContent("");
+        reset();
+      } else {
+        toast.error("Something went wrong 😓", { id: "error" });
+      }
+    } catch (error) {
+      toast.error("Something went wrong 😓", { id: error });
+    }
+  };
 
   return (
     <div>
@@ -28,24 +59,33 @@ const FeedbackForm = () => {
           <option value="suggation">Suggation</option>
           <option value="other">Other</option>
         </SelectInput>
-        <Input
-          {...register("title")}
-          label="Title"
-          required
-          placeholder="Title"
-          className="border bg-transparent text-sm"
-        />
         <span className="py-2 block font-medium text-sm">
-          Product Description <span className="text-danger">*</span>
+          Feedback content <span className="text-danger">*</span>
         </span>
         <div>
-          <JoditTextArea content={content} setContent={setContent} />
+          <JoditTextArea
+            height={"350px"}
+            content={content}
+            setContent={setContent}
+          />
         </div>
 
         <div className="mt-3 flex flex-col items-end">
-          <Button className="w-36">Send feedback</Button>
+          <SubmitButton isLoading={isLoading} className="w-40">
+            Send feedback
+          </SubmitButton>
         </div>
       </form>
+      {
+        <CommonModal
+          isOpen={isModalOpen}
+          onClose={setIsModalOpen}
+          className="w-[330px] md:w-[500px]"
+          key={"feedback"}
+        >
+          <FeedbackMessage />
+        </CommonModal>
+      }
     </div>
   );
 };

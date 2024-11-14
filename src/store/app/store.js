@@ -16,6 +16,7 @@ import { baseApi } from "../api/baseApi";
 import userReducer from "../main/features/user/userSlice";
 import userCartReducer from "../main/features/cart/userCartSlice.js";
 import userWishlistReducer from "../main/features/wishlist/wishlistSlice.js";
+import { imgbbApi } from "../main/service/imageUpload/imageUploadApi.js";
 
 const persistConfig = {
   key: "root",
@@ -49,13 +50,16 @@ const store = configureStore({
     local: persistedReducers,
     session: sessionReducer,
     [baseApi.reducerPath]: baseApi.reducer,
+    [imgbbApi.reducerPath]: imgbbApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(baseApi.middleware),
+    })
+      .concat(baseApi.middleware)
+      .concat(imgbbApi.middleware),
 });
 
 export default store;

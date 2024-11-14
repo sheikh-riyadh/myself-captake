@@ -1,19 +1,34 @@
+import { useGetCart } from "../../../../hooks/useGetCart";
 import { numberWithCommas } from "../../../../utils/numberWithComma";
 import Button from "../../../Common/Button";
-import Input from "../../../Common/Input";
 
 const CartPayment = () => {
+  const { userCart } = useGetCart();
+
+  const total = userCart.reduce((total, item) => {
+    return (total += item?.buyQnt * item?.price);
+  }, 0);
+
+  
+  const totalItem = userCart.reduce((total, item) => {
+    return (total += item?.buyQnt);
+  }, 0);
+
+
+
   const orderSummery = [
     {
-      title: `Subtotal (0 items)`,
-      value: 100,
+      title: `Subtotal (${totalItem} items)`,
+      value: numberWithCommas(Math.round(total)),
     },
     { title: "Shipping Fee", value: "" },
     { title: "Shipping Discount", value: "" },
   ];
 
+  console.log(total);
+
   return (
-    <div className="shadow-md border bg-white px-4 py-5 rounded-md">
+    <div className="shadow-md border bg-white px-4 py-5 rounded-md sticky top-20">
       <p className="font-bold text-sm">Order Summary</p>
       <div className="flex flex-col gap-2 mt-2">
         {orderSummery.map(({ title, value }) => (
@@ -26,23 +41,9 @@ const CartPayment = () => {
           </div>
         ))}
       </div>
-      <div>
-       
-        <div className="w-full grid  grid-cols-12 md:grid-cols-1 lg:grid-cols-12 gap-4 items-center mt-4">
-          <div className="col-span-9">
-            <Input
-              placeholder="Enter Voucher Code"
-              className={"w-full text-xs"}
-              required={false}
-            />
-          </div>
-          <Button className={"uppercase text-xs col-span-3"}>Apply</Button>
-        </div>
-      </div>
-
       <div className="flex items-center justify-between text-sm pt-3">
         <span>Total</span>
-        <span>৳ {numberWithCommas(1000)}</span>
+        <span>৳ {numberWithCommas(Math.round(total))}</span>
       </div>
 
       {/* Place order button */}
