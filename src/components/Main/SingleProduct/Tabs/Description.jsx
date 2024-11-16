@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 const Description = ({ description }) => {
   return (
-    <div>
-      <h1>{description}</h1>
+    <div className="flex flex-col overflow-hidden">
+      <div className="flex flex-col" dangerouslySetInnerHTML={{ __html: description }}></div>
     </div>
   );
 };

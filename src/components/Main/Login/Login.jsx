@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { addUser } from "../../../store/main/features/user/userSlice";
@@ -21,6 +21,9 @@ const Login = () => {
   const { handleSubmit, register } = useForm();
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const disptach = useDispatch();
   const [getUser] = useLazyGetUserQuery();
 
@@ -33,7 +36,7 @@ const Login = () => {
         if (res?.data?.email) {
           disptach(addUser({ ...res?.data }));
           setIsLoading(false);
-          navigate("/");
+          navigate(from, { replace: true });
         } else {
           toast.error("Something went wrong 😓", { id: "error" });
           setIsLoading(false);

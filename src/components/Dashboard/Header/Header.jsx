@@ -3,11 +3,12 @@ import { useGetUser } from "../../../hooks/useGetUser";
 import { FaBars } from "react-icons/fa6";
 import { useState } from "react";
 import MobileSidebar from "../../Mobile/Dashboard/MobileSidebar";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { user } = useGetUser();
   const [isModalOpen, setIsModalOpen] = useState(false);
-console.log(isModalOpen)
+  console.log(isModalOpen);
   return (
     <header className="w-full sticky top-0 bg-white border-b border-gray-200 z-50 p-3">
       <nav className="flex items-center justify-between px-8 w-full">
@@ -19,7 +20,9 @@ console.log(isModalOpen)
         </div>
         <div>
           <div className="flex items-center gap-3">
-            <FaHome className="text-4xl bg-gray-100 p-2 rounded-full" />
+            <Link to={"/dashboard"}>
+              <FaHome className="text-4xl bg-gray-100 p-2 rounded-full" />
+            </Link>
             {user?.photo ? (
               <div className="bg-gray-100 w-10 h-10 border p-1 rounded-full flex flex-col items-center justify-center">
                 <img
@@ -35,14 +38,14 @@ console.log(isModalOpen)
         </div>
       </nav>
 
-      {
-        isModalOpen && <MobileSidebar
+      {isModalOpen && (
+        <MobileSidebar
           isOpen={isModalOpen}
           onClose={setIsModalOpen}
           key={"mobleSidebar"}
           className={"h-screen"}
         />
-      }
+      )}
     </header>
   );
 };

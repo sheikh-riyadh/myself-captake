@@ -41,7 +41,7 @@ const RightSide = ({ product }) => {
       price: product?.price,
       sellerId: product?.sellerId,
       _id: product?._id,
-      image:product?.productImages?.[0],
+      image: product?.productImages?.[0],
       buyQnt,
     };
     disptach(add_to_cart(cartData));
@@ -53,6 +53,7 @@ const RightSide = ({ product }) => {
       price: product?.price,
       sellerId: product?.sellerId,
       _id: product?._id,
+      image: product?.productImages?.[0],
       buyQnt,
     };
     disptach(add_to_wishlist(wishlistData));
@@ -62,11 +63,11 @@ const RightSide = ({ product }) => {
     <div>
       <div>
         {/* Product short description */}
-        <div className="flex flex-col gap-3 pt-5">
-          <h1 className="font-semibold text-2xl">
-            Canon EOS R100 Mirrorless Camera with 18-45mm Lens
-          </h1>
-          <p className="">{`The Canon EOS R100 Mirrorless Camera is a powerful imaging tool that allows you to easily and precisely shoot spectacular images and movies. This camera's 24.2MP APS-C CMOS sensor, along with the DIGIC 8 image processor, provides superb image quality and performance, allowing you to capture every moment in vivid detail.`}</p>
+        <div className="flex flex-col gap-5 pt-5">
+          <h1 className="font-semibold text-xl">{product?.title}</h1>
+          <div>
+            <span className="shadow py-1 px-5 rounded-full bg-gray-200">{`price:${product?.price}`}</span>
+          </div>
           <hr />
         </div>
       </div>
@@ -76,26 +77,12 @@ const RightSide = ({ product }) => {
           <div className="flex flex-col gap-3 pt-3">
             <h2 className="font-bold">Key Features</h2>
             <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <FaAngleRight />
-                <span>Model: Sony Alpha A6400</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <FaAngleRight />
-                <span>24.2MP APS-C Exmor CMOS Sensor</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <FaAngleRight />
-                <span>BIONZ X Image Processor</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <FaAngleRight />
-                <span>Real-Time Eye AF; Real-Time Tracking</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <FaAngleRight />
-                <span>XGA Tru-Finder 2.36m-Dot OLED EVF</span>
-              </div>
+              {product?.keyFeatures?.map((feature) => (
+                <div key={feature} className="flex items-center gap-2 text-[15px]">
+                  <FaAngleRight />
+                  <span>{feature}</span>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -135,7 +122,7 @@ const RightSide = ({ product }) => {
             <div className="flex items-center justify-between gap-5 w-full">
               <FaBasketShopping
                 onClick={handleCart}
-                className={`border text-xl w-full p-2.5 h-10 rounded ${
+                className={`border text-xl w-full p-2.5 h-10 rounded cursor-pointer ${
                   userCart?.find((cart) => cart?._id === product?._id)
                     ? " bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] text-white"
                     : null
@@ -143,7 +130,7 @@ const RightSide = ({ product }) => {
               />
               <FaHeart
                 onClick={handleWishlist}
-                className={`border text-xl w-full p-2.5 h-10 rounded ${
+                className={`border text-xl w-full p-2.5 h-10 rounded cursor-pointer ${
                   userWishlist?.find((list) => list?._id === product?._id)
                     ? " bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] text-white"
                     : null

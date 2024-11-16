@@ -7,8 +7,12 @@ import {
 import { MdWindow } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useGetUser } from "../../hooks/useGetUser";
+import { useGetCart } from "../../hooks/useGetCart";
+import { useGetWishlist } from "../../hooks/useGetWishlist";
 const MainHeader = () => {
   const { user } = useGetUser();
+  const { userCart } = useGetCart();
+  const { userWishlist } = useGetWishlist();
 
   return (
     <header className="bg-stech  fixed w-full z-50 top-0">
@@ -39,7 +43,7 @@ const MainHeader = () => {
                   <FaHeart className="text-2xl xl:text-xl text-primary" />
                   <div>
                     <span className="text-white">Wishlist</span>
-                    <p className="text-sm text-slate">Items (0)</p>
+                    <p className="text-sm text-slate">{`Items (${userWishlist?.length})`}</p>
                   </div>
                 </div>
               </Link>
@@ -48,7 +52,7 @@ const MainHeader = () => {
                   <FaShoppingBasket className="text-2xl xl:text-xl text-primary" />
                   <div>
                     <span className="text-white">My Cart</span>
-                    <p className="text-sm text-slate">Items (0)</p>
+                    <p className="text-sm text-slate">{`Items (${userCart?.length})`}</p>
                   </div>
                 </div>
               </Link>

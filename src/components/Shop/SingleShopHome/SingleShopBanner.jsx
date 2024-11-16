@@ -1,3 +1,5 @@
+import { useState } from "react";
+import {useLocation, useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -5,8 +7,20 @@ import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import customSliderBullets from "../../../utils/customSliderBullets";
 import { FaEnvelope, FaPlayCircle } from "react-icons/fa";
+import { useGetUser } from "../../../hooks/useGetUser";
+import CommonModal from "../../Modals/CommonModal";
+import ReportForm from "./ReportForm";
 
 const SingleShopBanner = () => {
+  const [reportModal, setReportModal] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { user } = useGetUser();
+
+  const handleNavigate = () => {
+    navigate("/sign-in", { state: { from: location }, replace: true });
+  };
+
   return (
     <div className="mt-[68px] lg:mt-28 xl:mt-[100px]">
       <div className="h-full lg:grid lg:grid-cols-12 gap-5">
@@ -33,7 +47,12 @@ const SingleShopBanner = () => {
                 </span>
               </div>
               <div className="border-t w-full flex flex-col items-center justify-center">
-                <button className="w-full p-3 text-primary font-semibold text-lg">
+                <button
+                  className="w-full p-3 text-primary font-semibold text-lg"
+                  onClick={
+                    !user?._id ? handleNavigate : () => setReportModal(true)
+                  }
+                >
                   Report
                 </button>
               </div>
@@ -76,6 +95,17 @@ const SingleShopBanner = () => {
           </Swiper>
         </div>
       </div>
+      {reportModal && (
+        <CommonModal
+          isOpen={reportModal}
+          onClose={setReportModal}
+          title={"Report to admin"}
+          key={"report"}
+          className={"w-[450px]"}
+        >
+          <ReportForm setReportModal={setReportModal} />
+        </CommonModal>
+      )}
     </div>
   );
 };
