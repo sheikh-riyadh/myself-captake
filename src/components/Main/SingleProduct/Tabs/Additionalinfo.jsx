@@ -1,12 +1,8 @@
 import PropTypes from "prop-types";
 const Additionalinfo = ({ additionalinfo }) => {
-  return (
-    <div>
-      <h1>{additionalinfo}</h1>
-    </div>
-  );
+  return <div dangerouslySetInnerHTML={{ __html: additionalinfo }}></div>;
 };
 Additionalinfo.propTypes = {
-  additionalinfo: PropTypes.object,
+  additionalinfo: PropTypes.string,
 };
 export default Additionalinfo;

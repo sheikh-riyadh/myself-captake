@@ -7,6 +7,6 @@ const Description = ({ description }) => {
   );
 };
 Description.propTypes = {
-  description: PropTypes.object,
+  description: PropTypes.string,
 };
 export default Description;

@@ -16,7 +16,7 @@ const LeftSide = ({ product }) => {
           <PhotoView
            src={product?.productImages?.[0]}>
             <img
-              className="md:max-w-[400px] md:max-h-[400px]"
+              className="md:max-w-[380px] md:max-h-[380px]"
               src={product?.productImages?.[0]}
               alt="product_image"
             />

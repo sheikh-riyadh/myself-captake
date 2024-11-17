@@ -19,9 +19,12 @@ import { add_to_cart } from "../../../../store/main/features/cart/userCartSlice"
 import { useGetCart } from "../../../../hooks/useGetCart";
 import { useGetWishlist } from "../../../../hooks/useGetWishlist";
 import { add_to_wishlist } from "../../../../store/main/features/wishlist/wishlistSlice";
+import CommonModal from "../../../Modals/CommonModal";
+import ReturnPolicy from "./ReturnPolicy";
 
 const RightSide = ({ product }) => {
   const [buyQnt, setBuyQnt] = useState(1);
+  const [returnModal, setReturnModal] = useState(false);
 
   const disptach = useDispatch();
   const { userCart } = useGetCart();
@@ -65,8 +68,31 @@ const RightSide = ({ product }) => {
         {/* Product short description */}
         <div className="flex flex-col gap-5 pt-5">
           <h1 className="font-semibold text-xl">{product?.title}</h1>
-          <div>
-            <span className="shadow py-1 px-5 rounded-full bg-gray-200">{`price:${product?.price}`}</span>
+          <div className="flex items-center gap-2 text-sm flex-wrap w-full">
+            {product?.specialPrice ? (
+              <p className="shadow border py-1 px-5 rounded-full text-slate">
+                {`Price :`}
+                <span className="font-bold text-stech">
+                  {numberWithCommas(product?.specialPrice)}TK
+                </span>
+              </p>
+            ) : null}
+            <p className="shadow border py-1 px-5 rounded-full text-slate">
+              {`Regular Price :`}
+              <span className="font-bold text-stech">
+                {numberWithCommas(product?.price)}TK
+              </span>
+            </p>
+            <p className="shadow border py-1 px-5 rounded-full text-slate">
+              {`Stock :`}
+              <span className="font-bold text-stech">
+                {numberWithCommas(product?.stock)}
+              </span>
+            </p>
+            <p className="shadow border py-1 px-5 rounded-full text-slate">
+              {`Brand :`}
+              <span className="font-bold text-stech">{product?.brand}</span>
+            </p>
           </div>
           <hr />
         </div>
@@ -77,8 +103,11 @@ const RightSide = ({ product }) => {
           <div className="flex flex-col gap-3 pt-3">
             <h2 className="font-bold">Key Features</h2>
             <div className="flex flex-col gap-2">
-              {product?.keyFeatures?.map((feature) => (
-                <div key={feature} className="flex items-center gap-2 text-[15px]">
+              {product?.keyFeatures?.slice(0, 4)?.map((feature) => (
+                <div
+                  key={feature}
+                  className="flex items-center gap-2 text-[15px]"
+                >
                   <FaAngleRight />
                   <span>{feature}</span>
                 </div>
@@ -88,12 +117,22 @@ const RightSide = ({ product }) => {
 
           {/* Product price */}
           <div className="flex items-center gap-5">
-            <span className="font-semibold text-xl text-primary">{`${numberWithCommas(
-              300000
-            )}৳`}</span>
-            <span className="line-through font-semibold text-xl">{`${numberWithCommas(
-              350000
-            )}৳`}</span>
+            {product?.specialPrice ? (
+              <>
+                <span className="font-semibold text-xl text-primary">{`${numberWithCommas(
+                  product?.specialPrice
+                )}TK`}</span>
+                <span className="line-through font-semibold text-xl text-black">{`${numberWithCommas(
+                  product?.price
+                )}TK`}</span>
+              </>
+            ) : (
+              <>
+                <span className="font-semibold text-xl text-primary">{`${numberWithCommas(
+                  product?.price
+                )}TK`}</span>
+              </>
+            )}
           </div>
 
           {/* Update product buyQnt button */}
@@ -138,7 +177,7 @@ const RightSide = ({ product }) => {
               />
             </div>
             <Link
-              to="/single-store/123"
+              to={`/single-store/${product?.sellerId}`}
               className="font-semibold w-full rounded bg-stech text-white"
             >
               <button className="py-2 font-semibold w-full rounded bg-stech text-white">
@@ -161,7 +200,9 @@ const RightSide = ({ product }) => {
                 <FaTruck />
                 <span>Free Delivery</span>
               </div>
-              <span className="text-primary font-medium">Free</span>
+              <span className="text-primary font-medium capitalize">
+                {product?.freeDeliveryAvailable}
+              </span>
             </div>
             <span className="bg-white p-2 rounded">
               Enjoy free shipping promotion with minimum spend of ৳ 499 from
@@ -170,7 +211,12 @@ const RightSide = ({ product }) => {
           <div>
             <div className="flex items-center gap-3">
               <FaMoneyBillAlt />
-              <span>Cash on Delivery not available</span>
+              <span>
+                Cash on Delivery{" "}
+                {product?.cashOnDeliveryAvailable === "yes"
+                  ? "available"
+                  : "not available"}
+              </span>
             </div>
           </div>
           <hr />
@@ -185,14 +231,42 @@ const RightSide = ({ product }) => {
             </div>
           </div>
           <div>
-            <div className="flex items-center gap-3 text-violet-900">
-              <PiKeyReturnFill />
-              <span>14 Days free & easy return</span>
-            </div>
-            <span className="text-xs">Change of mind is not available</span>
+            {product?.returnProductAvailable === "yes" ? (
+              <div className="flex items-center gap-3 text-violet-900">
+                <PiKeyReturnFill />
+                <span>{product?.returnDays} Days free & easy return</span>
+                <span
+                  onClick={() => setReturnModal(true)}
+                  className="text-danger underline cursor-pointer"
+                >
+                  Read
+                </span>
+              </div>
+            ) : (
+              <>
+                <div className="flex items-center gap-3 text-violet-900">
+                  <PiKeyReturnFill />
+                  <span>10 Days free & easy return</span>
+                </div>
+                <span className="text-xs">Change of mind is not available</span>
+              </>
+            )}
           </div>
         </div>
       </div>
+      {returnModal && (
+        <CommonModal
+          isOpen={returnModal}
+          onClose={setReturnModal}
+          title={"Return policy"}
+          key={"return_policy"}
+          className={
+            "w-[330px] max-h-[600px] md:w-[600px] lg:w-[800px] lg:max-h-[450px]"
+          }
+        >
+          <ReturnPolicy sellerId={product?.sellerId} key={"policy_modal"} />
+        </CommonModal>
+      )}
     </div>
   );
 };

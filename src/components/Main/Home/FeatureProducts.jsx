@@ -25,5 +25,4 @@ const FeatureProducts = () => {
     </div>
   );
 };
-
 export default FeatureProducts;

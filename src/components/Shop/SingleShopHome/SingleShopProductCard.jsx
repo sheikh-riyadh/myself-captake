@@ -1,11 +1,11 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import cn from "../../../utils/cn";
 import { numberWithCommas } from "../../../utils/numberWithComma";
 import { GiShoppingBag } from "react-icons/gi";
 import { FaHeart, FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import ProductViewModal from "../../Modals/ProductViewModal";
-import { useState } from "react";
 
 const SingleShopProductCard = ({ className, imageSize }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +17,7 @@ const SingleShopProductCard = ({ className, imageSize }) => {
           className
         )}
       >
+        
         <div className="flex items-center justify-center">
           <img
             className={cn(

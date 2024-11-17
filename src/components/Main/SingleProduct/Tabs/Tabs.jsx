@@ -6,7 +6,7 @@ import Questions from "./Questions";
 import Reviews from "./Reviews";
 import MoreFromSeller from "./MoreFromSeller";
 
-const Tabs = ({product}) => {
+const Tabs = ({ product }) => {
   const [tab, setTab] = useState("Description");
 
   let tabContainer;
@@ -20,7 +20,9 @@ const Tabs = ({product}) => {
   } else if (tab == "Reviews") {
     tabContainer = <Reviews />;
   } else {
-    tabContainer = <MoreFromSeller />;
+    tabContainer = (
+      <MoreFromSeller sellerId={product?.sellerId} productId={product?._id} />
+    );
   }
 
   return (
@@ -29,7 +31,7 @@ const Tabs = ({product}) => {
         {[
           "Description",
           "Additional info",
-          "Qestions",
+          "Questions",
           "Reviews",
           "More from seller",
         ].map((info) => (

@@ -10,7 +10,7 @@ const productApi = baseApi.injectEndpoints({
     }),
     getMostViewsProduct: build.query({
       query: () => ({
-        url: "most-views-products",
+        url: `most-views-products`,
       }),
     }),
     updateViews: build.mutation({
@@ -21,6 +21,11 @@ const productApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["views"],
     }),
+    returnPolicy: build.query({
+      query: (sellerId) => ({
+        url: `seller-return-policy/${sellerId}`,
+      }),
+    }),
   }),
 });
 
@@ -28,4 +33,5 @@ export const {
   useGetProductsQuery,
   useUpdateViewsMutation,
   useGetMostViewsProductQuery,
+  useReturnPolicyQuery,
 } = productApi;

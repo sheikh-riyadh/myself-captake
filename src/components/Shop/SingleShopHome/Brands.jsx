@@ -1,24 +1,44 @@
+import PropTypes from "prop-types";
 import Marquee from "react-fast-marquee";
+import { useSellerBrandsQuery } from "../../../store/shop/service/brands/brandsApi";
+import BrandsSkeleton from "../../Skeleton/Shop/Brands/BrandsSkeleton";
 
-const Brands = () => {
+const Brands = ({ sellerId }) => {
+  const { data, isLoading } = useSellerBrandsQuery(sellerId);
+  console.log(data);
+
   return (
-    <div className="bg-stech p-10 mb-20">
-      <div className="my_container">
-      <Marquee>
-        <div className="flex items-center gap-10">
-          {[...Array(10).keys()].map((keys) => (
-            <img
-              key={keys}
-              src="https://ibid.modeltheme.com/wp-content/uploads/2015/04/client2-s2-1-300x90.png"
-              alt="brand_image"
-              className="w-36"
-            />
-          ))}
+    <>
+      {!isLoading ? (
+        <div className="bg-stech p-5 mb-20">
+          <div className="my_container">
+            <div className="flex flex-col items-center justify-center text-white mb-3">
+              <h2 className="font-bold text-lg">Top Brands</h2>
+              <span>Meet our top brands!</span>
+            </div>
+            <Marquee>
+              <div className="flex items-center gap-10">
+                {data?.brands?.map((brand) => (
+                  <img
+                    title={brand?.brandName}
+                    key={brand?.brandName}
+                    src={brand?.brandPhoto}
+                    alt="brand_image"
+                    className="w-36"
+                  />
+                ))}
+              </div>
+            </Marquee>
+          </div>
         </div>
-      </Marquee>
-      </div>
-    </div>
+      ) : (
+        <BrandsSkeleton />
+      )}
+    </>
   );
 };
 
+Brands.propTypes = {
+  sellerId: PropTypes.string,
+};
 export default Brands;
