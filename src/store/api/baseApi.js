@@ -15,6 +15,7 @@ export const baseApi = createApi({
     "views",
     "seller-default-banner",
     "seller-brands",
+    "announcement",
   ],
   endpoints: () => ({}),
 });

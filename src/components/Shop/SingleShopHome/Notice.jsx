@@ -1,15 +1,26 @@
 import PropTypes from "prop-types";
 import Marquee from "react-fast-marquee";
+import { useSellerAnnouncmentQuery } from "../../../store/shop/service/announcement/announcementApi";
+import NoticeSkeleton from "../../Skeleton/Shop/Notice/NoticeSkeleton";
 const Notice = ({ sellerId }) => {
+  const { data, isLoading } = useSellerAnnouncmentQuery(sellerId);
+  console.log(data);
   return (
-    <div className="bg-white p-4 rounded-full my-10">
-      <Marquee>
-        <span className="font-semibold">
-          5th June Wednesday, our all outlets are open. Additionally, our online
-          activities are open and operational.
-        </span>
-      </Marquee>
-    </div>
+    <>
+      {!isLoading ? (
+        <div className="bg-white p-4 rounded-full my-10">
+          <Marquee>
+            {data?.announcement ? (
+              <span className="font-semibold">{data?.announcement}</span>
+            ) : (
+              <span>Notice not available at this moment !</span>
+            )}
+          </Marquee>
+        </div>
+      ) : (
+        <NoticeSkeleton />
+      )}
+    </>
   );
 };
 
