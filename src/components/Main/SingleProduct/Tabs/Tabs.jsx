@@ -16,7 +16,7 @@ const Tabs = ({ product }) => {
   } else if (tab == "Additional info") {
     tabContainer = <Additionalinfo additionalinfo={product?.additionalinfo} />;
   } else if (tab == "Questions") {
-    tabContainer = <Questions />;
+    tabContainer = <Questions product={product} />;
   } else if (tab == "Reviews") {
     tabContainer = <Reviews />;
   } else {

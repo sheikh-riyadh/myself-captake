@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaHome } from "react-icons/fa";
@@ -17,6 +17,10 @@ const Registration = () => {
   const { handleSubmit, register } = useForm();
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+
   const disptach = useDispatch();
   const [createUser] = useCreateUserMutation();
 
@@ -33,7 +37,7 @@ const Registration = () => {
         if (res?.data?.acknowledged) {
           disptach(addUser({ ...res?.data }));
           setIsLoading(false);
-          navigate("/");
+          navigate(from, { replace: true });
         } else {
           toast.error("Something went wrong 😓", { id: "error" });
           setIsLoading(false);

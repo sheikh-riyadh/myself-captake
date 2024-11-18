@@ -70,26 +70,26 @@ const RightSide = ({ product }) => {
           <h1 className="font-semibold text-xl">{product?.title}</h1>
           <div className="flex items-center gap-2 text-sm flex-wrap w-full">
             {product?.specialPrice ? (
-              <p className="shadow border py-1 px-5 rounded-full text-slate">
+              <p className="shadow border py-1 px-4 rounded-full text-slate">
                 {`Price :`}
                 <span className="font-bold text-stech">
                   {numberWithCommas(product?.specialPrice)}TK
                 </span>
               </p>
             ) : null}
-            <p className="shadow border py-1 px-5 rounded-full text-slate">
+            <p className="shadow border py-1 px-4 rounded-full text-slate">
               {`Regular Price :`}
               <span className="font-bold text-stech">
                 {numberWithCommas(product?.price)}TK
               </span>
             </p>
-            <p className="shadow border py-1 px-5 rounded-full text-slate">
+            <p className="shadow border py-1 px-4 rounded-full text-slate">
               {`Stock :`}
               <span className="font-bold text-stech">
                 {numberWithCommas(product?.stock)}
               </span>
             </p>
-            <p className="shadow border py-1 px-5 rounded-full text-slate">
+            <p className="shadow border py-1 px-4 rounded-full text-slate">
               {`Brand :`}
               <span className="font-bold text-stech">{product?.brand}</span>
             </p>

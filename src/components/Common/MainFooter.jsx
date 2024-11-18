@@ -48,14 +48,14 @@ const MainFooter = () => {
               <h2 className="text-lg font-bold underline text-primary">
                 Contact
               </h2>
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-1">
                 <div className="flex items-center gap-2 text-white">
                   <FaMapMarkerAlt />
                   <span>Dhaka postogola 1204</span>
                 </div>
                 <div className="flex items-center gap-2 text-white">
                   <FaEnvelope />
-                  <span>captake@gmail.com</span>
+                  <span>sheikhriyadh934@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-2 text-white">
                   <FaPhoneAlt />

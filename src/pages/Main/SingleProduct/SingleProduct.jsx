@@ -15,7 +15,7 @@ const SingleProduct = () => {
   useEffect(() => {
     if (!hasUpdated.current) {
       const updateProductViews = async () => {
-        await updateViews({ _id: product?.id });
+        await updateViews({ _id: product?._id });
       };
       updateProductViews();
     }
