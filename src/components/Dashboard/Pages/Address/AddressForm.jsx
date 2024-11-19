@@ -11,6 +11,9 @@ import {
 } from "../../../../store/dashboard/service/address/addressApi";
 import { useGetUser } from "../../../../hooks/useGetUser";
 import SubmitButton from "../../../Common/SubmitButton";
+import { useDispatch } from "react-redux";
+import { useAddress } from "../../../../hooks/useAddress";
+import { add_address } from "../../../../store/dashboard/features/address/addressSlice";
 
 const AddressForm = ({ updateData, setIsModalOpen }) => {
   const [cities, setCities] = useState([]);
@@ -18,6 +21,8 @@ const AddressForm = ({ updateData, setIsModalOpen }) => {
   const { handleSubmit, register, watch, setValue } = useForm();
   const name = watch("state");
   const { user } = useGetUser();
+  const { selectedAddress } = useAddress();
+  const dispatch = useDispatch();
 
   const [create, { isLoading: createLoading }] = useCreateAddressMutation();
   const [update, { isLoading: updateLoading }] = useUpdateAddressMutation();
@@ -28,6 +33,10 @@ const AddressForm = ({ updateData, setIsModalOpen }) => {
       userId: user?._id,
     };
 
+    if (selectedAddress?._id === updateData?._id) {
+      dispatch(add_address({ _id: updateData?._id, ...newData }));
+    }
+
     if (updateData?._id) {
       try {
         const res = await update({ _id: updateData?._id, data: newData });
@@ -35,7 +44,8 @@ const AddressForm = ({ updateData, setIsModalOpen }) => {
           toast.success("Updated address successfully", {
             id: "update_address",
           });
-          setIsModalOpen(false)
+
+          setIsModalOpen(false);
         } else {
           toast.error("Something went wrong 😓", { id: "error" });
         }
@@ -49,13 +59,13 @@ const AddressForm = ({ updateData, setIsModalOpen }) => {
           toast.success("Created address successfully", {
             id: "update_address",
           });
-          setIsModalOpen(false)
+          setIsModalOpen(false);
         } else {
           toast.error("Something went wrong 1 😓", { id: "error" });
         }
       } catch (error) {
         toast.error("Something went wrong 2 😓", { id: error });
-        console.log(error)
+        console.log(error);
       }
     }
   };
@@ -131,9 +141,7 @@ const AddressForm = ({ updateData, setIsModalOpen }) => {
             required
             className="border bg-transparent"
           >
-            <option value="" >
-              Select city
-            </option>
+            <option value="">Select city</option>
             {cities?.map((city) => (
               <option
                 value={city?.toLowerCase()}

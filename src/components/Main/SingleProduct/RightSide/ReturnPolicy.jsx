@@ -4,7 +4,6 @@ import LoadingSpinner from "../../../Common/LoadingSpinner";
 
 const ReturnPolicy = ({ sellerId }) => {
   const { data, isLoading } = useReturnPolicyQuery(sellerId);
-  console.log(data)
   return (
     <>
       {!isLoading ? (

@@ -88,10 +88,10 @@ const Wishlist = () => {
                     <div className="flex items-center gap-5">
                       <span className="font-semibold text text-primary">{`${numberWithCommas(
                         300000
-                      )}৳`}</span>
+                      )}TK`}</span>
                       <span className="line-through font-semibold text">{`${numberWithCommas(
                         350000
-                      )}৳`}</span>
+                      )}TK`}</span>
                     </div>
                   </div>
                 </div>

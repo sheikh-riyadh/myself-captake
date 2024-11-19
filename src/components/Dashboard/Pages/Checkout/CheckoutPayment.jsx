@@ -1,16 +1,18 @@
-import { useNavigate } from "react-router-dom";
 import { useGetCart } from "../../../../hooks/useGetCart";
+import { useGetOrderProducts } from "../../../../hooks/useGetOrderProducts";
 import { numberWithCommas } from "../../../../utils/numberWithComma";
 import Button from "../../../Common/Button";
-import toast from "react-hot-toast";
 
-const CartPayment = () => {
+const CheckoutPayment = () => {
   const { userCart } = useGetCart();
-  const navigate = useNavigate();
   const sellerIds = [];
 
   const total = userCart.reduce((total, item) => {
     return (total += item?.buyQnt * item?.price);
+  }, 0);
+
+  const totalItem = userCart.reduce((total, item) => {
+    return (total += item?.buyQnt);
   }, 0);
 
   const shippingCost = userCart.reduce((total, item) => {
@@ -21,25 +23,21 @@ const CartPayment = () => {
     return total;
   }, 0);
 
-  const totalItem = userCart.reduce((total, item) => {
-    return (total += item?.buyQnt);
-  }, 0);
-
   const orderSummery = [
     {
       title: `Subtotal (${totalItem} items)`,
       value: numberWithCommas(parseInt(Math.round(total))),
     },
-    { title: "Shipping Fee", value: numberWithCommas(parseInt(shippingCost)) },
+    {
+      title: "Shipping Fee",
+      value: numberWithCommas(parseInt(Math.round(shippingCost))),
+    },
   ];
 
-  const handleNavigate = () => {
-    if (!userCart?.length) {
-      toast.error("Please add product", { id: "cart_error" });
-    } else {
-      navigate("/dashboard/checkout");
-    }
-  };
+  const orderItems = useGetOrderProducts({ paymentMethod: "Cash on delivery" });
+  console.log(orderItems)
+
+  const handleOrder = () => {};
 
   return (
     <div className="shadow-md border bg-white px-4 py-5 rounded-md sticky top-20">
@@ -57,20 +55,25 @@ const CartPayment = () => {
       </div>
       <div className="flex items-center justify-between text-sm pt-3 font-bold">
         <span>Total</span>
-        <span>TK {numberWithCommas(parseInt(Math.round(total))+parseInt(shippingCost))}</span>
+        <span>
+          TK{" "}
+          {numberWithCommas(
+            parseInt(Math.round(total)) + parseInt(shippingCost)
+          )}
+        </span>
       </div>
 
       {/* Place order button */}
       <div className="mt-5">
         <Button
           className={"text-sm w-full hover:text-[15px] duration-500 uppercase"}
-          onClick={handleNavigate}
+          onClick={handleOrder}
         >
-          {`proceed to checkout`}
+          {`confirm order`}
         </Button>
       </div>
     </div>
   );
 };
 
-export default CartPayment;
+export default CheckoutPayment;

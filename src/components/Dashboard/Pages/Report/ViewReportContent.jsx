@@ -4,7 +4,6 @@ import { useGetReportedSellerQuery } from "../../../../store/shop/service/report
 import LoadingSpinner from "../../../Common/LoadingSpinner";
 const ViewReportContent = ({ item }) => {
   const { data, isLoading } = useGetReportedSellerQuery(item?.againstTo);
-  console.log(data)
 
   return (
     <div>

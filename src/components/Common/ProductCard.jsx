@@ -48,16 +48,16 @@ const ProductCard = ({ className, imageSize, product }) => {
         {product?.specialPrice ? (
           <div className="flex flex-wrap product-center gap-1 lg:gap-5">
             <span className="text-primary font-semibold">
-              {`${numberWithCommas(product?.specialPrice)}TK`}
+              {`${numberWithCommas(parseInt(product?.specialPrice))}TK`}
             </span>
             <span className="line-through font-semibold text-sm">{`${numberWithCommas(
-              product?.price
+              parseInt(product?.price)
             )}TK`}</span>
           </div>
         ) : (
           <div>
             <span className="text-primary font-semibold">
-              {`${numberWithCommas(product?.price)}TK`}
+              {`${numberWithCommas(parseInt(product?.price))}TK`}
             </span>
           </div>
         )}
@@ -65,7 +65,7 @@ const ProductCard = ({ className, imageSize, product }) => {
       <div className="absolute top-4 left-0">
         {product?.discount && (
           <span className="text-xs bg-primary text-white px-3 py-1 rounded-tr-xl rounded-br-xl">
-            Save: {`${numberWithCommas(10000)}৳`}
+            Save: {`${numberWithCommas(parseInt(product?.discount))}TK`}
           </span>
         )}
       </div>

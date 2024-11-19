@@ -20,6 +20,8 @@ import Order from "../pages/Dashboard/Order/Order";
 import Report from "../pages/Dashboard/Report/Report";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import DashboardWishlist from "../pages/Dashboard/DashboardWishlist/DashboardWishlist";
+import PrivateRouter from "./PrivateRouter";
+import Checkout from "../pages/Dashboard/Checkout/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -60,43 +62,91 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <DashboardLayout />,
+        element: (
+          <PrivateRouter>
+            <DashboardLayout />
+          </PrivateRouter>
+        ),
         children: [
           {
             path: "/dashboard",
-            element: <DashboardHome />,
+            element: (
+              <PrivateRouter>
+                <DashboardHome />
+              </PrivateRouter>
+            ),
           },
           {
             path: "address",
-            element: <Address />,
+            element: (
+              <PrivateRouter>
+                <Address />
+              </PrivateRouter>
+            ),
           },
           {
             path: "edit-profile",
-            element: <EditProfile />,
+            element: (
+              <PrivateRouter>
+                <EditProfile />
+              </PrivateRouter>
+            ),
           },
           {
             path: "feedback",
-            element: <Feedback />,
+            element: (
+              <PrivateRouter>
+                <Feedback />
+              </PrivateRouter>
+            ),
           },
           {
             path: "my-cart",
-            element: <Cart />,
+            element: (
+              <PrivateRouter>
+                <Cart />
+              </PrivateRouter>
+            ),
           },
           {
             path: "my-reviews",
-            element: <Review />,
+            element: (
+              <PrivateRouter>
+                <Review />
+              </PrivateRouter>
+            ),
           },
           {
             path: "order",
-            element: <Order />,
+            element: (
+              <PrivateRouter>
+                <Order />
+              </PrivateRouter>
+            ),
           },
           {
             path: "my-report",
-            element: <Report />,
+            element: (
+              <PrivateRouter>
+                <Report />
+              </PrivateRouter>
+            ),
           },
           {
             path: "wishlist",
-            element:  <DashboardWishlist />,
+            element: (
+              <PrivateRouter>
+                <DashboardWishlist />
+              </PrivateRouter>
+            ),
+          },
+          {
+            path: "checkout",
+            element: (
+              <PrivateRouter>
+                <Checkout />
+              </PrivateRouter>
+            ),
           },
         ],
       },

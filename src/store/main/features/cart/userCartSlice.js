@@ -29,14 +29,18 @@ const userCartSlice = createSlice({
       const increamentProduct = state.userCart.find(
         (cart) => cart?._id === payload
       );
-      increamentProduct.buyQnt++;
+      if (increamentProduct) {
+        increamentProduct.buyQnt++;
+      }
     },
     decreament: (state, { payload }) => {
       const decreamentProduct = state.userCart.find(
         (cart) => cart?._id === payload
       );
-      if (decreamentProduct?.buyQnt > 1) {
-        decreamentProduct.buyQnt--;
+      if (decreamentProduct) {
+        if (decreamentProduct?.buyQnt > 1) {
+          decreamentProduct.buyQnt--;
+        }
       }
     },
   },

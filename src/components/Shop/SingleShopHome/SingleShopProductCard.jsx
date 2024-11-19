@@ -34,11 +34,11 @@ const SingleShopProductCard = ({ className, imageSize }) => {
           </Link>
           <div className="flex flex-wrap items-center gap-1 lg:gap-5">
             <span className="text-primary font-semibold">
-              {`${numberWithCommas(299000)}৳`}
+              {`${numberWithCommas(299000)}TK`}
             </span>
             <span className="line-through font-semibold text-sm">{`${numberWithCommas(
               300000
-            )}৳`}</span>
+            )}TK`}</span>
           </div>
         </div>
         <div className="absolute top-5 left-5">

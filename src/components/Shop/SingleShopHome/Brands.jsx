@@ -5,7 +5,6 @@ import BrandsSkeleton from "../../Skeleton/Shop/Brands/BrandsSkeleton";
 
 const Brands = ({ sellerId }) => {
   const { data, isLoading } = useSellerBrandsQuery(sellerId);
-  console.log(data);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
@@ -15,52 +15,86 @@ import { FaBasketShopping } from "react-icons/fa6";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import { PiKeyReturnFill } from "react-icons/pi";
 import { useDispatch } from "react-redux";
-import { add_to_cart } from "../../../../store/main/features/cart/userCartSlice";
+import {
+  add_to_cart,
+  decreament,
+  increament,
+} from "../../../../store/main/features/cart/userCartSlice";
 import { useGetCart } from "../../../../hooks/useGetCart";
 import { useGetWishlist } from "../../../../hooks/useGetWishlist";
 import { add_to_wishlist } from "../../../../store/main/features/wishlist/wishlistSlice";
 import CommonModal from "../../../Modals/CommonModal";
 import ReturnPolicy from "./ReturnPolicy";
+import toast from "react-hot-toast";
 
 const RightSide = ({ product }) => {
   const [buyQnt, setBuyQnt] = useState(1);
   const [returnModal, setReturnModal] = useState(false);
 
-  const disptach = useDispatch();
+  const dispatch = useDispatch();
   const { userCart } = useGetCart();
   const { userWishlist } = useGetWishlist();
 
   const handleIncreament = () => {
-    setBuyQnt((prev) => prev + 1);
+    if (product?.stock == buyQnt) {
+      toast.error(`Can not add more than ${product?.stock} quantity`, {
+        id: "stock_error",
+      });
+    } else {
+      setBuyQnt((prev) => prev + 1);
+      dispatch(increament(product?._id));
+    }
   };
 
   const handleDecreament = () => {
     if (buyQnt >= 2) setBuyQnt((prev) => prev - 1);
+    dispatch(decreament(product?._id));
   };
 
   const handleCart = () => {
+    const price = product?.specialPrice
+      ? product?.specialPrice
+      : product?.price;
+
     const cartData = {
       title: product?.title,
-      price: product?.price,
+      price,
       sellerId: product?.sellerId,
       _id: product?._id,
       image: product?.productImages?.[0],
       buyQnt,
+      stock: product?.stock,
+      brand: product?.brand,
+      deliveryCharge:product?.deliveryCharge
     };
-    disptach(add_to_cart(cartData));
+    dispatch(add_to_cart(cartData));
   };
 
   const handleWishlist = () => {
+    const price = product?.specialPrice
+      ? product?.specialPrice
+      : product?.price;
+
     const wishlistData = {
       title: product?.title,
-      price: product?.price,
+      price,
       sellerId: product?.sellerId,
       _id: product?._id,
       image: product?.productImages?.[0],
       buyQnt,
+      stock: product?.stock,
+      brand: product?.brand,
+      deliveryCharge:product?.deliveryCharge
     };
-    disptach(add_to_wishlist(wishlistData));
+    dispatch(add_to_wishlist(wishlistData));
   };
+
+  useEffect(() => {
+    const added = userCart?.find((cart) => cart?._id === product?._id);
+    if (added) {
+      setBuyQnt(added?.buyQnt);
+    }
+  }, [product, userCart]);
 
   return (
     <div>
@@ -73,20 +107,20 @@ const RightSide = ({ product }) => {
               <p className="shadow border py-1 px-4 rounded-full text-slate">
                 {`Price :`}
                 <span className="font-bold text-stech">
-                  {numberWithCommas(product?.specialPrice)}TK
+                  {numberWithCommas(parseInt(product?.specialPrice))}TK
                 </span>
               </p>
             ) : null}
             <p className="shadow border py-1 px-4 rounded-full text-slate">
               {`Regular Price :`}
               <span className="font-bold text-stech">
-                {numberWithCommas(product?.price)}TK
+                {numberWithCommas(parseInt(product?.price))}TK
               </span>
             </p>
             <p className="shadow border py-1 px-4 rounded-full text-slate">
               {`Stock :`}
               <span className="font-bold text-stech">
-                {numberWithCommas(product?.stock)}
+                {numberWithCommas(parseInt(product?.stock))}
               </span>
             </p>
             <p className="shadow border py-1 px-4 rounded-full text-slate">
@@ -120,16 +154,16 @@ const RightSide = ({ product }) => {
             {product?.specialPrice ? (
               <>
                 <span className="font-semibold text-xl text-primary">{`${numberWithCommas(
-                  product?.specialPrice
+                  parseInt(product?.specialPrice)
                 )}TK`}</span>
                 <span className="line-through font-semibold text-xl text-black">{`${numberWithCommas(
-                  product?.price
+                  parseInt(product?.price)
                 )}TK`}</span>
               </>
             ) : (
               <>
                 <span className="font-semibold text-xl text-primary">{`${numberWithCommas(
-                  product?.price
+                  parseInt(product?.price)
                 )}TK`}</span>
               </>
             )}
@@ -144,6 +178,7 @@ const RightSide = ({ product }) => {
               <input
                 className="focus:outline-none text-center "
                 value={buyQnt}
+                readOnly
               />
               <button onClick={handleIncreament} className="p-3">
                 <FaPlus />
@@ -205,7 +240,7 @@ const RightSide = ({ product }) => {
               </span>
             </div>
             <span className="bg-white p-2 rounded">
-              Enjoy free shipping promotion with minimum spend of ৳ 499 from
+              Enjoy free shipping promotion with minimum spend of TK 499 from
             </span>
           </div>
           <div>

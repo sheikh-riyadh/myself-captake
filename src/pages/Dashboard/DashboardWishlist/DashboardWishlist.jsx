@@ -31,7 +31,7 @@ const DashboardWishlist = () => {
                         : product?.title}
                     </span>
                     <span className="font-bold text-sm">
-                      {numberWithCommas(Math.round(product?.price))}
+                      {numberWithCommas(parseInt(Math.round(product?.price)))}
                     </span>
                   </div>
                 </div>

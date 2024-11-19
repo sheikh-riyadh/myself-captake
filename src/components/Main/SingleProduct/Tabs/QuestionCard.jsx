@@ -1,9 +1,9 @@
+import { useEffect } from "react";
 import { FaCommentAlt } from "react-icons/fa";
 import { useGetProductQuestionsQuery } from "../../../../store/main/service/questions/questionsApi";
 import PropTypes from "prop-types";
 import LoadingSpinner from "../../../Common/LoadingSpinner";
 import { RiMessage2Fill, RiQuestionnaireFill } from "react-icons/ri";
-import { useEffect } from "react";
 import moment from "moment";
 
 const QuestionCard = ({ productId, setTotalQuestion }) => {
@@ -12,7 +12,7 @@ const QuestionCard = ({ productId, setTotalQuestion }) => {
     setTotalQuestion(data?.length);
   }, [setTotalQuestion, data]);
 
-  console.log(data)
+  console.log(data);
 
   return (
     <div>
@@ -47,7 +47,9 @@ const QuestionCard = ({ productId, setTotalQuestion }) => {
                         {question?.question?.userQuestion}
                       </span>
                       <span className="text-sm font-medium">
-                        {`${question?.question?.userInfo?.userName} | ${moment(question?.createdAt).fromNow()}`}
+                        {`${question?.question?.userInfo?.userName} | ${moment(
+                          question?.createdAt
+                        ).fromNow()}`}
                       </span>
                     </div>
                   </div>
@@ -55,13 +57,10 @@ const QuestionCard = ({ productId, setTotalQuestion }) => {
                     <div>
                       <RiMessage2Fill className="text-2xl text-slate" />
                     </div>
-                    {Object.keys(question?.answer).length ? (
+                    {Object?.keys(question?.answer || {}).length ? (
                       <div className="flex flex-col gap-1">
-                        <span className="text-sm">
-                          {question?.question?.userQuestion}
-                        </span>
-                        <span className="text-sm">
-                          {question?.question?.userInfo?.userName}
+                        <span className="text-sm font-medium">
+                          {question?.answer?.answer}
                         </span>
                       </div>
                     ) : (

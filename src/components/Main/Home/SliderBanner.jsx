@@ -10,7 +10,6 @@ import ReactPlayer from "react-player";
 
 const SliderBanner = () => {
   const { data, isLoading } = useDefaultAdminBannerQuery();
-  console.log(data);
   return (
     <>
       {!isLoading ? (

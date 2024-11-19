@@ -4,7 +4,6 @@ import { useSellerAnnouncmentQuery } from "../../../store/shop/service/announcem
 import NoticeSkeleton from "../../Skeleton/Shop/Notice/NoticeSkeleton";
 const Notice = ({ sellerId }) => {
   const { data, isLoading } = useSellerAnnouncmentQuery(sellerId);
-  console.log(data);
   return (
     <>
       {!isLoading ? (

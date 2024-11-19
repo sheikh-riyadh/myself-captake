@@ -11,10 +11,21 @@ import {
 import { useGetWishlist } from "../../../../hooks/useGetWishlist";
 import { add_to_wishlist } from "../../../../store/main/features/wishlist/wishlistSlice";
 import { numberWithCommas } from "../../../../utils/numberWithComma";
+import toast from "react-hot-toast";
 
 const CartProduct = ({ product }) => {
   const dispatch = useDispatch();
   const { userWishlist } = useGetWishlist();
+
+  const handleIncreament = () => {
+    if (product?.stock == product?.buyQnt) {
+      toast.error(`Can not add more than ${product?.stock} quantity`, {
+        id: "stock_error",
+      });
+    } else {
+      dispatch(increament(product?._id));
+    }
+  };
 
   return (
     <div>
@@ -30,7 +41,7 @@ const CartProduct = ({ product }) => {
                 : product?.title}
             </span>
             <span className="font-bold text-sm">
-              {numberWithCommas(Math.round(product?.price))}
+              {numberWithCommas(parseInt(Math.round(product?.price)))}TK
             </span>
           </div>
         </div>
@@ -64,9 +75,10 @@ const CartProduct = ({ product }) => {
           <Input
             className="text-center w-10 rounded-none bg-transparent p-1"
             value={product?.buyQnt}
+            readOnly
           />
           <Button
-            onClick={() => dispatch(increament(product?._id))}
+            onClick={handleIncreament}
             className=" p-2 flex items-center justify-center border-0 rounded-sm bg-transparent text-stech hover:bg-stech hover:text-white duration-300"
           >
             <FaPlus />

@@ -16,6 +16,7 @@ import { baseApi } from "../api/baseApi";
 import userReducer from "../main/features/user/userSlice";
 import userCartReducer from "../main/features/cart/userCartSlice.js";
 import userWishlistReducer from "../main/features/wishlist/wishlistSlice.js";
+import userAddressReducer from "../dashboard/features/address/addressSlice.js"
 import { imgbbApi } from "../main/service/imageUpload/imageUploadApi.js";
 
 const persistConfig = {
@@ -39,6 +40,7 @@ const rootPersistReducers = combineReducers({
 
 const sessionReducers = combineReducers({
   userReducer,
+  userAddressReducer
 });
 
 const persistedReducers = persistReducer(persistConfig, rootPersistReducers);
