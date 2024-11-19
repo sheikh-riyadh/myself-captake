@@ -14,11 +14,12 @@ export const useGetOrderProducts = ({ paymentMethod }) => {
       sellerIds.push(cart?.sellerId);
       orderItems.push({
         userInfo: user,
-        deliveryAddress: selectedAddress,
+        shippingAddress: selectedAddress,
         paymentMethod,
         productsInfo: [cart],
         sellerId: cart?.sellerId,
         userId: user?._id,
+        deliveryCharge: cart?.deliveryCharge,
       });
     } else {
       const existSellerProduct = orderItems.find(
