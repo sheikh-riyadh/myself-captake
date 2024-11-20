@@ -1,5 +1,4 @@
-import OrderTable from "../../../components/Dashboard/Pages/Order/OrderTable";
-
+import ReviewTable from "../../../components/Dashboard/Pages/Review/ReviewTable";
 
 const Review = () => {
   return (
@@ -10,7 +9,7 @@ const Review = () => {
           <span className="font-bold text-xl text-white">Review</span>
         </div>
         <div className="shadow-md border rounded-md overflow-hidden">
-          <OrderTable/>
+          <ReviewTable />
         </div>
       </div>
     </div>

@@ -1,11 +1,12 @@
 import { useLocation } from "react-router-dom";
-import FeatureProducts from "../../components/Main/Home/FeatureProducts";
 import Brands from "../../components/Shop/SingleShopHome/Brands";
 import Notice from "../../components/Shop/SingleShopHome/Notice";
 import SingleShopBanner from "../../components/Shop/SingleShopHome/SingleShopBanner";
 import SingleShopProductCard from "../../components/Shop/SingleShopHome/SingleShopProductCard";
 import SingleShopReviews from "../../components/Shop/SingleShopHome/SingleShopReviews";
 import { smoothScroll } from "../../utils/scrollToTop";
+import MostViewProduct from "../../components/Shop/SingleShopHome/MostViewProduct";
+import LatestProduct from "../../components/Shop/SingleShopHome/LatestProduct";
 
 const SingleShopHome = () => {
   smoothScroll();
@@ -21,15 +22,9 @@ const SingleShopHome = () => {
             <h2 className="font-bold text-lg">Latest products</h2>
             <span>Check & Get Your Desired Product!</span>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5">
-            {[...Array(5).keys()].map((keys) => (
-              <div key={keys}>
-                <SingleShopProductCard />
-              </div>
-            ))}
-          </div>
+          <LatestProduct sellerId={pathname?.split("/")?.[2]}/>
         </div>
-        <FeatureProducts />
+        <MostViewProduct sellerId={pathname?.split("/")?.[2]} />
       </div>
       <Brands sellerId={pathname?.split("/")?.[2]} />
       <div className="my_container">

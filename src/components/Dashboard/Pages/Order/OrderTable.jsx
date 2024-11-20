@@ -1,16 +1,16 @@
 import Table from "../../../Common/Table";
-import SelectInput from "../../../Common/SelectInput";
-import { FaStreetView, FaTrash } from "react-icons/fa";
 import { useGetOrderQuery } from "../../../../store/dashboard/service/order/orderApi";
 import { useGetUser } from "../../../../hooks/useGetUser";
 import LoadingSpinner from "../../../Common/LoadingSpinner";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { numberWithCommas } from "../../../../utils/numberWithComma";
+import View from "./View";
+import CancelOrder from "./CancelOrder";
+import ManageReview from "./ManageReview";
 
 const OrderTable = () => {
   const { user } = useGetUser();
   const { data, isLoading } = useGetOrderQuery(user?._id);
-  console.log(data);
 
   return (
     <div className="overflow-hidden">
@@ -28,11 +28,13 @@ const OrderTable = () => {
                       {item?.productsInfo?.map((product) => (
                         <figure key={product?._id}>
                           <PhotoView src={product?.image}>
-                            <img
-                              className="border w-10 h-10 rounded p-1 cursor-pointer"
-                              src={product?.image}
-                              alt="product_gallery_image"
-                            />
+                            <div className="border w-10 h-10 rounded p-1 cursor-pointer">
+                              <img
+                                className="h-full w-full"
+                                src={product?.image}
+                                alt="product_gallery_image"
+                              />
+                            </div>
                           </PhotoView>
                         </figure>
                       ))}
@@ -92,10 +94,15 @@ const OrderTable = () => {
               name: "Actions",
               render: ({ item }) => {
                 return (
-                  <div className="flex items-center gap-2">
-                    <span className="text-danger cursor-pointer border border-danger text-center p-2 rounded-full hover:bg-red-300 hover:text-white duration-300">
-                      <FaStreetView />
-                    </span>
+                  <div className="flex gap-3">
+                    <View item={item} />
+                    {item?.status === "completed" ? (
+                      <ManageReview item={item} />
+                    ) : (
+                      item?.status !== "cancelled" && (
+                        <CancelOrder item={item} />
+                      )
+                    )}
                   </div>
                 );
               },

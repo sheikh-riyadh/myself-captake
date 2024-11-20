@@ -18,7 +18,7 @@ const Tabs = ({ product }) => {
   } else if (tab == "Questions") {
     tabContainer = <Questions product={product} />;
   } else if (tab == "Reviews") {
-    tabContainer = <Reviews />;
+    tabContainer = <Reviews productId={product?._id} />;
   } else {
     tabContainer = (
       <MoreFromSeller sellerId={product?.sellerId} productId={product?._id} />

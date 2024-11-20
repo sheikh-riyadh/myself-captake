@@ -17,7 +17,7 @@ const ProductCard = ({ className, imageSize, product }) => {
         }
       );
     } else {
-      toast.error("Data missing!. Please try again!");
+      toast.error("Data missing!. Please try again!", { id: "product_error" });
     }
   };
 

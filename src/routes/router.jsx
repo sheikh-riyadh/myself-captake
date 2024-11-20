@@ -5,7 +5,6 @@ import Login from "../components/Main/Login/Login";
 import SignUp from "../pages/Main/Login/SignUp";
 import NotFound from "../pages/Main/NotFound/NotFound";
 import SingleProduct from "../pages/Main/SingleProduct/SingleProduct";
-import CreateShop from "../pages/Shop/CreateShop";
 import Store from "../pages/Main/Store/Store";
 import SingleShopHome from "../pages/Shop/SingleShopHome";
 import Wishlist from "../pages/Main/Wishlist/Wishlist";
@@ -49,7 +48,7 @@ const router = createBrowserRouter([
         element: <Reviews />,
       },
       {
-        path: "store/:id",
+        path: "store",
         element: <Store />,
       },
       {
@@ -159,10 +158,6 @@ const router = createBrowserRouter([
   {
     path: "sign-up",
     element: <SignUp />,
-  },
-  {
-    path: "create-channel",
-    element: <CreateShop />,
   },
   {
     path: "*",

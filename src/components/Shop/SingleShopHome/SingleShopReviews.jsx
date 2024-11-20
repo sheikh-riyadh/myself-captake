@@ -1,78 +1,34 @@
+import { FaFutbol } from "react-icons/fa";
+import { useGetReviewBySellerIdQuery } from "../../../store/main/service/review/mainReviewApi";
 import ReviewCard from "./ReviewCard";
+import PropTypes from "prop-types";
 
-const SingleShopReviews = () => {
+const SingleShopReviews = ({ sellerId }) => {
+  const { data, isLoading } = useGetReviewBySellerIdQuery(sellerId);
+
   return (
-    <div className="flex flex-col gap-5 mb-20">
-      <div className="flex items-center gap-5 justify-between">
-        <span className="font-medium ">{`1 - 5 out of 233 Reviews`}</span>
-        <div>
-          <select className="focus:outline-none border p-1 rounded-md text-base">
-            <option value="recent">Most recent</option>
-            <option value="recent">Old Reviews</option>
-          </select>
-        </div>
-      </div>
-      <div className="flex flex-col items-center gap-3 w-1/4">
-      <div className="flex w-full items-center gap-3">
-          <span className="w-20 bg-stech text-white text-center font-semibold rounded-md">{`5 Star`}</span>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className={`bg-stech h-2 rounded-full w-full`}></div>
+    <>
+      {!isLoading ? (
+        <div className="flex flex-col gap-5 mb-20">
+          <div>
+            <h2 className="font-bold text-lg">{`Seller reviews (${data?.length})`}</h2>
           </div>
-          <span className="font-medium">{`(250)`}</span>
-        </div>
-        <div className="flex w-full items-center gap-3">
-          <span className="w-20 bg-stech text-white text-center font-semibold rounded-md">{`4 Star`}</span>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className={`bg-stech h-2 rounded-full w-9/12`}></div>
-          </div>
-          <span className="font-medium">{`(250)`}</span>
-        </div>
-        <div className="flex w-full items-center gap-3">
-          <span className="w-20 bg-stech text-white text-center font-semibold rounded-md">{`3 Star`}</span>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className={`bg-stech h-2 rounded-full w-7/12`}></div>
-          </div>
-          <span className="font-medium">{`(250)`}</span>
-        </div>
-        <div className="flex w-full items-center gap-3">
-          <span className="w-20 bg-stech text-white text-center font-semibold rounded-md">{`2 Star`}</span>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className={`bg-stech h-2 rounded-full w-5/12`}></div>
-          </div>
-          <span className="font-medium">{`(250)`}</span>
-        </div>
-        <div className="flex w-full items-center gap-3">
-          <span className="w-20 bg-stech text-white text-center font-semibold rounded-md">{`1 Star`}</span>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className={`bg-stech h-2 rounded-full w-1/12`}></div>
-          </div>
-          <span className="font-medium">{`(250)`}</span>
-        </div>
-      </div>
-      {[...Array(6).keys()].map((key) => (
-        <ReviewCard key={key} />
-      ))}
-
-      <div className="flex items-center gap-3">
-        <button className="bg-stech px-4 py-1 text-white rounded-md font-semibold">
-          Prev
-        </button>
-        <div className="flex items-center gap-2 flex-wrap">
-          {[...Array(5).keys()].map((key) => (
-            <span
-              className="bg-stech px-4 py-1 text-white rounded-md font-semibold"
-              key={key}
-            >
-              {key + 1}
-            </span>
+          {data?.map((data) => (
+            <ReviewCard key={data?._id} data={data} />
           ))}
         </div>
-        <button className="bg-stech px-4 py-1 text-white rounded-md font-semibold">
-          Next
-        </button>
-      </div>
-    </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center p-10">
+          <FaFutbol className="animate-spin text-4xl" />
+          <span>Loading...</span>
+        </div>
+      )}
+    </>
   );
+};
+
+SingleShopReviews.propTypes = {
+  sellerId: PropTypes.string,
 };
 
 export default SingleShopReviews;

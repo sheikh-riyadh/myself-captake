@@ -12,12 +12,16 @@ import failedImage from "../../../../assets/Dashboard/sadface.png";
 import { Link } from "react-router-dom";
 import Button from "../../../Common/Button";
 import { FaCcMastercard, FaMoneyBillAlt } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../../../store/main/features/cart/userCartSlice";
 
 const CheckoutPayment = () => {
   const [orderSuccessModal, setOrderSuccessModal] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("Cash On Delivery");
 
   const [createOrder, { isLoading, isError }] = useCreateOrderMutation();
+  const dispatch = useDispatch();
+
   const { userCart } = useGetCart();
   const { selectedAddress } = useAddress();
   const sellerIds = [];
@@ -63,6 +67,7 @@ const CheckoutPayment = () => {
         setOrderSuccessModal(true);
       } else {
         setOrderSuccessModal(true);
+        dispatch(clearCart());
       }
     } catch {
       setOrderSuccessModal(true);

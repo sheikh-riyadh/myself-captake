@@ -43,27 +43,4 @@ export const inputData = {
       type: "date",
     },
   ],
-  changePassowrdData: [
-    {
-      label: "Old Password",
-      placeholder: "Enter old password",
-      registerName: "oldPassword",
-      isRequired: true,
-      type: "password",
-    },
-    {
-      label: "New Password",
-      placeholder: "Enter new password",
-      registerName: "newPassword",
-      isRequired: true,
-      type: "password",
-    },
-    {
-      label: "Confirm Password",
-      placeholder: "Enter confirm password",
-      registerName: "confirmPassword",
-      isRequired: true,
-      type: "password",
-    },
-  ],
 };

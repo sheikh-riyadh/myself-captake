@@ -12,8 +12,6 @@ const QuestionCard = ({ productId, setTotalQuestion }) => {
     setTotalQuestion(data?.length);
   }, [setTotalQuestion, data]);
 
-  console.log(data);
-
   return (
     <div>
       {!isLoading ? (
