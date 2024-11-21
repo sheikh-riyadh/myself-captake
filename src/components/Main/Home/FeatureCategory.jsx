@@ -1,4 +1,8 @@
+import { useGetCategoriesQuery } from "../../../store/main/service/category/categoryApi";
+
 const FeatureCategory = () => {
+  const { data, isLoading } = useGetCategoriesQuery();
+
   return (
     <div className="my-10 xl:my-20">
       <div className="flex flex-col justify-center items-center my-7 text-center">

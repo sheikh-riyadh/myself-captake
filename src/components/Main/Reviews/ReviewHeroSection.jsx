@@ -24,7 +24,7 @@ const ReviewHeroSection = () => {
             satisfaction is our priority!
           </p>
         </div>
-        <div className="order-first md:order-last lg:order-none flex items-center justify-center">
+        <div className="order-first md:order-last lg:order-none flex items-center justify-center p-10">
           <img className="w-9/12 lg:w-full" src={review_image} alt="review_image" />
         </div>
       </div>

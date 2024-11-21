@@ -14,9 +14,9 @@ const LeftBannerPart = ({ seller }) => {
       {!isLoading ? (
         <div className="xl:col-span-4 flex flex-col gap-3">
           {getDefaultBanner?.type === "image" ? (
-            <div>
+            <div className="h-60">
               <img
-                className="rounded-md h-60 w-full"
+                className="rounded-md h-full w-full"
                 src={getDefaultBanner?.bannerImages?.[0]}
                 alt="store_image"
               />
@@ -34,21 +34,39 @@ const LeftBannerPart = ({ seller }) => {
             </div>
           )}
           <div className="grid grid-cols-4 gap-5">
-            <PhotoProvider>
-              {restBanner.bannerImages?.map((image) => (
-                <figure key={image}>
-                  <PhotoView src={image}>
-                    <div className="border h-16 rounded p-1 cursor-pointer">
-                      <img
-                        className="h-full w-full"
-                        src={image}
-                        alt="product_gallery_image"
-                      />
-                    </div>
-                  </PhotoView>
-                </figure>
-              ))}
-            </PhotoProvider>
+            {restBanner?.type == "image" ? (
+              <PhotoProvider>
+                {restBanner.bannerImages?.map((image) => (
+                  <figure key={image}>
+                    <PhotoView src={image}>
+                      <div className="border h-16 rounded p-1 cursor-pointer">
+                        <img
+                          className="h-full w-full"
+                          src={image}
+                          alt="product_gallery_image"
+                        />
+                      </div>
+                    </PhotoView>
+                  </figure>
+                ))}
+              </PhotoProvider>
+            ) : (
+              <PhotoProvider>
+                {getDefaultBanner.bannerImages?.map((image) => (
+                  <figure key={image}>
+                    <PhotoView src={image}>
+                      <div className="border h-16 rounded p-1 cursor-pointer">
+                        <img
+                          className="h-full w-full"
+                          src={image}
+                          alt="product_gallery_image"
+                        />
+                      </div>
+                    </PhotoView>
+                  </figure>
+                ))}
+              </PhotoProvider>
+            )}
           </div>
           <div>
             <Link to={`/single-store/${seller?._id}`}>

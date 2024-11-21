@@ -21,6 +21,11 @@ import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import DashboardWishlist from "../pages/Dashboard/DashboardWishlist/DashboardWishlist";
 import PrivateRouter from "./PrivateRouter";
 import Checkout from "../pages/Dashboard/Checkout/Checkout";
+import Pending from "../pages/Main/Panding/Pending";
+import Block from "../pages/Main/Panding/Block";
+import BlockedRouter from "./BlockedRouter";
+import PendingRouter from "./PendingRouter";
+import CategoryProduct from "../pages/Main/CategoryProduct/CategoryProduct";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: "wishlist",
         element: <Wishlist />,
+      },
+      {
+        path: "category-product",
+        element: <CategoryProduct />,
       },
       {
         path: "/dashboard",
@@ -154,6 +163,22 @@ const router = createBrowserRouter([
   {
     path: "sign-in",
     element: <Login />,
+  },
+  {
+    path: "blocked",
+    element: (
+      <BlockedRouter>
+        <Block />
+      </BlockedRouter>
+    ),
+  },
+  {
+    path: "pending",
+    element: (
+      <PendingRouter>
+        <Pending />
+      </PendingRouter>
+    ),
   },
   {
     path: "sign-up",

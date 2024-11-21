@@ -1,15 +1,23 @@
 import { FaPlayCircle } from "react-icons/fa";
 import banner_1 from "../../../assets/Main/Store/banner_1.jpg";
 import banner_2 from "../../../assets/Main/Store/banner_2.jpg";
+import { useState } from "react";
+import CommonModal from "../../Modals/CommonModal";
+import ReactPlayer from "react-player";
 const StoreBanner = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div>
       <div className="h-[400px] w-full">
         <div className="grid grid-cols-12 gap-3 h-full">
           <div className="col-span-4 bg-slate-600 rounded-xl flex justify-end items-center relative">
             <div className="w-14 h-14 md:w-[70px] md:h-[70px] xl:w-28 xl:h-28 flex items-center justify-center rounded-full bg-[#f3f4f8] -mr-[33px] md:-mr-[44px] xl:-mr-[58px] -mt-[115px] z-40">
-              <div className="">
-                <FaPlayCircle className="text-3xl xl:text-5xl text-primary animate-ping" />
+              <div>
+                <FaPlayCircle
+                  className="text-3xl xl:text-5xl text-primary animate-ping cursor-pointer"
+                  onClick={() => setIsOpen(true)}
+                />
               </div>
             </div>
             <img
@@ -36,6 +44,24 @@ const StoreBanner = () => {
           </div>
         </div>
       </div>
+
+      {isOpen && (
+        <CommonModal
+          isOpen={isOpen}
+          onClose={setIsOpen}
+          title={"Overview"}
+          key={"store_overview"}
+          
+          className="w-[330px] md:w-[700px] md:h-[500px]"
+        >
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=9zLN7gSwq_Q"
+            controls
+            width="100%"
+            height="400px"
+          />
+        </CommonModal>
+      )}
     </div>
   );
 };

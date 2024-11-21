@@ -29,7 +29,7 @@ const SingleShopBanner = ({ sellerId }) => {
   return (
     <>
       {!isLoading ? (
-        <div className="mt-[68px] lg:mt-28 xl:mt-[100px]">
+        <div className="mt-[80px] lg:mt-24 xl:mt-[100px]">
           <div className="h-full lg:grid lg:grid-cols-12 gap-5">
             <div className="lg:col-span-3 h-full w-full mt-5 lg:mt-0 hidden lg:block">
               <div className="h-full w-full bg-white">

@@ -18,7 +18,6 @@ const ManageReview = ({ item }) => {
     item?.orderId
   );
 
-  console.log(data);
   const [addReview, { isLoading, isSuccess }] = useCreateReviewMutation();
 
   const handleReview = async (event) => {

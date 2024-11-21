@@ -18,6 +18,16 @@ const productApi = baseApi.injectEndpoints({
         url: `seller-rating-products/${sellerId}`,
       }),
     }),
+    searchProduct: build.query({
+      query: ({ query }) => ({
+        url: `product-search?${query}`,
+      }),
+    }),
+    getCategoryProducts: build.query({
+      query: ({ query }) => ({
+        url: `category-product?${query}`,
+      }),
+    }),
     updateViews: build.mutation({
       query: (data) => ({
         url: "update-views",
@@ -40,4 +50,6 @@ export const {
   useGetMostViewsProductQuery,
   useReturnPolicyQuery,
   useGetRatingProductQuery,
+  useSearchProductQuery,
+  useGetCategoryProductsQuery,
 } = productApi;

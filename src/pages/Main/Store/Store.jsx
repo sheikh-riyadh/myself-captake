@@ -4,13 +4,23 @@ import StoreCard from "../../../components/Main/Store/StoreCard";
 import StoreSkeleton from "../../../components/Skeleton/Shop/Store/StoreSkeleton";
 import { useGetAllSellerQuery } from "../../../store/main/service/allSeller/allSellerApi";
 import StoreFilterTop from "../../../components/Main/Store/StoreFilterTop";
+import { useAllSellerFilter } from "../../../hooks/useAllSellerFilter";
 
 const Store = () => {
-  const { data, isLoading } = useGetAllSellerQuery();
+  const { limit, page, sortedValue } = useAllSellerFilter();
+  const query = new URLSearchParams({
+    limit,
+    page,
+    sortedValue,
+  });
+
+  const { data, isLoading } = useGetAllSellerQuery({
+    query: query.toString(),
+  });
 
   return (
     <section>
-      <div className="my_container my-[68px] lg:my-28 xl:my-[100px]">
+      <div className="my_container my-[80px] lg:my-28 xl:my-[100px]">
         <StoreBanner />
         <div>
           <StoreFilterTop data={data} />

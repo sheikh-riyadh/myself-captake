@@ -82,8 +82,6 @@ const EditProfile = () => {
     setPhoto(userData?.photo);
   }, [setValue, userData]);
 
-  console.log(userData);
-
   return (
     <div>
       <div className="h-44 w-full bg-primary flex flex-col justify-center items-center"></div>

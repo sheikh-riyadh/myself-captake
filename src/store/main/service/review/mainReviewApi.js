@@ -9,8 +9,8 @@ const mainReviewApi = baseApi.injectEndpoints({
       providesTags: ["review"],
     }),
     getReviewBySellerId: build.query({
-      query: (sellerId) => ({
-        url: `seller-all-review/${sellerId}`,
+      query: ({ query }) => ({
+        url: `seller-all-review?${query}`,
       }),
     }),
   }),

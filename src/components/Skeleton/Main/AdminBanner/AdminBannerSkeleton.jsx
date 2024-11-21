@@ -1,6 +1,6 @@
 const AdminBannerSkeleton = () => {
   return (
-    <div className="mt-[68px] lg:mt-28 xl:mt-[100px]">
+    <div className="mt-[80px] lg:mt-24 xl:mt-[100px]">
       <div className="h-full lg:grid lg:grid-cols-12 gap-5">
         {/* Swiper Skeleton */}
         <div className="w-full h-full col-span-full lg:col-span-9 border-r-4 border-b-4">

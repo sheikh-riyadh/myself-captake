@@ -29,9 +29,12 @@ input::-webkit-inner-spin-button {
   display: none;
 }
 
+.spin {
+  animation: spin 5s linear infinite;
+}
+
 /* Apply the zoom-in animation to an element */
 .zoom-in-element {
-  
   animation: zoomIn 0.5s ease forwards;
 }
 
@@ -63,6 +66,15 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes moveUpDown {

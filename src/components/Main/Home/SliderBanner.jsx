@@ -1,19 +1,22 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import ReactPlayer from "react-player";
 
 import { Pagination, Autoplay } from "swiper/modules";
 import customSliderBullets from "../../../utils/customSliderBullets";
 import { useDefaultAdminBannerQuery } from "../../../store/main/service/adminBanner/adminBannerApi";
 import AdminBannerSkeleton from "../../Skeleton/Main/AdminBanner/AdminBannerSkeleton";
-import ReactPlayer from "react-player";
+import sideImg1 from "../../../assets/Main/Home/big_sell.jpg";
+import sideImg2 from "../../../assets/Main/Home/winter.jpg";
 
 const SliderBanner = () => {
   const { data, isLoading } = useDefaultAdminBannerQuery();
+
   return (
     <>
       {!isLoading ? (
-        <div className="mt-[68px] lg:mt-28 xl:mt-[100px]">
+        <div className="mt-[80px] lg:mt-24 xl:mt-[100px]">
           <div className="h-full lg:grid lg:grid-cols-12 gap-5">
             <div className="w-full h-full col-span-full lg:col-span-9 border-r-4 border-b-4">
               {data?.type === "image" ? (
@@ -57,14 +60,14 @@ const SliderBanner = () => {
                 <div className="h-[200px] lg:h-[165px] xl:h-[220px] w-full border-r-4 border-b-4">
                   <img
                     className="object-fill h-full w-full"
-                    src="https://www.startech.com.bd/image/catalog/home/banner/small/Shape-Your-Career-with-Us.png1.webp"
+                    src={sideImg1}
                     alt="banner_image"
                   />
                 </div>
                 <div className="h-[200px] lg:h-[165px] xl:h-[220px] w-full border-r-4 border-b-4">
                   <img
                     className="object-fill h-full w-full"
-                    src="https://www.startech.com.bd/image/catalog/home/banner/small/Shape-Your-Career-with-Us.png1.webp"
+                    src={sideImg2}
                     alt="banner_image"
                   />
                 </div>

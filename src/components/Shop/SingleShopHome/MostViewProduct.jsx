@@ -4,7 +4,7 @@ import { FaSpinner } from "react-icons/fa";
 import PropTypes from "prop-types";
 const MostViewProduct = ({ sellerId }) => {
   const { data, isLoading } = useGetMostViewSellerProductQuery(sellerId);
-  console.log(data);
+
   return (
     <div className="my-10 xl:my-20">
       <div className="flex flex-col justify-center items-center my-7">

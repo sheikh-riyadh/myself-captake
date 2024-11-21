@@ -1,43 +1,102 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   FaHeart,
   FaSearch,
   FaShoppingBasket,
   FaUserCircle,
+  FaStore
 } from "react-icons/fa";
 import { MdWindow } from "react-icons/md";
-import { Link } from "react-router-dom";
 import { useGetUser } from "../../hooks/useGetUser";
 import { useGetCart } from "../../hooks/useGetCart";
 import { useGetWishlist } from "../../hooks/useGetWishlist";
+import GlobalSearch from "../Main/GlobalSearch/GlobalSearch";
+import { useSearchProductQuery } from "../../store/main/service/product/productApi";
 const MainHeader = () => {
+  const [inputValue, setInputValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const { user } = useGetUser();
   const { userCart } = useGetCart();
   const { userWishlist } = useGetWishlist();
 
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
+
+    if (value.length) {
+      setIsModalOpen(true);
+    } else {
+      setIsModalOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setSearchValue(inputValue.trim());
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [inputValue]);
+
+  const query = searchValue
+    ? new URLSearchParams({
+        title: searchValue,
+        limit: 0,
+        page: 1,
+      }).toString()
+    : null;
+
+  const { data, isLoading } = useSearchProductQuery(query ? { query } : null);
+
   return (
-    <header className="bg-stech  fixed w-full z-50 top-0">
+    <header className="bg-stech fixed w-full z-50 top-0">
       <div className="my_container py-3">
-        <div className="grid grid-cols-12 gap-10">
-          <div className="col-span-7 flex items-center gap-10">
-            <Link to="/">
+        <div className="grid xl:grid-cols-2 gap-10">
+          <div className="flex items-center gap-10">
+            <div>
+              <Link to="/">
               <div>
                 <img
-                  src="https://www.startech.com.bd/image/catalog/logo.png"
+                  src="/logo.png"
                   alt="logo"
+                  className="w-48"
                 />
               </div>
             </Link>
-            <div className="flex items-center justify-between bg-white w-full p-2 rounded-md">
+            </div>
+            <div className="flex items-center justify-between bg-white w-full p-2 rounded-md relative">
               <input
+                onChange={(e) => handleChange(e)}
+                onFocus={(e) => handleChange(e)}
                 className="w-full focus:outline-none px-1"
                 type="text"
                 placeholder="Search..."
               />
               <FaSearch />
+              {isModalOpen && (
+                <GlobalSearch
+                  isLoading={isLoading}
+                  isModalOpen={isModalOpen}
+                  setIsModalOpen={setIsModalOpen}
+                  data={data}
+                />
+              )}
             </div>
           </div>
-          <div className="col-span-5">
+          <div className="hidden xl:block">
             <div className="flex items-center justify-between gap-5">
+              <Link to={"/store"}>
+                <div className="flex items-center justify-center gap-2">
+                  <FaStore className="text-2xl xl:text-xl text-primary" />
+                  <div>
+                    <span className="text-white">All Store</span>
+                    <p className="text-sm text-slate">{`View Store`}</p>
+                  </div>
+                </div>
+              </Link>
               <Link to={"/wishlist"}>
                 <div className="flex items-center justify-center gap-2">
                   <FaHeart className="text-2xl xl:text-xl text-primary" />

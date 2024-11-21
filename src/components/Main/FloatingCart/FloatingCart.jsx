@@ -10,7 +10,7 @@ const FloatingCart = () => {
   return (
     <div>
       <div
-        className="right-2 fixed flex bottom-24 xl:bottom-5 mr-2 z-50"
+        className="right-2 fixed flex bottom-24 xl:bottom-5 mr-2 z-40"
         onClick={() => setIsFloatingModalOpen((prev) => !prev)}
       >
         <div className="w-[60px] hidden md:block shadow-2xl shadow-[#081621] cursor-pointer duration-300 relative border-2 border-black hover:border-[#3749BB] rounded-md ">

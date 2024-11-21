@@ -1,7 +1,7 @@
 import {
   FaHeart,
-  FaSearch,
   FaShoppingBasket,
+  FaStore,
   FaUserCircle,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -23,10 +23,10 @@ const BottomNavigation = () => {
         <FaHeart className="text-xl text-white" />
         <span className="text-[#ffffff80]">{`Wishlist (${userWishlist?.length})`}</span>
       </Link>
-      <div className="flex flex-col items-center gap-y-2">
-        <FaSearch className="text-xl text-white" />
-        <span className="text-[#ffffff80]">Account</span>
-      </div>
+      <Link to={"/store"} className="flex flex-col items-center gap-y-2">
+        <FaStore className="text-xl text-white" />
+        <span className="text-[#ffffff80]">All Store</span>
+      </Link>
       {!user ? (
         <div className="flex flex-col items-center gap-y-2">
           <FaUserCircle className="text-xl text-white" />

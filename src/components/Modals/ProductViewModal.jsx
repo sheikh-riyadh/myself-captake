@@ -1,7 +1,7 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { FaCircleXmark } from "react-icons/fa6";
-import Button from "../Common/Button";
 import cn from "../../utils/cn";
 
 const ProductViewModal = ({
@@ -11,6 +11,8 @@ const ProductViewModal = ({
   src = null,
   className,
 }) => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const handleOutsideClick = (e) => {
       if (isOpen && e.target.classList.contains("modal-overlay")) {
@@ -27,13 +29,13 @@ const ProductViewModal = ({
 
   return (
     <div
-      className={`fixed  top-0 left-0 z-50 backdrop-blur-sm bg-[#2222227c] overflow-x-hidden overflow-y-auto inset-0 h-[calc(100%)] max-h-full bg-black/90 flex flex-col justify-center items-center modal-overlay zoom-in-element ${
+      className={`fixed  top-0 left-0 z-50 backdrop-blur-sm hidden bg-[#2222227c] overflow-x-hidden overflow-y-auto inset-0 h-[calc(100%)] max-h-full bg-black/90 xl:flex flex-col justify-center items-center modal-overlay zoom-in-element ${
         isOpen ? "" : "hidden"
       }`}
     >
       <div
         className={cn(
-          "bg-white rounded-lg p-5 shadow-lg w-[350px] md:w-[700px] md:h-[450px] lg:w-[750px] lg:h-[465px]  overflow-y-auto custom-bar",
+          "bg-white rounded-lg p-5 shadow-lg w-[350px] h-[600px] md:w-[700px] md:h-[450px] lg:w-[800px] lg:h-[600px]  overflow-y-auto custom-bar",
           className
         )}
       >
@@ -45,7 +47,7 @@ const ProductViewModal = ({
             />
           </div>
           {productDetails ? (
-            <div className="md:grid grid-cols-2 gap-10">
+            <div className="flex flex-col gap-10">
               <img
                 className="lg:h-[400px] w-full"
                 src={productDetails?.productImages?.[0]}
@@ -53,12 +55,23 @@ const ProductViewModal = ({
               />
 
               <div className="flex flex-col gap-3">
-                <p className="text-xl hover:underline hover:text-primary font-bold">
-                  {`${
-                    productDetails?.title?.length > 50
-                      ? `${productDetails?.title?.slice(0, 50)}...`
-                      : productDetails?.title
-                  }`}
+                <p
+                  onClick={() =>
+                    navigate(
+                      `/product/${productDetails?.title
+                        ?.toLowerCase()
+                        ?.split(` `)
+                        ?.join("-")}`,
+                      {
+                        state: {
+                          payload: { ...productDetails },
+                        },
+                      }
+                    )
+                  }
+                  className="text-xl cursor-pointer hover:underline hover:text-primary font-bold"
+                >
+                  {`${productDetails?.title}`}
                 </p>
                 <hr />
                 <div className="h-60 overflow-y-auto custom-bar">
@@ -68,7 +81,6 @@ const ProductViewModal = ({
                     }}
                   ></div>
                 </div>
-                <Button>Buy now</Button>
               </div>
             </div>
           ) : (

@@ -32,7 +32,7 @@ const MainFooter = () => {
             <div className="flex flex-col lg:items-center gap-5">
               <img
                 className="w-36"
-                src="https://www.startech.com.bd/image/catalog/logo.png"
+                src="/logo.png"
                 alt="logo"
               />
               <div className="flex lg:items-center lg:justify-center gap-5 text-2xl text-white">

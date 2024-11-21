@@ -65,7 +65,6 @@ const AddressForm = ({ updateData, setIsModalOpen }) => {
         }
       } catch (error) {
         toast.error("Something went wrong 2 😓", { id: error });
-        console.log(error);
       }
     }
   };
