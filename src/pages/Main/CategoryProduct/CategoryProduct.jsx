@@ -3,13 +3,21 @@ import ProductCard from "../../../components/Common/ProductCard";
 import CategoryFilterTop from "../../../components/Main/CategoryProduct/CategoryFilterTop";
 import { useCategoryFilter } from "../../../hooks/useCategoryFilter";
 import { useGetCategoryProductsQuery } from "../../../store/main/service/product/productApi";
+import { smoothScroll } from "../../../utils/scrollToTop";
+import { useLocation } from "react-router-dom";
 
 const CategoryProduct = () => {
   const { limit, sortedValue } = useCategoryFilter();
+  smoothScroll();
+
+  const location = useLocation();
+  const categoryData = location.state.payload;
+  console.log(categoryData?.category)
 
   const query = new URLSearchParams({
     limit,
     sortedValue,
+    category:categoryData?.category
   });
 
   const { data, isLoading } = useGetCategoryProductsQuery({
@@ -19,12 +27,11 @@ const CategoryProduct = () => {
   return (
     <>
       {!isLoading ? (
-        <div>
+        <div className="my_container my-[80px] lg:my-24 xl:my-[100px]">
+          <CategoryFilterTop />
           {data?.length ? (
-            <div className="my_container my-[80px] lg:my-24 xl:my-[100px]">
-              <div className=" ">
-                <CategoryFilterTop />
-              </div>
+            <div className="">
+              <div className=" "></div>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-5">
                 {data?.map((product) => (
                   <ProductCard key={product?._id} product={product} />

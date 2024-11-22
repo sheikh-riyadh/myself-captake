@@ -19,13 +19,13 @@ const LeftSide = ({ visibleArrow = true, setIsModalOpen = () => {} }) => {
           isExtend ? "w-60" : "w-14"
         } overflow-y-auto border border-t-0 border-b-0 bar-hidden duration-300`}
       >
-        <div className="border-b bg-white">
-          <img
-            className="w-32 h-[60px] px-2"
-            src="https://www.startech.com.bd/image/catalog/logo.png"
-            alt="logo"
-          />
-        </div>
+        <div className="w-44 h-[60px] flex flex-col items-center justify-center">
+            <img
+              className="object-fill px-3"
+              src="/logo.png"
+              alt="logo"
+            />
+          </div>
         <div className="flex flex-col gap-2 h-full">
           {layout.left_side.map(({ name, icon, link }) => (
             <Link

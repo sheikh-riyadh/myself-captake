@@ -1,14 +1,17 @@
 import { useDispatch } from "react-redux";
 import { handleFilter } from "../../../store/main/features/category/categorySlice";
+import { useLocation } from "react-router-dom";
 
 const CategoryFilterTop = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const categoryData = location.state.payload;
 
   return (
     <div className="my-14">
       <div className="border-b-2 p-5 bg-white rounded-xl">
         <div className="flex items-center justify-between gap-5">
-          <span className="font-semibold">Total store :</span>
+          <span className="font-semibold">{categoryData?.category}</span>
           <div className="flex flex-wrap items-center gap-5">
             <div className="items-center gap-2 hidden md:flex">
               <span className="font-semibold">Limit:</span>

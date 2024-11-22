@@ -26,6 +26,7 @@ import Block from "../pages/Main/Panding/Block";
 import BlockedRouter from "./BlockedRouter";
 import PendingRouter from "./PendingRouter";
 import CategoryProduct from "../pages/Main/CategoryProduct/CategoryProduct";
+import AdminMessage from "../pages/Dashboard/AdminMessage/AdminMessage";
 
 const router = createBrowserRouter([
   {
@@ -65,7 +66,7 @@ const router = createBrowserRouter([
         element: <Wishlist />,
       },
       {
-        path: "category-product",
+        path: "category-products",
         element: <CategoryProduct />,
       },
       {
@@ -89,6 +90,14 @@ const router = createBrowserRouter([
             element: (
               <PrivateRouter>
                 <Address />
+              </PrivateRouter>
+            ),
+          },
+          {
+            path: "message",
+            element: (
+              <PrivateRouter>
+                <AdminMessage />
               </PrivateRouter>
             ),
           },

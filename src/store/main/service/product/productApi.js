@@ -25,7 +25,7 @@ const productApi = baseApi.injectEndpoints({
     }),
     getCategoryProducts: build.query({
       query: ({ query }) => ({
-        url: `category-product?${query}`,
+        url: `category-products?${query}`,
       }),
     }),
     updateViews: build.mutation({
