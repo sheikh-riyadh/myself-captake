@@ -19,7 +19,7 @@ const productApi = baseApi.injectEndpoints({
       }),
     }),
     searchProduct: build.query({
-      query: ({ query }) => ({
+      query: (query) => ({
         url: `product-search?${query}`,
       }),
     }),
@@ -34,7 +34,6 @@ const productApi = baseApi.injectEndpoints({
         method: "PATCH",
         body: data,
       }),
-      invalidatesTags: ["views"],
     }),
     returnPolicy: build.query({
       query: (sellerId) => ({

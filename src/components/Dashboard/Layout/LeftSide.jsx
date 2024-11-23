@@ -19,7 +19,7 @@ const LeftSide = ({ visibleArrow = true, setIsModalOpen = () => {} }) => {
           isExtend ? "w-60" : "w-14"
         } overflow-y-auto border border-t-0 border-b-0 bar-hidden duration-300`}
       >
-        <div className="w-44 h-[60px] flex flex-col items-center justify-center">
+        <div className="w-48 h-[60px] flex flex-col items-center justify-center">
             <img
               className="object-fill px-3"
               src="/logo.png"
@@ -27,6 +27,7 @@ const LeftSide = ({ visibleArrow = true, setIsModalOpen = () => {} }) => {
             />
           </div>
         <div className="flex flex-col gap-2 h-full">
+          <hr className="mt-1" />
           {layout.left_side.map(({ name, icon, link }) => (
             <Link
               onClick={() => setIsModalOpen(false)}

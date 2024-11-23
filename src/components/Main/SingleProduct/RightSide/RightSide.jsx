@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
   FaAngleRight,
@@ -32,6 +32,8 @@ const RightSide = ({ product }) => {
   const [returnModal, setReturnModal] = useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { userCart } = useGetCart();
   const { userWishlist } = useGetWishlist();
 
@@ -65,7 +67,7 @@ const RightSide = ({ product }) => {
       buyQnt,
       stock: product?.stock,
       brand: product?.brand,
-      deliveryCharge:product?.deliveryCharge
+      deliveryCharge: product?.deliveryCharge,
     };
     dispatch(add_to_cart(cartData));
   };
@@ -84,9 +86,34 @@ const RightSide = ({ product }) => {
       buyQnt,
       stock: product?.stock,
       brand: product?.brand,
-      deliveryCharge:product?.deliveryCharge
+      deliveryCharge: product?.deliveryCharge,
     };
     dispatch(add_to_wishlist(wishlistData));
+  };
+
+  const handleBuyNow = () => {
+    const price = product?.specialPrice
+      ? product?.specialPrice
+      : product?.price;
+
+    const isExist = userCart?.find((cart) => cart?._id === product?._id);
+    if (isExist) {
+      navigate("/dashboard/checkout");
+    } else {
+      const cartData = {
+        title: product?.title,
+        price,
+        sellerId: product?.sellerId,
+        _id: product?._id,
+        image: product?.productImages?.[0],
+        buyQnt,
+        stock: product?.stock,
+        brand: product?.brand,
+        deliveryCharge: product?.deliveryCharge,
+      };
+      dispatch(add_to_cart(cartData));
+      navigate("/dashboard/checkout");
+    }
   };
 
   useEffect(() => {
@@ -185,7 +212,10 @@ const RightSide = ({ product }) => {
               </button>
             </div>
             <div>
-              <button className="py-2 text-center text-white font-semibold bg-primary w-full rounded">
+              <button
+                onClick={handleBuyNow}
+                className="py-2 text-center text-white font-semibold bg-primary w-full rounded"
+              >
                 Buy Now
               </button>
             </div>

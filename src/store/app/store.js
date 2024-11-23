@@ -19,6 +19,7 @@ import userWishlistReducer from "../main/features/wishlist/wishlistSlice.js";
 import userAddressReducer from "../dashboard/features/address/addressSlice.js";
 import userReviewFilterReducer from "../shop/features/reviewSlice.js";
 import userAllSellerFilterReducer from "../main/features/allSeller/allSellerSlice.js";
+import userqnaReducer from "../dashboard/features/QnA/qnaSlice.js";
 import userCategoryProductReducer from "../main/features/category/categorySlice.js";
 import { imgbbApi } from "../main/service/imageUpload/imageUploadApi.js";
 
@@ -39,6 +40,7 @@ const rootPersistReducers = combineReducers({
   userReducer,
   userCartReducer,
   userWishlistReducer,
+  userqnaReducer,
 });
 
 const sessionReducers = combineReducers({

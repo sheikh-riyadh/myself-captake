@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import Button from "../../../Common/Button";
 import { FaCcMastercard, FaMoneyBillAlt } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { clearCart } from "../../../../store/main/features/cart/userCartSlice";
+import { clear_cart } from "../../../../store/main/features/cart/userCartSlice";
 
 const CheckoutPayment = () => {
   const [orderSuccessModal, setOrderSuccessModal] = useState(false);
@@ -26,15 +26,15 @@ const CheckoutPayment = () => {
   const { selectedAddress } = useAddress();
   const sellerIds = [];
 
-  const total = userCart.reduce((total, item) => {
+  const total = userCart?.reduce((total, item) => {
     return (total += item?.buyQnt * item?.price);
   }, 0);
 
-  const totalItem = userCart.reduce((total, item) => {
+  const totalItem = userCart?.reduce((total, item) => {
     return (total += item?.buyQnt);
   }, 0);
 
-  const shippingCost = userCart.reduce((total, item) => {
+  const shippingCost = userCart?.reduce((total, item) => {
     if (!sellerIds.includes(item.sellerId)) {
       total += item?.deliveryCharge;
       sellerIds.push(item?.sellerId);
@@ -65,9 +65,9 @@ const CheckoutPayment = () => {
       const res = await createOrder(orderItems);
       if (!res?.error) {
         setOrderSuccessModal(true);
+        dispatch(clear_cart());
       } else {
         setOrderSuccessModal(true);
-        dispatch(clearCart());
       }
     } catch {
       setOrderSuccessModal(true);

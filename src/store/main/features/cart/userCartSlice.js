@@ -43,12 +43,12 @@ const userCartSlice = createSlice({
         }
       }
     },
-    clearCart: (state) => {
+    clear_cart: (state) => {
       state.userCart = [];
     },
   },
 });
 
-export const { add_to_cart, remove_cart, increament, decreament, clearCart } =
+export const { add_to_cart, remove_cart, increament, decreament, clear_cart } =
   userCartSlice.actions;
 export default userCartSlice.reducer;

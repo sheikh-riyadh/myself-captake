@@ -5,7 +5,7 @@ import {
   FaSearch,
   FaShoppingBasket,
   FaUserCircle,
-  FaStore
+  FaStore,
 } from "react-icons/fa";
 import { MdWindow } from "react-icons/md";
 import { useGetUser } from "../../hooks/useGetUser";
@@ -49,7 +49,7 @@ const MainHeader = () => {
       }).toString()
     : null;
 
-  const { data, isLoading } = useSearchProductQuery(query ? { query } : null);
+  const { data, isLoading } = useSearchProductQuery(query ? query : null);
 
   return (
     <header className="bg-stech fixed w-full z-50 top-0">
@@ -58,14 +58,10 @@ const MainHeader = () => {
           <div className="flex items-center gap-10">
             <div>
               <Link to="/">
-              <div>
-                <img
-                  src="/logo.png"
-                  alt="logo"
-                  className="w-48"
-                />
-              </div>
-            </Link>
+                <div>
+                  <img src="/logo.png" alt="logo" className="w-48" />
+                </div>
+              </Link>
             </div>
             <div className="flex items-center justify-between bg-white w-full p-2 rounded-md relative">
               <input

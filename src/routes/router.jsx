@@ -26,7 +26,7 @@ import Block from "../pages/Main/Panding/Block";
 import BlockedRouter from "./BlockedRouter";
 import PendingRouter from "./PendingRouter";
 import CategoryProduct from "../pages/Main/CategoryProduct/CategoryProduct";
-import AdminMessage from "../pages/Dashboard/AdminMessage/AdminMessage";
+import QnA from "../pages/Dashboard/QnA/QnA";
 
 const router = createBrowserRouter([
   {
@@ -94,10 +94,10 @@ const router = createBrowserRouter([
             ),
           },
           {
-            path: "message",
+            path: "qna",
             element: (
               <PrivateRouter>
-                <AdminMessage />
+                <QnA />
               </PrivateRouter>
             ),
           },

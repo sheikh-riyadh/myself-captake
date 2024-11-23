@@ -38,7 +38,7 @@ const FeatureCategory = () => {
               {data?.map((category) => (
                 <div
                   onClick={() => handleRedirect(category)}
-                  key={category}
+                  key={category?._id}
                   className="border-b-2 rounded-xl p-3 bg-white flex flex-col justify-center items-center gap-2 cursor-pointer"
                 >
                   <img

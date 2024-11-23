@@ -9,11 +9,11 @@ const CartPayment = () => {
   const navigate = useNavigate();
   const sellerIds = [];
 
-  const total = userCart.reduce((total, item) => {
+  const total = userCart?.reduce((total, item) => {
     return (total += item?.buyQnt * item?.price);
   }, 0);
 
-  const shippingCost = userCart.reduce((total, item) => {
+  const shippingCost = userCart?.reduce((total, item) => {
     if (!sellerIds.includes(item.sellerId)) {
       total += item?.deliveryCharge;
       sellerIds.push(item?.sellerId);
@@ -21,7 +21,7 @@ const CartPayment = () => {
     return total;
   }, 0);
 
-  const totalItem = userCart.reduce((total, item) => {
+  const totalItem = userCart?.reduce((total, item) => {
     return (total += item?.buyQnt);
   }, 0);
 

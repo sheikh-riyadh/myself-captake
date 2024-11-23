@@ -12,7 +12,7 @@ const FloatingCartModal = ({ onClose }) => {
   const { userCart } = useGetCart();
   const modalRef = useRef(null);
 
-  const total = userCart.reduce((total, item) => {
+  const total = userCart?.reduce((total, item) => {
     return (total += item?.buyQnt * item?.price);
   }, 0);
 

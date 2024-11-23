@@ -7,6 +7,7 @@ import { numberWithCommas } from "../../../../utils/numberWithComma";
 import View from "./View";
 import CancelOrder from "./CancelOrder";
 import ManageReview from "./ManageReview";
+import moment from "moment";
 
 const OrderTable = () => {
   const { user } = useGetUser();
@@ -69,6 +70,20 @@ const OrderTable = () => {
                 return (
                   <div>
                     <span className="capitalize">{item?.status}</span>
+                  </div>
+                );
+              },
+            },
+            {
+              name: "created At",
+              render: ({ item }) => {
+                return (
+                  <div>
+                    <span className="capitalize">
+                      {moment(item?.createdAt).format(
+                        "MMMM Do YYYY, h:mm:ss a"
+                      )}
+                    </span>
                   </div>
                 );
               },

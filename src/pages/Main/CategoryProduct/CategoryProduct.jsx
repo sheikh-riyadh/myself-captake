@@ -12,12 +12,11 @@ const CategoryProduct = () => {
 
   const location = useLocation();
   const categoryData = location.state.payload;
-  console.log(categoryData?.category)
 
   const query = new URLSearchParams({
     limit,
     sortedValue,
-    category:categoryData?.category
+    category: categoryData?.category,
   });
 
   const { data, isLoading } = useGetCategoryProductsQuery({
@@ -30,8 +29,7 @@ const CategoryProduct = () => {
         <div className="my_container my-[80px] lg:my-24 xl:my-[100px]">
           <CategoryFilterTop />
           {data?.length ? (
-            <div className="">
-              <div className=" "></div>
+            <div className="h-screen">
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-5">
                 {data?.map((product) => (
                   <ProductCard key={product?._id} product={product} />
