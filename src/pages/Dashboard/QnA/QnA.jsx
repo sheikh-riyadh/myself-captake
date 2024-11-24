@@ -10,7 +10,6 @@ import {
   FaClipboard,
   FaFutbol,
   FaMousePointer,
-  FaStore,
 } from "react-icons/fa";
 import { useQnAIndex } from "../../../hooks/useQnAIndex";
 import toast from "react-hot-toast";
@@ -70,7 +69,11 @@ const QnA = () => {
                   >
                     <div className="flex gap-5">
                       <div className="w-12 h-12 rounded-full border">
-                        <FaStore className="w-full h-full text-stech rounded-full p-1" />
+                        <img
+                          className="w-full h-full rounded-full"
+                          src={question?.answer?.logo}
+                          alt=""
+                        />
                       </div>
                       <div className="flex flex-col gap-1">
                         <span
@@ -84,17 +87,28 @@ const QnA = () => {
                               )}...`
                             : question?.question?.userInfo?.userName}
                         </span>
-                        <span
-                          title={question?.question?.userQuestion}
-                          className="text-sm"
-                        >
-                          {question?.question?.userQuestion.length > 20
-                            ? `${question?.question?.userQuestion.slice(
-                                0,
-                                20
-                              )}...`
-                            : question?.question?.userQuestion}
-                        </span>
+                        {!question?.answer?.answer ? (
+                          <span
+                            title={question?.question?.userQuestion}
+                            className="text-sm"
+                          >
+                            {question?.question?.userQuestion.length > 20
+                              ? `${question?.question?.userQuestion.slice(
+                                  0,
+                                  20
+                                )}...`
+                              : question?.question?.userQuestion}
+                          </span>
+                        ) : (
+                          <span
+                            title={question?.answer?.answer}
+                            className="text-sm"
+                          >
+                            {question?.answer?.answer?.length > 20
+                              ? `${question?.answer?.answer?.slice(0, 20)}...`
+                              : question?.answer?.answer}
+                          </span>
+                        )}
                       </div>
                       <div className="flex flex-col gap-3">
                         <span className="text-xs">
@@ -153,8 +167,12 @@ const QnA = () => {
                         </div>
                       </div>
                       <div className=" flex flex-col gap-3">
-                        <div className="w-8 h-8 border rounded-full p-1">
-                          <FaStore className="w-full h-full text-stech" />
+                        <div className="w-8 h-8 border rounded-full">
+                          <img
+                            className="w-full h-full rounded-full"
+                            src={currentQuestion?.answer.logo}
+                            alt=""
+                          />
                         </div>
                         <div className="bg-blue-100 p-3 rounded-md relative w-3/6">
                           <span>{currentQuestion?.answer?.answer}</span>
