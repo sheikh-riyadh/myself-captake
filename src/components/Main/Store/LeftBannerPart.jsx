@@ -25,7 +25,7 @@ const LeftBannerPart = ({ seller }) => {
             <div>
               <div className="flex justify-center items-center w-full">
                 <ReactPlayer
-                  url={getDefaultBanner.videoURL}
+                  url={getDefaultBanner?.videoURL}
                   controls
                   width="100%"
                   height="240px"
@@ -36,7 +36,7 @@ const LeftBannerPart = ({ seller }) => {
           <div className="grid grid-cols-4 gap-5">
             {restBanner?.type == "image" ? (
               <PhotoProvider>
-                {restBanner.bannerImages?.map((image) => (
+                {restBanner?.bannerImages?.map((image) => (
                   <figure key={image}>
                     <PhotoView src={image}>
                       <div className="border h-16 rounded p-1 cursor-pointer">
@@ -52,7 +52,7 @@ const LeftBannerPart = ({ seller }) => {
               </PhotoProvider>
             ) : (
               <PhotoProvider>
-                {getDefaultBanner.bannerImages?.map((image) => (
+                {getDefaultBanner?.bannerImages?.map((image) => (
                   <figure key={image}>
                     <PhotoView src={image}>
                       <div className="border h-16 rounded p-1 cursor-pointer">
