@@ -1,28 +1,21 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { useGetUser } from "../../../hooks/useGetUser";
 import { useGetQnAQuery } from "../../../store/dashboard/service/question/questionApi";
-import { handleQnAIndex } from "../../../store/dashboard/features/QnA/qnaSlice";
-import moment from "moment/moment";
 import {
   FaCheckCircle,
   FaClipboard,
   FaFutbol,
   FaMousePointer,
 } from "react-icons/fa";
-import { useQnAIndex } from "../../../hooks/useQnAIndex";
 import toast from "react-hot-toast";
+import moment from "moment";
 
 const QnA = () => {
   const [currentQuestion, setCurrentQuestion] = useState();
-
-  const dispatch = useDispatch();
   const { user } = useGetUser();
 
   const { data, isLoading } = useGetQnAQuery(user?._id);
-  const { qNaIndex } = useQnAIndex();
-
   const navigate = useNavigate();
 
   const handleRedirect = (product) => {
@@ -44,8 +37,8 @@ const QnA = () => {
   };
 
   useEffect(() => {
-    setCurrentQuestion(data?.[qNaIndex]);
-  }, [data, qNaIndex]);
+    setCurrentQuestion(data?.[0]);
+  }, [data]);
 
   return (
     <div>
@@ -54,12 +47,11 @@ const QnA = () => {
           {data?.length ? (
             <div className="grid md:grid-cols-12 gap-5 m-5 h-screen">
               <div className="md:col-span-4 md:h-[calc(100%-100px)] overflow-y-auto custom-bar w-full border flex flex-col rounded-md bg-white">
-                {data?.map((question, index) => (
+                {data?.map((question) => (
                   <div
                     key={question?._id}
                     onClick={() => {
-                      setCurrentQuestion(question),
-                        dispatch(handleQnAIndex(index));
+                      setCurrentQuestion(question);
                     }}
                     className={`px-5 py-5 cursor-pointer ${
                       currentQuestion?._id === question?._id

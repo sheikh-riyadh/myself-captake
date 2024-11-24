@@ -9,7 +9,7 @@ const MapSection = () => {
         </div>
         <div className="flex flex-col gap-4 xl:gap-7">
           <h2 className="xl:font-bold md:text-2xl xl:text-3xl leading-relaxed xl:leading-normal text-white">
-            Startech provides comprehensive on-demand support for vendors across
+            Captake provides comprehensive on-demand support for vendors across
             all of Bangladesh, streamlining e-commerce operations with ease.
           </h2>
           <span className="text-white">

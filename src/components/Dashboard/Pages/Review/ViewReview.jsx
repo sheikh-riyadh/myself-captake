@@ -25,12 +25,12 @@ const ViewReview = ({ item }) => {
           onClose={setIsView}
           title={"Review overview"}
           key={"order_manage"}
-          className={"w-[400px]"}
+          className={"lg:w-[400px] w-[300px]"}
         >
           <div className="flex flex-col gap-10">
             <div className="flex items-center gap-1">
               {[...Array(item?.rating?.rating).keys()]?.map((rating) => (
-                <FaStar key={rating} className="text-stech" />
+                <FaStar key={rating} className="text-danger" />
               ))}
             </div>
 

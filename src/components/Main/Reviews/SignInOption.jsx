@@ -9,7 +9,7 @@ const SignInOption = () => {
           <div className="flex flex-wrap items-center gap-5 text-white">
             <div>
               <h2 className="font-medium text-3xl leading-normal">
-                {`Let's part of with startech today`}
+                {`Let's part of with captake today`}
               </h2>
               <span className="text-xl">Signing up takes only 2 mins</span>
             </div>

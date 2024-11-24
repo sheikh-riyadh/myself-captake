@@ -13,7 +13,7 @@ import {
   handleIsClicked,
   handleQnASize,
 } from "../../../store/dashboard/features/QnA/qnaSlice";
-import { useQnAIndex } from "../../../hooks/useQnAIndex";
+import { useQnA } from "../../../hooks/useQnAIndex";
 
 const RightSide = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,11 +32,9 @@ const RightSide = () => {
     (message) => message?.date === moment().format("L")
   );
 
-  const answered = QuestionData?.filter(
-    (question) => question?.answer?.answer
-  );
+  const answered = QuestionData?.filter((question) => question?.answer?.answer);
 
-  const { isClicked, showSize } = useQnAIndex();
+  const { isClicked, showSize } = useQnA();
 
   useEffect(() => {
     dispatch(handleQnASize(answered?.length));
@@ -77,7 +75,7 @@ const RightSide = () => {
             </div>
             {!QuestionLoading && (
               <>
-                {!isClicked && showSize? (
+                {!isClicked && showSize ? (
                   <div className="absolute -top-4 w-5 h-5 bg-danger flex flex-col items-center justify-center rounded-full text-white">
                     <span>{showSize}</span>
                   </div>
@@ -90,7 +88,7 @@ const RightSide = () => {
             )}
           </div>
           <div onClick={() => dispatch(removeUser())}>
-            <FaPowerOff className="text-lg" />
+            <FaPowerOff className="text-lg cursor-pointer" />
           </div>
         </div>
       </div>

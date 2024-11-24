@@ -26,7 +26,7 @@ const MessageList = ({ messages = [], setIsModalOpen, isModalOpen }) => {
   return (
     <div className="z-50 absolute right-0 top-10" ref={modalRef}>
       <div className="flex flex-col items-center justify-center">
-        <div className="max-w-lg p-4 bg-white rounded-lg shadow-lg w-96">
+        <div className="max-w-lg p-4 bg-white rounded-lg shadow-lg w-80">
           <div className="space-y-4 max-h-[400px] overflow-y-auto custom-bar">
             {messages?.map((message) => (
               <div
@@ -56,7 +56,7 @@ const MessageList = ({ messages = [], setIsModalOpen, isModalOpen }) => {
         <CommonModal
           isOpen={seeMessageModal}
           onClose={setSeeMessageModal}
-          className={"w-[400px] h-max[400px]"}
+          className={"w-[300px] md:w-[500px] h-max[500px]"}
           title={selectedMessage?.title}
         >
           <div className="border w-full h-full p-5 rounded-md">

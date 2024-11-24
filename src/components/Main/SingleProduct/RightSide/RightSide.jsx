@@ -132,26 +132,26 @@ const RightSide = ({ product }) => {
           <div className="flex items-center gap-2 text-sm flex-wrap w-full">
             {product?.specialPrice ? (
               <p className="shadow border py-1 px-4 rounded-full text-slate">
-                {`Price :`}
+                {`Price : `}
                 <span className="font-bold text-stech">
                   {numberWithCommas(parseInt(product?.specialPrice))}TK
                 </span>
               </p>
             ) : null}
             <p className="shadow border py-1 px-4 rounded-full text-slate">
-              {`Regular Price :`}
+              {`Regular Price : `}
               <span className="font-bold text-stech">
                 {numberWithCommas(parseInt(product?.price))}TK
               </span>
             </p>
             <p className="shadow border py-1 px-4 rounded-full text-slate">
-              {`Stock :`}
+              {`Stock : `}
               <span className="font-bold text-stech">
-                {numberWithCommas(parseInt(product?.stock))}
+                {product?.stock > 0 ? "In" : "Out"}
               </span>
             </p>
             <p className="shadow border py-1 px-4 rounded-full text-slate">
-              {`Brand :`}
+              {`Brand : `}
               <span className="font-bold text-stech">{product?.brand}</span>
             </p>
           </div>
@@ -214,7 +214,8 @@ const RightSide = ({ product }) => {
             <div>
               <button
                 onClick={handleBuyNow}
-                className="py-2 text-center text-white font-semibold bg-primary w-full rounded"
+                disabled={product?.stock == 0}
+                className="py-2 text-center text-white font-semibold bg-primary w-full rounded disabled:bg-gray-400"
               >
                 Buy Now
               </button>
@@ -225,7 +226,7 @@ const RightSide = ({ product }) => {
           <div className="flex gap-5 w-full">
             <div className="flex items-center justify-between gap-5 w-full">
               <FaBasketShopping
-                onClick={handleCart}
+                onClick={product?.stock > 0 ? handleCart : null}
                 className={`border text-xl w-full p-2.5 h-10 rounded cursor-pointer ${
                   userCart?.find((cart) => cart?._id === product?._id)
                     ? " bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] text-white"
