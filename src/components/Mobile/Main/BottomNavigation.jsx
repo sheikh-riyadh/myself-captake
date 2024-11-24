@@ -10,8 +10,8 @@ import { useGetWishlist } from "../../../hooks/useGetWishlist";
 import { useGetCart } from "../../../hooks/useGetCart";
 const BottomNavigation = () => {
   const { user } = useGetUser();
-  const {userWishlist}=useGetWishlist()
-  const {userCart}=useGetCart()
+  const { userWishlist } = useGetWishlist();
+  const { userCart } = useGetCart();
 
   return (
     <div className="flex items-center bg-stech my_container py-3 justify-between gap-5  w-full fixed bottom-0 z-50 border-t xl:hidden">
@@ -28,10 +28,10 @@ const BottomNavigation = () => {
         <span className="text-[#ffffff80]">All Store</span>
       </Link>
       {!user ? (
-        <div className="flex flex-col items-center gap-y-2">
+        <Link to="/sign-in" className="flex flex-col items-center gap-y-2">
           <FaUserCircle className="text-xl text-white" />
           <span className="text-[#ffffff80]">Account</span>
-        </div>
+        </Link>
       ) : (
         <div className="flex flex-col items-center">
           <div className="bg-gray-100 w-8 h-8 border rounded-full">

@@ -9,6 +9,7 @@ import {
   FaTwitch,
   FaDiscord,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const MainFooter = () => {
   const year = new Date().getFullYear();
@@ -23,18 +24,22 @@ const MainFooter = () => {
                 Site Links
               </h2>
               <div className="flex flex-col text-white">
-                <span>Wishlist</span>
-                <span>My Cart</span>
-                <span>Accout</span>
-                <span>Channel</span>
+                <Link to="/wishlist">
+                  <span>Wishlist</span>
+                </Link>
+                <Link to="/cart">
+                  <span>My Cart</span>
+                </Link>
+                <Link to="/dashboard">
+                  <span>Accout</span>
+                </Link>{" "}
+                <Link to="/">
+                  <span>Channel</span>
+                </Link>
               </div>
             </div>
             <div className="flex flex-col lg:items-center gap-5">
-              <img
-                className="w-36"
-                src="/logo.png"
-                alt="logo"
-              />
+              <img className="w-36" src="/logo.png" alt="logo" />
               <div className="flex lg:items-center lg:justify-center gap-5 text-2xl text-white">
                 <FaFacebook />
                 <FaTwitter />
