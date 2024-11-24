@@ -22,10 +22,10 @@ export const useGetOrderProducts = ({ paymentMethod }) => {
         deliveryCharge: cart?.deliveryCharge,
       });
     } else {
-      const existSellerProduct = orderItems.find(
+      const existSellerProduct = orderItems?.find(
         (product) => product?.sellerId === cart?.sellerId
       );
-      existSellerProduct.productsInfo.push(cart);
+      existSellerProduct?.productsInfo?.push(cart);
     }
   });
   return orderItems;

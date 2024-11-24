@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useGetUser } from "../../../hooks/useGetUser";
 import { useGetQnAQuery } from "../../../store/dashboard/service/question/questionApi";
-import { useDispatch } from "react-redux";
 import { handleQnAIndex } from "../../../store/dashboard/features/QnA/qnaSlice";
 import moment from "moment/moment";
 import {
@@ -12,24 +13,48 @@ import {
   FaStore,
 } from "react-icons/fa";
 import { useQnAIndex } from "../../../hooks/useQnAIndex";
+import toast from "react-hot-toast";
 
 const QnA = () => {
   const [currentQuestion, setCurrentQuestion] = useState();
+
   const dispatch = useDispatch();
   const { user } = useGetUser();
+
   const { data, isLoading } = useGetQnAQuery(user?._id);
   const { qNaIndex } = useQnAIndex();
+
+  const navigate = useNavigate();
+
+  const handleRedirect = (product) => {
+    if (product) {
+      navigate(
+        `/product/${currentQuestion?.question?.productInfo?.title
+          ?.toLowerCase()
+          ?.split(` `)
+          ?.join("-")}`,
+        {
+          state: {
+            payload: { ...currentQuestion?.question?.productInfo?.fullInfo },
+          },
+        }
+      );
+    } else {
+      toast.error("Data missing!. Please try again!", { id: "product_error" });
+    }
+  };
 
   useEffect(() => {
     setCurrentQuestion(data?.[qNaIndex]);
   }, [data, qNaIndex]);
+
   return (
-    <div className="f">
+    <div>
       {!isLoading ? (
         <div>
           {data?.length ? (
-            <div className="grid grid-cols-12 gap-5 m-5 h-screen">
-              <div className="col-span-4 h-[calc(100%-100px)] overflow-y-auto custom-bar w-full border flex flex-col rounded-md bg-white">
+            <div className="grid md:grid-cols-12 gap-5 m-5 h-screen">
+              <div className="md:col-span-4 md:h-[calc(100%-100px)] overflow-y-auto custom-bar w-full border flex flex-col rounded-md bg-white">
                 {data?.map((question, index) => (
                   <div
                     key={question?._id}
@@ -85,7 +110,7 @@ const QnA = () => {
                   </div>
                 ))}
               </div>
-              <div className="col-span-8 h-[calc(100%-100px)] custom-bar overflow-y-auto w-full border rounded-md relative bg-white">
+              <div className="md:col-span-8 md:h-[calc(100%-100px)] custom-bar overflow-y-auto w-full border rounded-md relative bg-white">
                 <div>
                   <div className="border-b flex gap-5 p-2">
                     <img
@@ -93,7 +118,19 @@ const QnA = () => {
                       src={currentQuestion?.question?.productInfo?.productImage}
                       alt=""
                     />
-                    <span>{currentQuestion?.question?.productInfo?.title}</span>
+                    <div className="flex flex-col">
+                      <span
+                        className="hover:underline cursor-pointer hover:text-primary"
+                        onClick={handleRedirect}
+                      >
+                        {currentQuestion?.question?.productInfo?.title}
+                      </span>
+                      <span className="text-sm">
+                        {moment(currentQuestion?.createdAt).format(
+                          "D MMMM YYYY"
+                        )}
+                      </span>
+                    </div>
                   </div>
                 </div>
 

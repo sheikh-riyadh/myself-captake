@@ -6,6 +6,7 @@ const questionApi = baseApi.injectEndpoints({
       query: (userId) => ({
         url: `user-product-questions/${userId}`,
       }),
+      providesTags:["product-questions"]
     }),
   }),
 });

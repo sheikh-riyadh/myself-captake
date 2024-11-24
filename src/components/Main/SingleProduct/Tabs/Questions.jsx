@@ -12,9 +12,8 @@ import toast from "react-hot-toast";
 
 const Questions = ({ product }) => {
   const [isFocus, setIsFocus] = useState(false);
-  const [totalQuestion,setTotalQuestion]=useState(0)
+  const [totalQuestion, setTotalQuestion] = useState(0);
   const { user } = useGetUser();
-  
 
   const [createQuestion, { isLoading }] = useCreateProductQuestionMutation();
 
@@ -26,6 +25,7 @@ const Questions = ({ product }) => {
         title: product?.title,
         productImage: product?.productImages?.[0],
         sellerId: product?.sellerId,
+        fullInfo: product,
       },
       userInfo: {
         userName: user?.fName + "" + user?.lName,
@@ -119,7 +119,10 @@ const Questions = ({ product }) => {
           </div>
         )}
 
-        <QuestionCard productId={product?._id} setTotalQuestion={setTotalQuestion}/>
+        <QuestionCard
+          productId={product?._id}
+          setTotalQuestion={setTotalQuestion}
+        />
       </div>
     </>
   );

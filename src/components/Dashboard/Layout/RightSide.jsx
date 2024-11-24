@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import moment from "moment";
 import { FaBell, FaPowerOff, FaQuestionCircle } from "react-icons/fa";
@@ -9,9 +9,16 @@ import { removeUser } from "../../../store/main/features/user/userSlice";
 import MessageList from "../Pages/AdminMessage/MessageList";
 import { useGetUser } from "../../../hooks/useGetUser";
 import { useGetQnAQuery } from "../../../store/dashboard/service/question/questionApi";
+import {
+  handleIsClicked,
+  handleQnASize,
+} from "../../../store/dashboard/features/QnA/qnaSlice";
+import { useQnAIndex } from "../../../hooks/useQnAIndex";
 
 const RightSide = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+
   const { user } = useGetUser();
   const dispatch = useDispatch();
 
@@ -25,9 +32,15 @@ const RightSide = () => {
     (message) => message?.date === moment().format("L")
   );
 
-  const unseenQuestion = QuestionData?.filter(
+  const answered = QuestionData?.filter(
     (question) => question?.answer?.answer
   );
+
+  const { isClicked, showSize } = useQnAIndex();
+
+  useEffect(() => {
+    dispatch(handleQnASize(answered?.length));
+  }, [dispatch, answered]);
 
   return (
     <div className="relative h-full">
@@ -41,24 +54,41 @@ const RightSide = () => {
               <FaBell className="text-lg" />
             </div>
             {!MessageLoading && (
-              <div className="absolute -top-4 w-5 h-5 bg-danger flex flex-col items-center justify-center rounded-full text-white">
-                <span>{todayMessages?.length}</span>
-              </div>
+              <>
+                {todayMessages?.length ? (
+                  <div className="absolute -top-4 w-5 h-5 bg-danger flex flex-col items-center justify-center rounded-full text-white">
+                    <span>{todayMessages?.length}</span>
+                  </div>
+                ) : null}
+              </>
             )}
           </div>
           <Link title="working..">
             <FaQuestionCircle className="text-lg" />
           </Link>
-          <Link to={"/dashboard/qna"} className="relative cursor-pointer">
+          <div
+            onClick={() => {
+              dispatch(handleIsClicked()), navigate("/dashboard/qna");
+            }}
+            className="relative cursor-pointer"
+          >
             <div>
               <MdQuestionAnswer className="text-lg" />
             </div>
             {!QuestionLoading && (
-              <div className="absolute -top-4 w-5 h-5 bg-danger flex flex-col items-center justify-center rounded-full text-white">
-                <span>{unseenQuestion?.length}</span>
-              </div>
+              <>
+                {!isClicked && showSize? (
+                  <div className="absolute -top-4 w-5 h-5 bg-danger flex flex-col items-center justify-center rounded-full text-white">
+                    <span>{showSize}</span>
+                  </div>
+                ) : showSize ? (
+                  <div className="absolute -top-4 w-5 h-5 bg-danger flex flex-col items-center justify-center rounded-full text-white">
+                    <span>{showSize}</span>
+                  </div>
+                ) : null}
+              </>
             )}
-          </Link>
+          </div>
           <div onClick={() => dispatch(removeUser())}>
             <FaPowerOff className="text-lg" />
           </div>
