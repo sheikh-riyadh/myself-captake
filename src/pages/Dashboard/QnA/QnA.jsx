@@ -63,21 +63,25 @@ const QnA = () => {
                       <div className="w-12 h-12 rounded-full border">
                         <img
                           className="w-full h-full rounded-full"
-                          src={question?.answer?.logo}
+                          src={
+                            question?.answer?.logo
+                              ? question?.answer?.logo
+                              : question?.question?.productInfo?.productImage
+                          }
                           alt=""
                         />
                       </div>
                       <div className="flex flex-col gap-1">
                         <span
-                          title={question?.question?.userInfo?.userName}
+                          title={question?.question?.productInfo?.title}
                           className="text-sm"
                         >
-                          {question?.question?.userInfo?.userName?.length > 20
-                            ? `${question?.question?.userInfo?.userName?.slice(
+                          {question?.question?.productInfo?.title?.length > 20
+                            ? `${question?.question?.productInfo?.title?.slice(
                                 0,
                                 20
                               )}...`
-                            : question?.question?.userInfo?.userName}
+                            : question?.question?.productInfo?.title}
                         </span>
                         {!question?.answer?.answer ? (
                           <span

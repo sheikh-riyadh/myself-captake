@@ -46,7 +46,7 @@ const CategoryProduct = () => {
           )}
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center h-80">
+        <div className="flex flex-col items-center justify-center h-screen">
           <FaFutbol className="text-6xl animate-spin" />
         </div>
       )}
