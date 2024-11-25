@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 import QuestionCard from "./QuestionCard";
 import { useCreateProductQuestionMutation } from "../../../../store/main/service/questions/questionsApi";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Questions = ({ product }) => {
   const [isFocus, setIsFocus] = useState(false);
@@ -110,11 +111,19 @@ const Questions = ({ product }) => {
           </>
         ) : (
           <div className="flex items-center gap-2 p-5">
-            <div className="text-primary underline cursor-pointer">Sign-in</div>
+            <Link
+              to="/sign-in"
+              className="text-primary underline cursor-pointer"
+            >
+              Sign-in
+            </Link>
             <span>or</span>
-            <div className="text-primary underline cursor-pointer">
+            <Link
+              to="/sign-up"
+              className="text-primary underline cursor-pointer"
+            >
               Register
-            </div>
+            </Link>
             <span>to ask questions to seller</span>
           </div>
         )}

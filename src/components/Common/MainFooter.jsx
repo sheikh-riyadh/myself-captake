@@ -1,18 +1,40 @@
 import {
   FaFacebook,
-  FaInstagram,
-  FaTwitter,
   FaYoutube,
   FaMapMarkerAlt,
   FaEnvelope,
   FaPhoneAlt,
-  FaTwitch,
-  FaDiscord,
+  FaLinkedin,
+  FaGithub,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const MainFooter = () => {
   const year = new Date().getFullYear();
+
+  const links = [
+    {
+      icon: <FaFacebook />,
+      link: "https://www.facebook.com/sheikhriyadhofficial/",
+    },
+    {
+      icon: <FaLinkedin />,
+      link: "https://www.linkedin.com/in/sheikh-riyadh/",
+    },
+    {
+      icon: <FaYoutube />,
+      link: "https://www.youtube.com/@codersheikh8040",
+    },
+    {
+      icon: <FaGithub />,
+      link: "https://github.com/sheikh-riyadh",
+    },
+    {
+      icon: <FaWhatsapp />,
+      link: "https://wa.me/01919195934",
+    },
+  ];
 
   return (
     <footer className=" bg-stech pt-10 mb-[68px] xl:mb-0">
@@ -41,12 +63,11 @@ const MainFooter = () => {
             <div className="flex flex-col lg:items-center gap-5">
               <img className="w-36" src="/logo.png" alt="logo" />
               <div className="flex lg:items-center lg:justify-center gap-5 text-2xl text-white">
-                <FaFacebook />
-                <FaTwitter />
-                <FaYoutube />
-                <FaInstagram />
-                <FaTwitch />
-                <FaDiscord />
+                {links?.map(({ link, icon }) => (
+                  <a target="_blank" href={link} key={link}>
+                    {icon}
+                  </a>
+                ))}
               </div>
             </div>
             <div>
