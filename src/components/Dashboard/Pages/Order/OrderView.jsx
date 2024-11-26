@@ -157,7 +157,9 @@ const OrderView = ({ orderInfo }) => {
               TK{" "}
               {numberWithCommas(
                 parseInt(Math.round(totalCost)) +
-                  parseInt(orderInfo?.deliveryCharge)
+                  parseInt(
+                    orderInfo?.deliveryCharge ? orderInfo?.deliveryCharge : 0
+                  )
               )}
             </span>
           </div>
