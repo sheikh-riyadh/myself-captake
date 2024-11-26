@@ -1,11 +1,14 @@
 import { useDispatch } from "react-redux";
 import { handleFilter } from "../../../store/main/features/category/categorySlice";
 import { useLocation } from "react-router-dom";
+import { useCategoryFilter } from "../../../hooks/useCategoryFilter";
 
 const CategoryFilterTop = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const categoryData = location.state.payload;
+
+  const { limit, sortedValue } = useCategoryFilter();
 
   return (
     <div className="my-14">
@@ -20,6 +23,7 @@ const CategoryFilterTop = () => {
                   dispatch(handleFilter({ limit: e.target.value }))
                 }
                 className="focus:outline-none border p-1 rounded-md text-base"
+                defaultValue={limit}
               >
                 <option value="5">5</option>
                 <option value="10">10</option>
@@ -34,6 +38,7 @@ const CategoryFilterTop = () => {
                   dispatch(handleFilter({ sortedValue: e.target.value }))
                 }
                 className="focus:outline-none border p-1 rounded-md text-base"
+                defaultValue={sortedValue}
               >
                 <option value="-1">{`Price (Low -> High)`}</option>
                 <option value="1">{`Price (High -> Low)`}</option>
