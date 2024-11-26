@@ -11,7 +11,7 @@ const LatestProduct = ({ sellerId }) => {
       {!isLoading ? (
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-5">
           {data?.map((product) => (
-            <div key={product?._id}>
+            <div key={product?._id} className="h-full">
               <SingleShopProductCard product={product} />
             </div>
           ))}

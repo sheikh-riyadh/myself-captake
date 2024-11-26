@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   limit: 20,
   page: 1,
-  sortedValue: 1,
+  sortedValue: -1,
 };
 
 const categorySlice = createSlice({

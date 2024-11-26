@@ -75,10 +75,10 @@ const SingleShopProductCard = ({ className, imageSize, product }) => {
   };
 
   return (
-    <div>
+    <div className="h-full">
       <div
         className={cn(
-          `rounded-xl p-3 lg:p-5 bg-white border-b-2 relative group`,
+          `rounded-xl p-3 lg:p-5 bg-white border-b-2 relative group h-full`,
           className
         )}
       >
