@@ -97,7 +97,10 @@ const OrderTable = () => {
                       {numberWithCommas(
                         item?.productsInfo?.reduce((total, item) => {
                           return (total += item?.buyQnt * item?.price);
-                        }, 0) + parseInt(item?.deliveryCharge)
+                        }, 0) +
+                          parseInt(
+                            item?.deliveryCharge ? item?.deliveryCharge : 0
+                          )
                       )}
                       TK
                     </span>
