@@ -52,7 +52,7 @@ const MainHeader = () => {
   const { data, isLoading } = useSearchProductQuery(query ? query : null);
 
   return (
-    <header className="bg-stech fixed w-full z-50 top-0">
+    <header className="bg-widget fixed w-full z-50 top-0">
       <div className="my_container py-3">
         <div className="grid xl:grid-cols-2 gap-10">
           <div className="flex items-center gap-10">
@@ -86,7 +86,7 @@ const MainHeader = () => {
             <div className="flex items-center justify-between gap-5">
               <Link to={"/store"}>
                 <div className="flex items-center justify-center gap-2">
-                  <FaStore className="text-2xl xl:text-xl text-primary" />
+                  <FaStore className="text-2xl xl:text-xl text-accent" />
                   <div>
                     <span className="text-white">All Store</span>
                     <p className="text-sm text-slate">{`View Store`}</p>
@@ -95,7 +95,7 @@ const MainHeader = () => {
               </Link>
               <Link to={"/wishlist"}>
                 <div className="flex items-center justify-center gap-2">
-                  <FaHeart className="text-2xl xl:text-xl text-primary" />
+                  <FaHeart className="text-2xl xl:text-xl text-accent" />
                   <div>
                     <span className="text-white">Wishlist</span>
                     <p className="text-sm text-slate">{`Items (${userWishlist?.length})`}</p>
@@ -104,7 +104,7 @@ const MainHeader = () => {
               </Link>
               <Link to={"/cart"}>
                 <div className="flex items-center justify-center gap-2">
-                  <FaShoppingBasket className="text-2xl xl:text-xl text-primary" />
+                  <FaShoppingBasket className="text-2xl xl:text-xl text-accent" />
                   <div>
                     <span className="text-white">My Cart</span>
                     <p className="text-sm text-slate">{`Items (${userCart?.length})`}</p>
@@ -114,7 +114,7 @@ const MainHeader = () => {
               <div>
                 {!user ? (
                   <div className="flex items-center justify-center gap-2">
-                    <FaUserCircle className="text-2xl xl:text-xl text-primary" />
+                    <FaUserCircle className="text-2xl xl:text-xl text-accent" />
                     <div>
                       <span className="text-white">Account</span>
                       <div className="text-sm xl:text-xs text-slate">
@@ -125,7 +125,7 @@ const MainHeader = () => {
                   </div>
                 ) : (
                   <div className="flex items-center justify-center gap-2">
-                    <MdWindow className="text-2xl xl:text-xl text-primary" />
+                    <MdWindow className="text-2xl xl:text-xl text-accent" />
                     <div>
                       <span className="text-white">Dashboard</span>
                       <div className="text-sm xl:text-xs text-slate">
@@ -136,9 +136,14 @@ const MainHeader = () => {
                 )}
               </div>
               <div>
-                <div className="bg-secondary p-3 rounded-md flex items-center justify-center bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] text-white">
+                <div className="p-3 rounded-sm flex items-center justify-center text-white bg-[#047857]">
                   <button>
-                    <span>Create Channel</span>
+                    <a
+                      href="https://seller-center-32880.web.app"
+                      target="_blank"
+                    >
+                      Create Channel
+                    </a>
                   </button>
                 </div>
               </div>

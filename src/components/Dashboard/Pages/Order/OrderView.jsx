@@ -25,31 +25,31 @@ const OrderView = ({ orderInfo }) => {
   ];
   return (
     <div className="flex flex-col gap-5">
-      <div className="shadow-md rounded-md p-5 border">
+      <div className="shadow-md rounded-md p-5 bg-widget text-white">
         <div className="flex items-center gap-5 w-full">
           <h1 className="text-lg md:text-3xl font-bold">
             Order details {`#${orderInfo?.orderId}`}
           </h1>
           <Button
             className={
-              "text-white bg-opacity-15 py-1 px-5 uppercase font-bold w-32"
+              "text-white py-1 px-5 uppercase font-bold w-32"
             }
           >
             {orderInfo?.status}
           </Button>
         </div>
-        <p className="text-gray-700">
+        <p>
           Date: {moment(orderInfo?.createdAt).format("MMMM Do YYYY, h:mm:ss a")}
         </p>
       </div>
 
-      <div className="shadow-md rounded-md border">
+      <div className="shadow-md rounded-md bg-widget">
         <div className="p-5 rounded-md">
           <div className="flex flex-col gap-5">
             {orderInfo?.productsInfo?.map((product) => (
               <div
                 key={product?._id}
-                className="grid grid-cols-12 items-center border-b"
+                className="grid grid-cols-12 items-center text-white"
               >
                 <div className="col-span-8 flex flex-wrap xl:flex-nowrap items-center gap-5">
                   <img
@@ -77,10 +77,10 @@ const OrderView = ({ orderInfo }) => {
       </div>
 
       <div className="grid lg:grid-cols-2 gap-5">
-        <div className="shadow-md rounded-md p-5 border flex flex-col gap-3">
+        <div className="shadow-md rounded-md p-5 bg-widget text-white flex flex-col gap-3">
           <div className="flex flex-col gap-1">
-            <div className="w-10 h-10 border rounded-md p-1">
-              <FaTruck className="h-full w-full text-stech" />
+            <div className="w-10 h-10  p-1">
+              <FaTruck className="h-full w-full text-[#047857]" />
             </div>
             <span className="font-bold">Shipping info</span>
           </div>
@@ -122,17 +122,17 @@ const OrderView = ({ orderInfo }) => {
             </div>
           </div>
         </div>
-        <div className="shadow-md rounded-md p-5 border">
+        <div className="shadow-md rounded-md p-5 bg-widget text-white">
           {orderInfo?.paymentMethod == "Cash On Delivery" ? (
             <div className="flex flex-col gap-1">
-              <FaMoneyBillAlt className="text-4xl text-stech" />
+              <FaMoneyBillAlt className="text-4xl text-[#047857]" />
               <span className="leading-none text-sm font-bold">
                 {`Payment Method : ( ${orderInfo?.paymentMethod} )`}
               </span>
             </div>
           ) : (
             <div className="flex flex-col gap-1">
-              <FaCcMastercard className="text-4xl text-stech" />
+              <FaCcMastercard className="text-4xl text-[#047857]" />
               <span className="leading-none text-sm font-bold">
                 {`Payment Method : ( ${orderInfo?.paymentMethod} )`}
               </span>

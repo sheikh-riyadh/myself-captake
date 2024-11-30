@@ -9,7 +9,7 @@ const Brands = ({ sellerId }) => {
   return (
     <>
       {!isLoading ? (
-        <div className="bg-stech p-5 mb-20">
+        <div className="bg-widget p-5 mb-20">
           <div className="my_container">
             <div className="flex flex-col items-center justify-center text-white mb-3">
               <h2 className="font-bold text-lg">Top Brands</h2>

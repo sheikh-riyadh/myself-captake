@@ -30,7 +30,7 @@ const Header = () => {
   const { showSize, isClicked } = useQnA();
 
   return (
-    <header className="w-full sticky top-0 bg-white border-b border-gray-200 z-50 p-3">
+    <header className="w-full sticky top-0 bg-widget z-50 p-3">
       <nav className="flex items-center justify-between px-8 w-full">
         <div>
           <FaBars

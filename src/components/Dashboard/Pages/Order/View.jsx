@@ -13,7 +13,7 @@ const View = ({ item }) => {
         <span
           title="Order Overview"
           onClick={() => setIsView((prev) => !prev)}
-          className="text-stech cursor-pointer border border-stech text-center p-2 rounded-full"
+          className="text-[#047857] cursor-pointer border border-[#047857] text-center p-2 rounded-full"
         >
           <FaBinoculars />
         </span>

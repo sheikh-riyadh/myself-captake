@@ -17,7 +17,7 @@ input::-webkit-inner-spin-button {
 
 /* Handle */
 .custom-bar::-webkit-scrollbar-thumb {
-  background: var(--stech);
+  background: #047857;
   border-radius: 10px;
 }
 .custom-bar::-webkit-scrollbar {
@@ -48,7 +48,7 @@ input::-webkit-inner-spin-button {
 
 /* Up and down animation */
 .up-and-down {
-  background-color: var(--primary);
+  background-color: var(--accent);
   border-radius: 50%;
   position: relative;
   animation: moveUpDown 2s infinite ease-in-out;
@@ -82,7 +82,7 @@ input[type="number"] {
     background-color: transparent;
   }
   50% {
-    background-color: var(--primary);
+    background-color: var(--accent);
   }
   100% {
     background-color: transparent;
@@ -134,6 +134,16 @@ body {
   --black: #222325;
   --slate: #74767e;
   --stech: #081621;
+  /* --stech: #047857; */
+  --widget: #1f2e2c;
+  --widget_title_background: #1f2d2d;
+  --primary-text: #e7f9f7;
+  --secondar-text: #8de2db;
+  --accent: #abd006;
+  --chart-1: #fcff66;
+  --chart-2: #047857;
+  /* color: var(--black); */
+  --bg-primary: #171f12;
   background-color: #f3f4f8;
   color: var(--black);
 }

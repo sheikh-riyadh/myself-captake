@@ -16,6 +16,14 @@ const auth_api_service = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["user"],
     }),
+    createJwt: build.mutation({
+      query: (data) => ({
+        url: "jwt",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["user"],
+    }),
     updateUser: build.mutation({
       query: (data) => ({
         url: "user-update",
@@ -33,4 +41,5 @@ export const {
   useGetUserQuery,
   useLazyGetUserQuery,
   useUpdateUserMutation,
+  useCreateJwtMutation,
 } = auth_api_service;

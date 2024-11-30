@@ -19,8 +19,8 @@ const CheckoutAddress = ({ setIsAddressModalOpen }) => {
           {data?.map((address) => (
             <div
               key={address?._id}
-              className={`text-xs flex flex-col gap-2 border ${
-                selectedAddress?._id === address?._id ? "border-stech" : null
+              className={`text-xs bg-widget flex flex-col gap-2 border ${
+                selectedAddress?._id === address?._id ? "border-accent" : null
               } p-5 rounded-md relative overflow-hidden`}
               onClick={() => {
                 dispatch(add_address(address)), setIsAddressModalOpen(false);
@@ -48,7 +48,7 @@ const CheckoutAddress = ({ setIsAddressModalOpen }) => {
               {selectedAddress?._id === address?._id && (
                 <div className="absolute -top-[19px] -left-[19px]  ">
                   <div className="relative">
-                    <FaCaretLeft className="text-5xl rotate-45" />
+                    <FaCaretLeft className="text-5xl rotate-45 text-accent" />
                     <div className="absolute top-[22px] left-[22px]">
                       <FaCheck className="text-white text-[8px]" />
                     </div>

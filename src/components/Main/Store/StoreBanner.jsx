@@ -15,7 +15,7 @@ const StoreBanner = () => {
             <div className="w-14 h-14 md:w-[70px] md:h-[70px] xl:w-28 xl:h-28 flex items-center justify-center rounded-full bg-[#f3f4f8] -mr-[33px] md:-mr-[44px] xl:-mr-[58px] -mt-[115px] z-40">
               <div>
                 <FaPlayCircle
-                  className="text-3xl xl:text-5xl text-primary animate-ping cursor-pointer"
+                  className="text-3xl xl:text-5xl text-accent animate-ping cursor-pointer"
                   onClick={() => setIsOpen(true)}
                 />
               </div>

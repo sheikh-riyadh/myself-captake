@@ -13,12 +13,12 @@ const FloatingCart = () => {
         className="right-2 fixed flex bottom-24 xl:bottom-5 mr-2 z-40"
         onClick={() => setIsFloatingModalOpen((prev) => !prev)}
       >
-        <div className="w-[60px] hidden md:block shadow-2xl shadow-[#081621] cursor-pointer duration-300 relative border-2 border-black hover:border-[#3749BB] rounded-md ">
-          <div className="bg-[#081621] flex justify-center items-center flex-col px-1 py-1 border-2 border-black hover:bg-[#3749BB] hover:border-[#3749BB]">
+        <div className="w-[60px] hidden md:block shadow-2xl  cursor-pointer duration-300 relative border-2 border-black hover:border-[#3749BB] rounded-md ">
+          <div className="bg-widget flex justify-center items-center flex-col">
             <FaShoppingBasket size={30} color="white" />
             <p className="text-white text-[10px]">CART</p>
           </div>
-          <span className="absolute -top-3 -right-2 bg-primary px-1.5 py-0.5 rounded-full text-sm text-white font-bold">
+          <span className="absolute -top-3 -right-2 bg-accent px-1.5 py-0.5 rounded-full text-sm text-white font-bold">
             {userCart?.length}
           </span>
         </div>

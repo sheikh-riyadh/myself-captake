@@ -69,7 +69,7 @@ const Questions = ({ product }) => {
                 <div className="md:col-span-3 xl:col-span-2">
                   <Button
                     onClick={() => setIsFocus(true)}
-                    className="rounded-none w-full uppercase py-2.5 bg-stech"
+                    className="rounded-none w-full uppercase py-2.5 bg-[#047857]"
                   >
                     Ask question
                   </Button>
@@ -98,7 +98,7 @@ const Questions = ({ product }) => {
                       <div className="md:col-span-4 xl:col-span-3">
                         <SubmitButton
                           isLoading={isLoading}
-                          className={" rounded-none w-full uppercase"}
+                          className={" rounded-none w-full uppercase bg-[#047857]"}
                         >
                           Submit
                         </SubmitButton>
@@ -113,14 +113,14 @@ const Questions = ({ product }) => {
           <div className="flex items-center gap-2 p-5">
             <Link
               to="/sign-in"
-              className="text-primary underline cursor-pointer"
+              className="text-[#047857] underline cursor-pointer"
             >
               Sign-in
             </Link>
             <span>or</span>
             <Link
               to="/sign-up"
-              className="text-primary underline cursor-pointer"
+              className="text-[#047857] underline cursor-pointer"
             >
               Register
             </Link>

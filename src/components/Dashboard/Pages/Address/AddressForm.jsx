@@ -99,19 +99,19 @@ const AddressForm = ({ updateData, setIsModalOpen }) => {
             {...register("fullName")}
             placeholder="Full name"
             required
-            className="border bg-transparent"
+            className="bg-[#1C2822] text-white rounded-sm"
           />
           <Input
             {...register("phoneNumber")}
             placeholder="Phone number"
             required
-            className="border bg-transparent"
+            className="bg-[#1C2822] text-white rounded-sm"
           />
           <SelectInput
             required
             {...register("country")}
             defaultValue={"bangladesh"}
-            className="border bg-transparent"
+            className="bg-[#1C2822] text-white rounded-sm"
           >
             <option value="bangladesh" selected>
               Bangladesh
@@ -120,7 +120,7 @@ const AddressForm = ({ updateData, setIsModalOpen }) => {
           <SelectInput
             {...register("state")}
             required
-            className="border bg-transparent"
+            className="bg-[#1C2822] text-white rounded-sm"
           >
             <option value="" selected disabled>
               Select state
@@ -138,7 +138,7 @@ const AddressForm = ({ updateData, setIsModalOpen }) => {
           <SelectInput
             {...register("city")}
             required
-            className="border bg-transparent"
+            className="bg-[#1C2822] text-white rounded-sm"
           >
             <option value="">Select city</option>
             {cities?.map((city) => (
@@ -155,19 +155,19 @@ const AddressForm = ({ updateData, setIsModalOpen }) => {
             {...register("zipcode")}
             placeholder="Zipcode"
             required
-            className="border bg-transparent"
+            className="bg-[#1C2822] text-white rounded-sm"
           />
           <Input
             {...register("addressLine1")}
             placeholder="Address line1"
             required
-            className="border bg-transparent"
+            className="bg-[#1C2822] text-white rounded-sm"
           />
           <Input
             {...register("addressLine2")}
             placeholder="Address line2"
             required
-            className="border bg-transparent"
+            className="bg-[#1C2822] text-white rounded-sm"
           />
         </div>
         <SubmitButton

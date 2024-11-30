@@ -49,7 +49,7 @@ const ReviewTable = () => {
                   <div className="flex gap-1 items-center">
                     {[...Array(item?.rating?.rating).keys()].map((rating) => (
                       <div key={rating}>
-                        <FaStar className="text-danger" />
+                        <FaStar className="text-accent" />
                       </div>
                     ))}
                   </div>

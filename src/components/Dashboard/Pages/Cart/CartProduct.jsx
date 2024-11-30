@@ -29,7 +29,7 @@ const CartProduct = ({ product }) => {
 
   return (
     <div>
-      <div className="flex items-center flex-wrap md:flex-nowrap justify-between gap-4 bg-white rounded-md shadow-md border p-5">
+      <div className="flex items-center flex-wrap md:flex-nowrap justify-between gap-4 bg-widget rounded-md shadow-md  text-white p-5">
         <div className="flex items-center flex-wrap md:flex-nowrap gap-3">
           <div>
             <img className="w-20" src={product?.image} alt="product_image" />
@@ -70,7 +70,7 @@ const CartProduct = ({ product }) => {
             onClick={() => dispatch(decreament(product?._id))}
             className="p-2 flex items-center justify-center border-0 rounded-sm bg-transparent text-stech hover:bg-stech hover:text-white duration-300"
           >
-            <FaMinus />
+            <FaMinus className="text-white" />
           </Button>
           <Input
             className="text-center w-10 rounded-none bg-transparent p-1"
@@ -81,7 +81,7 @@ const CartProduct = ({ product }) => {
             onClick={handleIncreament}
             className=" p-2 flex items-center justify-center border-0 rounded-sm bg-transparent text-stech hover:bg-stech hover:text-white duration-300"
           >
-            <FaPlus />
+            <FaPlus className="text-white" />
           </Button>
         </div>
       </div>

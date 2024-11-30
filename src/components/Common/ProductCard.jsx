@@ -25,7 +25,7 @@ const ProductCard = ({ className, imageSize, product }) => {
     <div
       onClick={() => handleRedirect(product)}
       className={cn(
-        `rounded-xl p-3 lg:p-5 bg-white border-b-2 relative cursor-pointer`,
+        `rounded-xl p-3 lg:p-5 bg-white border-b-2 relative cursor-pointer flex flex-col justify-between`,
         className
       )}
     >
@@ -37,7 +37,7 @@ const ProductCard = ({ className, imageSize, product }) => {
         />
       </div>
       <div>
-        <p className="text-sm hover:underline hover:text-primary">
+        <p className="text-sm hover:underline hover:text-[#047857]">
           {`${
             product?.title?.length > 50
               ? `${product?.title?.slice(0, 50)}...`
@@ -46,17 +46,17 @@ const ProductCard = ({ className, imageSize, product }) => {
         </p>
 
         {product?.specialPrice ? (
-          <div className="flex flex-wrap product-center gap-1 lg:gap-5">
-            <span className="text-primary font-semibold">
+          <div className="flex items-center flex-wrap product-center gap-1 lg:gap-5">
+            <span className="text-[#047857] font-semibold">
               {`${numberWithCommas(parseInt(product?.specialPrice))}TK`}
             </span>
-            <span className="line-through font-semibold text-sm">{`${numberWithCommas(
+            <span className="line-through font-semibold text-sm text-primary">{`${numberWithCommas(
               parseInt(product?.price)
             )}TK`}</span>
           </div>
         ) : (
           <div>
-            <span className="text-primary font-semibold">
+            <span className="text-[#047857] font-semibold">
               {`${numberWithCommas(parseInt(product?.price))}TK`}
             </span>
           </div>
@@ -64,7 +64,7 @@ const ProductCard = ({ className, imageSize, product }) => {
       </div>
       <div className="absolute top-4 left-0">
         {product?.discount && (
-          <span className="text-xs bg-primary text-white px-3 py-1 rounded-tr-xl rounded-br-xl">
+          <span className="text-xs bg-accent text-white px-3 py-1 rounded-tr-xl rounded-br-xl">
             Save: {`${numberWithCommas(parseInt(product?.discount))}TK`}
           </span>
         )}

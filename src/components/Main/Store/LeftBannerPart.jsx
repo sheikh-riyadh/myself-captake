@@ -70,7 +70,7 @@ const LeftBannerPart = ({ seller }) => {
           </div>
           <div>
             <Link to={`/single-store/${seller?._id}`}>
-              <button className="text-center font-bold w-full bg-stech text-white py-2.5 rounded-md">
+              <button className="text-center font-bold w-full bg-[#047857] text-white py-2.5 rounded-sm">
                 <span>View Store</span>
               </button>
             </Link>

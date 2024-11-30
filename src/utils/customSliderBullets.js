@@ -1,6 +1,6 @@
 const customSliderBullets = (
     bulletSize=10,
-    activeBulletColor="#dc3545",
+    activeBulletColor="#abd006",
     inActiveBulletColor="#2222228e",
     bulletWidth=30,
     bulletBorderRadius=0,

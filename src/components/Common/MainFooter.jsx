@@ -37,12 +37,12 @@ const MainFooter = () => {
   ];
 
   return (
-    <footer className=" bg-stech pt-10 mb-[68px] xl:mb-0">
+    <footer className=" bg-widget pt-10 mb-[68px] xl:mb-0">
       <div className="my_container">
         <div className="flex flex-col gap-5">
           <div className="flex flex-col md:flex-row md:items-center  md:justify-between gap-5">
             <div>
-              <h2 className="text-lg font-bold underline text-primary">
+              <h2 className="text-lg font-bold underline text-accent">
                 Site Links
               </h2>
               <div className="flex flex-col text-white">
@@ -71,7 +71,7 @@ const MainFooter = () => {
               </div>
             </div>
             <div>
-              <h2 className="text-lg font-bold underline text-primary">
+              <h2 className="text-lg font-bold underline text-accent">
                 Contact
               </h2>
               <div className="flex flex-col gap-1">

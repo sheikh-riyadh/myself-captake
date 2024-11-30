@@ -33,7 +33,7 @@ const CancelOrder = ({ item }) => {
         <span
           onClick={() => setIsCancelModalOpen(true)}
           title="Cancel order"
-          className="text-stech cursor-pointer border border-danger text-center w-8 h-8 rounded-full"
+          className="text-stech cursor-pointer text-center w-8 h-8 rounded-full"
         >
           <FcCancel className="w-full h-full" />
         </span>
@@ -49,7 +49,7 @@ const CancelOrder = ({ item }) => {
         >
           <div className="flex flex-col gap-5">
             {!isError ? (
-              <h1 className="text-lg text-center font-bold">
+              <h1 className="text-lg  text-white text-center font-bold">
                 {`Are your sure you want to cancel? This can't be undone.`}
               </h1>
             ) : (
@@ -57,7 +57,7 @@ const CancelOrder = ({ item }) => {
                 <div className="flex flex-col items-center justify-center gap-2">
                   <img className="w-20" src={failedImage} alt="sadface" />
                   <span className="font-bold text-danger">Request Failed</span>
-                  <span className="text-sm text-center">
+                  <span className="text-sm text-center text-white">
                     Your request has failed due to some technical error please
                     try again later
                   </span>
@@ -77,7 +77,7 @@ const CancelOrder = ({ item }) => {
                   isLoading={isLoading}
                   onClick={handleCancel}
                   loadingText="Canceling..."
-                  className="bg-stech"
+                  className=""
                 >
                   Sure
                 </SubmitButton>

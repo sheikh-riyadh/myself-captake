@@ -19,7 +19,7 @@ const Reviews = ({ productId }) => {
           ) : (
             <div className="flex gap-5 flex-col items-center justify-center w-full h-80 bg-white">
               <FaClipboard className="text-8xl text-slate" />
-              <span className="font-medium text-xl text-danger capitalize">
+              <span className="font-medium text-xl text-accent capitalize">
                 No data found
               </span>
             </div>

@@ -20,7 +20,7 @@ const ReviewCard = ({ data }) => {
           <div className="flex items-center gap-5">
             <div className="flex items-center gap-1 font-bold">
               {[...Array(data?.rating?.rating).keys()].map((key) => (
-                <FaStar className="text-primary" key={key} />
+                <FaStar className="text-accent" key={key} />
               ))}
               <span>{data?.rating?.rating}</span>
             </div>

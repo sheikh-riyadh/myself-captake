@@ -15,7 +15,7 @@ const SellerRatingPart = ({ seller }) => {
     <div>
       <span className="font-semibold">Rating and reviews</span>
       <div className="flex items-center gap-1">
-        <FaStar className="text-warning" />
+        <FaStar className="text-accent" />
         {!isLoading ? (
           <span className="font-semibold">{`(${data?.length} Reviews)`}</span>
         ) : (

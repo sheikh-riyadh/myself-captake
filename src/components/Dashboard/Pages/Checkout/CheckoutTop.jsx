@@ -10,7 +10,7 @@ const CheckoutTop = () => {
   const { selectedAddress } = useAddress();
 
   return (
-    <div className="flex items-center justify-between shadow-md border bg-white px-3 py-3 rounded-md cursor-pointer">
+    <div className="flex items-center justify-between shadow-md bg-widget text-white px-3 py-3 rounded-md cursor-pointer">
       <div className="flex items-center gap-1 text-sm">
         <div className="flex items-center justify-center gap-2 w-full">
           <div className="flex items-center gap-2 w-full">
@@ -36,7 +36,7 @@ const CheckoutTop = () => {
                   <p className="flex items-center gap-3">
                     {`${selectedAddress?.phoneNumber} | ${selectedAddress?.addressLine1}, ${selectedAddress?.country}, ${selectedAddress?.state},  ${selectedAddress?.city}`}
                     <Button
-                      className="font-normal text-stech bg-transparent w-16 text-xs lowercase border-none"
+                      className="font-normal bg-transparent w-16 text-xs lowercase border-none text-accent"
                       onClick={() => setIsAddressModalOpen(true)}
                     >
                       Change

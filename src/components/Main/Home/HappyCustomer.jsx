@@ -3,7 +3,7 @@ import Button from "../../Common/Button";
 import { Link } from "react-router-dom";
 const HappyCustomer = () => {
   return (
-    <div className="p-10 bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] rounded-xl">
+    <div className="p-10 bg-widget rounded-sm">
       <div className="flex flex-wrap justify-between items-center gap-5">
         <div className="flex flex-wrap items-center gap-5 text-white">
           <div>
@@ -19,7 +19,7 @@ const HappyCustomer = () => {
           </div>
         </div>
         <Link to={'/reviews'}>
-          <Button className="border px-10 py-4 rounded-xl text-white animate-bounce">
+          <Button className="px-10 py-4 rounded-sm text-white animate-bounce">
             See Reviews
           </Button>
         </Link>

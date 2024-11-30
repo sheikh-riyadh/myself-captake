@@ -15,7 +15,7 @@ const DashboardWishlist = () => {
         <div className="flex flex-col gap-5">
           {userWishlist?.map((product) => (
             <div key={product?._id}>
-              <div className="flex items-center justify-between gap-4 bg-white rounded-md shadow-md border p-5">
+              <div className="flex items-center justify-between gap-4 bg-widget rounded-md shadow-md text-white p-5">
                 <div className="flex items-center gap-3">
                   <div>
                     <img
@@ -55,9 +55,9 @@ const DashboardWishlist = () => {
           ))}
         </div>
       ) : (
-        <div className="flex gap-5 flex-col items-center justify-center w-full h-80 bg-white border rounded-md shadow-md">
+        <div className="flex gap-5 flex-col items-center justify-center w-full h-80 bg-widget rounded-md shadow-md">
           <FaClipboard className="text-8xl text-slate" />
-          <span className="font-medium text-xl text-danger capitalize">
+          <span className="font-medium text-xl text-accent capitalize">
             No data found
           </span>
         </div>

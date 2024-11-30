@@ -56,10 +56,10 @@ const ManageReview = ({ item }) => {
           disabled={data?._id ? true : false}
           title="Add review"
           onClick={() => setAddReviewModal((prev) => !prev)}
-          className="text-stech cursor-pointer border border-stech text-center p-2 rounded-full disabled:text-danger"
+          className="cursor-pointer border border-[#047857] text-center p-2 rounded-full disabled:text-danger"
         >
           {!reviewLoading ? (
-            <>{!data?._id ? <FaRegStar /> : <FaStar />}</>
+            <>{!data?._id ? <FaRegStar /> : <FaStar className="text-accent cursor-not-allowed" />}</>
           ) : (
             <FaRegFutbol className="animate-spin" />
           )}

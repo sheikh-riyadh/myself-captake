@@ -76,7 +76,7 @@ const CheckoutPayment = () => {
 
   return (
     <div
-      className={`shadow-md border bg-white px-4 py-5 rounded-md ${
+      className={`shadow-md bg-widget px-4 py-5 text-white rounded-md ${
         !orderSuccessModal && "sticky top-20"
       }`}
     >
@@ -109,18 +109,18 @@ const CheckoutPayment = () => {
             <div
               onClick={() => setPaymentMethod(option)}
               key={option}
-              className={`border p-2 rounded-md cursor-pointer ${
-                option === paymentMethod && "border-stech"
+              className={` p-2 rounded-md cursor-pointer ${
+                option === paymentMethod && "border-accent border"
               }`}
             >
               {option === "Cash On Delivery" ? (
                 <div className="flex flex-col items-center justify-center">
-                  <FaMoneyBillAlt className="text-6xl text-stech" />
+                  <FaMoneyBillAlt className="text-6xl text-white" />
                   <span className="leading-none text-sm">{option}</span>
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-center">
-                  <FaCcMastercard className="text-6xl text-stech" />
+                  <FaCcMastercard className="text-6xl text-white" />
                   <span className="leading-none text-sm">{option}</span>
                 </div>
               )}
@@ -160,7 +160,7 @@ const CheckoutPayment = () => {
             ) : (
               <div className="flex flex-col items-center justify-center gap-2">
                 <img className="w-44" src={sucessImage} alt="sadface" />
-                <span className="font-bold text-green-500">
+                <span className="font-bold text-[#047857]">
                   Thanks for your order
                 </span>
                 <span className="text-sm text-center">
@@ -168,7 +168,7 @@ const CheckoutPayment = () => {
                   receive an email with the order details
                 </span>
                 <Link to={"/dashboard/order"}>
-                  <Button className={"w-40 bg-transparent text-stech text-xs"}>
+                  <Button className={"w-40 bg-transparent text-[#047857]"}>
                     View order
                   </Button>
                 </Link>

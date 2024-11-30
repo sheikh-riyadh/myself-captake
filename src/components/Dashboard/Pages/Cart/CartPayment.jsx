@@ -42,7 +42,7 @@ const CartPayment = () => {
   };
 
   return (
-    <div className="shadow-md border bg-white px-4 py-5 rounded-md sticky top-20">
+    <div className="shadow-md bg-widget text-white px-4 py-5 rounded-md sticky top-20">
       <p className="font-bold text-sm">Order Summary</p>
       <div className="flex flex-col gap-2 mt-2">
         {orderSummery.map(({ title, value }) => (

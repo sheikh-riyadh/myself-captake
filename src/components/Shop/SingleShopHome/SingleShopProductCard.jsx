@@ -78,7 +78,7 @@ const SingleShopProductCard = ({ className, imageSize, product }) => {
     <div className="h-full">
       <div
         className={cn(
-          `rounded-xl p-3 lg:p-5 bg-white border-b-2 relative group h-full`,
+          `rounded-xl p-3 lg:p-5 bg-white border-b-2 relative group h-full flex flex-col justify-between`,
           className
         )}
       >
@@ -94,7 +94,7 @@ const SingleShopProductCard = ({ className, imageSize, product }) => {
         </div>
         <div>
           <div onClick={() => handleRedirect(product)}>
-            <p className="text-sm hover:underline hover:text-primary cursor-pointer">
+            <p className="text-sm hover:underline hover:text-[#047857] cursor-pointer">
               {`${
                 product?.title?.length > 50
                   ? `${product?.title?.slice(0, 50)}...`
@@ -104,10 +104,10 @@ const SingleShopProductCard = ({ className, imageSize, product }) => {
           </div>
           {product?.specialPrice ? (
             <div className="flex flex-wrap items-center gap-1 lg:gap-5">
-              <span className="text-primary font-semibold">
+              <span className="text-[#047857] font-semibold">
                 {`${numberWithCommas(product?.specialPrice)}TK`}
               </span>
-              <span className="line-through font-semibold text-sm">{`${numberWithCommas(
+              <span className="line-through font-semibold text-sm text-primary">{`${numberWithCommas(
                 product?.price
               )}TK`}</span>
             </div>
@@ -125,7 +125,7 @@ const SingleShopProductCard = ({ className, imageSize, product }) => {
               onClick={handleCart}
               className={`w-9 h-9 p-2 rounded-full  shadow-md border hover:bg-primary hover:text-white duration-500 cursor-pointer ${
                 userCart?.find((cart) => cart?._id === product?._id)
-                  ? "bg-primary text-white"
+                  ? "bg-[#047857] text-white"
                   : "bg-white"
               }`}
             />
@@ -133,7 +133,7 @@ const SingleShopProductCard = ({ className, imageSize, product }) => {
               onClick={handleWishlist}
               className={`w-9 h-9 p-2 rounded-full  shadow-md border hover:bg-primary hover:text-white duration-500 cursor-pointer ${
                 userWishlist?.find((list) => list?._id === product?._id)
-                  ? "bg-primary text-white"
+                  ? "bg-[#047857] text-white"
                   : "bg-white"
               }`}
             />

@@ -47,7 +47,7 @@ const GlobalSearch = ({ isModalOpen, setIsModalOpen, data, isLoading }) => {
                       setIsModalOpen(false);
                   }}
                   key={product?._id}
-                  className="hover:bg-blue-100 duration-500 p-3 rounded-md cursor-pointer"
+                  className="hover:bg-widget hover:text-white duration-500 p-3 rounded-md cursor-pointer"
                 
                 >
                   <div className="flex items-center flex-wrap xl:flex-nowrap gap-5">
@@ -65,10 +65,10 @@ const GlobalSearch = ({ isModalOpen, setIsModalOpen, data, isLoading }) => {
                         <div className="">
                           {product?.specialPrice ? (
                             <div className="flex gap-3">
-                              <span className="text-primary">
+                              <span className="text-[#047857] font-bold">
                                 TK {numberWithCommas(product?.specialPrice)}
                               </span>
-                              <span className="line-through">
+                              <span className="line-through text-primary font-medium">
                                 TK {numberWithCommas(product?.price)}
                               </span>
                             </div>
@@ -87,9 +87,9 @@ const GlobalSearch = ({ isModalOpen, setIsModalOpen, data, isLoading }) => {
           ) : (
             <div className="flex flex-col items-center justify-center h-[450px] w-full">
               {!isLoading ? (
-                <FaBoxOpen className="text-7xl text-secondary w-full" />
+                <FaBoxOpen className="text-7xl text-accent w-full" />
               ) : (
-                <FaFutbol className="text-7xl animate-spin" />
+                <FaFutbol className="text-7xl text-widget animate-spin" />
               )}
             </div>
           )}

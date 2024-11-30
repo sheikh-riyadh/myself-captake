@@ -54,9 +54,9 @@ const Wishlist = () => {
       <div className="lg:w-8/12 min-h-[350px] bg-white mt-20 rounded-md shadow p-5">
         <div className="flex flex-col items-center justify-center gap-5">
           {pathname == "/cart" ? (
-            <FaBagShopping className="text-6xl -mt-12 text-danger" />
+            <FaBagShopping className="text-6xl -mt-12 text-accent" />
           ) : (
-            <FaHeart className="text-6xl -mt-12 text-danger" />
+            <FaHeart className="text-6xl -mt-12 text-accent" />
           )}
           <span className="font-bold text-4xl capitalize">
             {`${
@@ -86,11 +86,8 @@ const Wishlist = () => {
                         : product?.title}
                     </span>
                     <div className="flex items-center gap-5">
-                      <span className="font-semibold text text-primary">{`${numberWithCommas(
-                        300000
-                      )}TK`}</span>
-                      <span className="line-through font-semibold text">{`${numberWithCommas(
-                        350000
+                      <span className="font-semibold text text-[#047857]">{`${numberWithCommas(
+                        product?.price
                       )}TK`}</span>
                     </div>
                   </div>
@@ -137,7 +134,7 @@ const Wishlist = () => {
         ) : (
           <div className="flex gap-5 flex-col items-center justify-center w-full h-80 bg-white">
             <FaClipboard className="text-8xl text-slate" />
-            <span className="font-medium text-xl text-danger capitalize">
+            <span className="text-xl text-accent font-bold capitalize">
               No data found
             </span>
           </div>

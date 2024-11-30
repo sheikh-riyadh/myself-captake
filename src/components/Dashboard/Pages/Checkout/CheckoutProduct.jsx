@@ -3,7 +3,7 @@ import { numberWithCommas } from "../../../../utils/numberWithComma";
 const CheckoutProduct = ({ product }) => {
   return (
     <div>
-      <div className="flex items-center justify-between gap-4 bg-white rounded-md shadow-md border p-5 w-full">
+      <div className="flex items-center justify-between gap-4 bg-widget rounded-md shadow-md text-white p-5 w-full">
         <div className="flex items-center flex-wrap md:flex-nowrap gap-3 w-full">
           <div>
             <img className="w-20" src={product?.image} alt="product_image" />

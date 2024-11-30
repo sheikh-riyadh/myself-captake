@@ -20,7 +20,7 @@ const Checkout = () => {
             ))
           ) : (
             <div className="flex flex-col items-center  justify-center">
-              <span className="text-center text-xl font-bold py-10">{`There are no product (0)`}</span>
+              <span className="text-center text-xl font-bold py-10 text-accent">{`There are no product (0)`}</span>
               <Link to="/" target="_self">
                 <Button>Continue Shopping</Button>
               </Link>

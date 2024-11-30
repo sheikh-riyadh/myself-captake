@@ -7,7 +7,7 @@ const Notice = ({ sellerId }) => {
   return (
     <>
       {!isLoading ? (
-        <div className="bg-white p-4 rounded-full my-10">
+        <div className="bg-white p-4 rounded-full my-10 border-b-2">
           <Marquee>
             {data?.announcement ? (
               <span className="font-semibold">{data?.announcement}</span>

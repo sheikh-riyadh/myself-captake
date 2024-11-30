@@ -27,7 +27,7 @@ const Tabs = ({ product }) => {
 
   return (
     <div className="my-10 xl:my-20">
-      <div className="grid md:grid-cols-5 text-center rounded bg-stech overflow-hidden shadow-md">
+      <div className="grid md:grid-cols-5 text-center rounded bg-widget overflow-hidden shadow-md">
         {[
           "Description",
           "Additional info",

@@ -180,16 +180,16 @@ const RightSide = ({ product }) => {
           <div className="flex items-center gap-5">
             {product?.specialPrice ? (
               <>
-                <span className="font-semibold text-xl text-primary">{`${numberWithCommas(
+                <span className="font-semibold text-xl text-[#047857]">{`${numberWithCommas(
                   parseInt(product?.specialPrice)
                 )}TK`}</span>
-                <span className="line-through font-semibold text-xl text-black">{`${numberWithCommas(
+                <span className="line-through font-semibold text-xl text-primary">{`${numberWithCommas(
                   parseInt(product?.price)
                 )}TK`}</span>
               </>
             ) : (
               <>
-                <span className="font-semibold text-xl text-primary">{`${numberWithCommas(
+                <span className="font-semibold text-xl text-accent">{`${numberWithCommas(
                   parseInt(product?.price)
                 )}TK`}</span>
               </>
@@ -215,7 +215,7 @@ const RightSide = ({ product }) => {
               <button
                 onClick={handleBuyNow}
                 disabled={product?.stock == 0}
-                className="py-2 text-center text-white font-semibold bg-primary w-full rounded disabled:bg-gray-400"
+                className="py-2 text-center text-white font-semibold bg-[#047857] w-full rounded disabled:bg-gray-400"
               >
                 Buy Now
               </button>
@@ -229,7 +229,7 @@ const RightSide = ({ product }) => {
                 onClick={product?.stock > 0 ? handleCart : null}
                 className={`border text-xl w-full p-2.5 h-10 rounded cursor-pointer ${
                   userCart?.find((cart) => cart?._id === product?._id)
-                    ? " bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] text-white"
+                    ? "bg-[#047857] text-white"
                     : null
                 }`}
               />
@@ -237,7 +237,7 @@ const RightSide = ({ product }) => {
                 onClick={handleWishlist}
                 className={`border text-xl w-full p-2.5 h-10 rounded cursor-pointer ${
                   userWishlist?.find((list) => list?._id === product?._id)
-                    ? " bg-gradient-to-r from-[#0bc1e9] via-[#3749bb] to-[#00237e] text-white"
+                    ? "bg-[#047857] text-white"
                     : null
                 }`}
               />
@@ -246,7 +246,7 @@ const RightSide = ({ product }) => {
               to={`/single-store/${product?.sellerId}`}
               className="font-semibold w-full rounded bg-stech text-white"
             >
-              <button className="py-2 font-semibold w-full rounded bg-stech text-white">
+              <button className="py-2 font-semibold w-full rounded bg-widget text-white">
                 View Store
               </button>
             </Link>
@@ -266,7 +266,7 @@ const RightSide = ({ product }) => {
                 <FaTruck />
                 <span>Free Delivery</span>
               </div>
-              <span className="text-primary font-medium capitalize">
+              <span className="text-[#047857] font-medium capitalize">
                 {product?.freeDeliveryAvailable}
               </span>
             </div>

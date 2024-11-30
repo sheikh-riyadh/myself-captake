@@ -20,11 +20,20 @@ const Registration = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-
   const disptach = useDispatch();
   const [createUser] = useCreateUserMutation();
 
   const handleRegistration = async (data) => {
+    const passwordRegex =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordRegex.test(data?.password)) {
+      toast.error(
+        "Password must be at least 8 characters,at least one letter, one number, and one special character",
+        { id: "validation_error", duration: 7000 }
+      );
+      return;
+    }
+
     setIsLoading(true);
     try {
       const result = await createUserWithEmailAndPassword(
@@ -33,6 +42,7 @@ const Registration = () => {
         data.password
       );
       if (result?.user?.accessToken && result.user.email) {
+        delete data?.password;
         const res = await createUser(data);
         if (res?.data?.acknowledged) {
           disptach(addUser({ ...res?.data }));
@@ -93,6 +103,10 @@ const Registration = () => {
               required
             />
           </div>
+          <span className="text-xs">
+            Password must be at least 8 characters, one letter, one number, and
+            one special character
+          </span>
           <SubmitButton
             isLoading={isLoading}
             className="font-medium uppercase text-sm w-36"

@@ -6,9 +6,13 @@ import RightSide from "../../components/Dashboard/Layout/RightSide";
 
 const DashboardLayout = () => {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden"
+    style={{
+      backgroundColor:"#171f12"
+    }}
+    >
       <div className={`flex`}>
-        <div className="bg-white hidden lg:block">
+        <div className="bg-widget hidden lg:block">
           <LeftSide />
         </div>
         <div className="w-full h-[calc(100vh)] overflow-y-auto bar-hidden">

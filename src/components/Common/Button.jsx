@@ -5,7 +5,7 @@ const Button = ({ children, className, ...rest }) => {
   return (
     <button
       className={cn(
-        `w-full bg-secondary p-2 text-white rounded-md font-medium text-sm border uppercase hover:opacity-85`,
+        `w-full bg-[#047857] p-2.5 text-white rounded-sm font-medium text-sm uppercase hover:opacity-85`,
         className
       )}
       {...rest}

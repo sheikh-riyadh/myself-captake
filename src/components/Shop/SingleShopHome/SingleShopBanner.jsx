@@ -31,12 +31,12 @@ const SingleShopBanner = ({ sellerId }) => {
       {!isLoading ? (
         <div className="mt-[80px] lg:mt-24 xl:mt-[100px]">
           <div className="h-full lg:grid lg:grid-cols-12 gap-5">
-            <div className="lg:col-span-3 h-full w-full mt-5 lg:mt-0 hidden lg:block">
+            <div className="lg:col-span-3 h-full w-full border-b-2 mt-5 lg:mt-0 hidden lg:block">
               <div className="h-full w-full bg-white">
                 <div className="flex flex-col items-center justify-between h-full w-full pt-16">
                   <div className="flex flex-col items-center gap-3">
                     <img
-                      className="w-32 h-32 border-4 rounded-full border-[#081621]"
+                      className="w-32 h-32 border-4 rounded-full border-accent"
                       src={data?.store?.logo}
                       alt="shop_logo"
                     />

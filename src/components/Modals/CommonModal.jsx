@@ -37,17 +37,17 @@ const CommonModal = ({
     >
       <div
         className={cn(
-          "bg-white rounded-lg p-5 shadow-lg  overflow-y-auto custom-bar",
+          "bg-bg_primary border rounded-lg p-5 shadow-lg  overflow-y-auto custom-bar",
           className
         )}
       >
         <div className="flex flex-col gap-5">
           {isOutsideClick ? (
             <div className="flex items-center justify-between">
-              <span className="font-bold">{title}</span>
+              <span className="font-bold text-white">{title}</span>
               <FaCircleXmark
                 onClick={() => onClose()}
-                className="text-2xl text-danger duration-300 cursor-pointer"
+                className="text-2xl text-accent duration-300 cursor-pointer"
               />
             </div>
           ) : null}
