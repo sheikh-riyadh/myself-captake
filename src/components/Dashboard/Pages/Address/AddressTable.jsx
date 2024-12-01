@@ -8,7 +8,12 @@ import DeleteAddress from "./DeleteAddress";
 
 const AddressTable = () => {
   const { user } = useGetUser();
-  const { data, isLoading } = useGetAddressQuery({ userId: user?._id });
+
+  const query= new URLSearchParams({
+    userId:user?._id,
+    email:user?.email,
+  }).toString()
+  const { data, isLoading } = useGetAddressQuery(query);
 
   return (
     <div className="overflow-hidden">
@@ -48,7 +53,7 @@ const AddressTable = () => {
                 return (
                   <div className="flex items-center gap-2">
                     <UpdateAddress item={item} />
-                    <DeleteAddress userId={user?._id} _id={item?._id}/>
+                    <DeleteAddress userId={user?._id} _id={item?._id} email={user?.email}/>
                   </div>
                 );
               },

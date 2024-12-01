@@ -34,14 +34,14 @@ const FloatingCartModal = ({ onClose }) => {
       ref={modalRef}
       className="rtl-animation origin-right h-screen transition-all bg-white min-w-[320px] sm:w-[360px] md:w-[380px] shadow-2xl duration-500 font-Quicksand flex flex-col justify-between overflow-y-auto right-0 fixed z-50 top-0"
     >
-      <div>
-        <div className="flex items-center justify-between px-1 py-2 bg-[#01132D]">
+      <div className="border-l border-t">
+        <div className="flex items-center justify-between p-2 bg-widget">
           <p className="uppercase text-white font-semibold">your cart</p>
           <button
             className="text-white hover:text-opacity-80 "
             onClick={() => onClose()}
           >
-            <FaCircleXmark className="text-2xl text-danger duration-300 cursor-pointer" />
+            <FaCircleXmark className="text-2xl text-accent duration-300 cursor-pointer" />
           </button>
         </div>
         {userCart?.length > 0 ? (
@@ -71,7 +71,7 @@ const FloatingCartModal = ({ onClose }) => {
               onClick={() => {
                 navigate("/dashboard/my-cart"), onClose();
               }}
-              className="w-full inline-block text-center p-2 text-white bg-primary font-bold origin-top duration-300 rounded-none"
+              className="w-full inline-block text-center p-2 text-white font-bold origin-top duration-300 rounded-none"
             >
               Cart
             </Button>

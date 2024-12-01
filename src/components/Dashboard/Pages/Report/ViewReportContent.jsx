@@ -2,8 +2,15 @@ import PropTypes from "prop-types";
 import { FaUserCircle } from "react-icons/fa";
 import { useGetReportedSellerQuery } from "../../../../store/shop/service/report/reportApi";
 import LoadingSpinner from "../../../Common/LoadingSpinner";
+import { useGetUser } from "../../../../hooks/useGetUser";
 const ViewReportContent = ({ item }) => {
-  const { data, isLoading } = useGetReportedSellerQuery(item?.againstTo);
+  const { user } = useGetUser();
+  const query = new URLSearchParams({
+    email: user?.email,
+    id: item?.againstTo,
+  }).toString();
+
+  const { data, isLoading } = useGetReportedSellerQuery(query);
 
   return (
     <div>

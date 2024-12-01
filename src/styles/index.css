@@ -122,6 +122,15 @@ input[type="number"] {
   }
 }
 
+/* jodit */
+.jodit-toolbar__box,
+.jodit-status-bar {
+  background: #1f2e2c !important;
+}
+
+
+
+
 /* Default color */
 body {
   --primary: #ef4a23;

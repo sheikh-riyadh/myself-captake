@@ -49,14 +49,14 @@ const ReportForm = ({ setReportModal }) => {
           required
           label="Report title"
           placeholder="Title"
-          className={"bg-transparent border"}
+          className={"bg-[#1C2822] text-white rounded-sm"}
         />
         <TextArea
           {...register("reportMessage")}
           required
           label="Report message"
           placeholder="Message"
-          className={"bg-transparent border h-36"}
+          className={"bg-[#1C2822] text-white rounded-sm h-36"}
         />
         <SubmitButton isLoading={isLoading}>Send</SubmitButton>
       </form>

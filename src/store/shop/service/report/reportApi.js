@@ -3,8 +3,8 @@ import { baseApi } from "../../../api/baseApi";
 const reportApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getReport: build.query({
-      query: (id) => ({
-        url: `user-report/${id}`,
+      query: (data) => ({
+        url: `user-report?${data}`,
       }),
       providesTags: ["user-report"],
     }),
@@ -17,8 +17,8 @@ const reportApi = baseApi.injectEndpoints({
       invalidatesTags: ["user-report"],
     }),
     getReportedSeller: build.query({
-      query: (id) => ({
-        url: `reported-seller/${id}`,
+      query: (data) => ({
+        url: `reported-seller?${data}`,
       }),
     }),
   }),

@@ -67,9 +67,9 @@ const Table = ({ columns, tableData, className }) => {
           </tbody>
         </table>
       ) : (
-        <div className="flex gap-5 flex-col items-center justify-center w-full h-80 bg-white">
+        <div className="flex gap-5 flex-col items-center justify-center w-full h-80 bg-widget">
           <FaClipboard className="text-8xl text-slate"  />
-          <span className="font-medium text-xl text-danger capitalize">No data found</span>
+          <span className="font-medium text-xl text-accent capitalize">No data found</span>
         </div>
       )}
     </div>

@@ -4,7 +4,13 @@ import { useDeleteAddressMutation } from "../../../../store/dashboard/service/ad
 import DeleteModal from "../../../Modals/DeleteModal";
 import PropTypes from "prop-types";
 
-const DeleteAddress = ({ userId, _id }) => {
+const DeleteAddress = ({ userId, _id, email }) => {
+  const query = new URLSearchParams({
+    userId,
+    _id,
+    email
+  }).toString();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteAddress, { isLoading }] = useDeleteAddressMutation();
 
@@ -20,7 +26,7 @@ const DeleteAddress = ({ userId, _id }) => {
 
       {isModalOpen && (
         <DeleteModal
-          deleteData={{ userId, _id }}
+          deleteData={query}
           handleDeleteFunction={deleteAddress}
           isLoading={isLoading}
           isModalOpen={isModalOpen}
@@ -35,6 +41,7 @@ const DeleteAddress = ({ userId, _id }) => {
 DeleteAddress.propTypes = {
   userId: PropTypes.string,
   _id: PropTypes.string,
+  email:PropTypes.string
 };
 
 export default DeleteAddress;

@@ -9,7 +9,13 @@ import ViewReview from "./ViewReview";
 
 const ReviewTable = () => {
   const { user } = useGetUser();
-  const { data, isLoading } = useGetReviewsQuery(user?._id);
+
+  const query= new URLSearchParams({
+    userId:user?._id,
+    email:user?.email,
+  }).toString()
+
+  const { data, isLoading } = useGetReviewsQuery(query);
 
   return (
     <div className="overflow-hidden">

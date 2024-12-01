@@ -3,7 +3,10 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { addUser } from "../../../store/main/features/user/userSlice";
 import { auth } from "../../../firebase/firebase.config";
 import Input from "../../Common/Input";
@@ -11,7 +14,7 @@ import SubmitButton from "../../Common/SubmitButton";
 import Button from "../../Common/Button";
 import CommonModal from "../../Modals/CommonModal";
 import ForgetPassword from "./ForgetPassword";
-import { useLazyGetUserQuery } from "../../../store/main/service/user/auth_api_service";
+import { useCreateJwtMutation, useLazyGetUserQuery } from "../../../store/main/service/user/auth_api_service";
 import { FaHome } from "react-icons/fa";
 
 const Login = () => {
@@ -26,12 +29,27 @@ const Login = () => {
 
   const disptach = useDispatch();
   const [getUser] = useLazyGetUserQuery();
+  const [createJwt,{isLoading:jwtLoading}]=useCreateJwtMutation()
 
   const handleLogin = async ({ email, password }) => {
     setIsLoading(true);
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       if (result?.user?.accessToken && result.user.email) {
+        if (!result?.user?.emailVerified) {
+          try {
+            await sendEmailVerification(result?.user);
+            toast.success(`Please check email and verify`, {
+              id: "verify_email",
+            });
+            setIsLoading(false);
+          } catch (error) {
+            toast.error("Something went wrong 😓", { id: error });
+            setIsLoading(false);
+          }
+          return;
+        }
+        await createJwt({ email: result.user.email });
         const res = await getUser(result.user.email);
         if (res?.data?.email) {
           disptach(addUser({ ...res?.data }));
@@ -82,12 +100,12 @@ const Login = () => {
             >
               Forget Your Password?
             </span>
-            <SubmitButton isLoading={isLoading} className="w-40">
+            <SubmitButton isLoading={isLoading || jwtLoading} className="w-40">
               Sign In
             </SubmitButton>
           </div>
         </form>
-        <div className="bg-secondary md:rounded-l-[30%] flex flex-col gap-5 items-center justify-center p-7 text-center text-white order-first md:order-none rtl-animation relative">
+        <div className="bg-[#047857] md:rounded-l-[30%] flex flex-col gap-5 items-center justify-center p-7 text-center text-white order-first md:order-none rtl-animation relative">
           <Link to="/" title="Return main website">
             <FaHome className="text-5xl border p-2 rounded-full" />
           </Link>
@@ -96,7 +114,7 @@ const Login = () => {
             Register with your personal details to use all of the site features
           </span>
           <Link to="/sign-up">
-            <Button className="w-40 bg-transparent">Sign Up</Button>
+            <Button className="w-40 bg-transparent border">Sign Up</Button>
           </Link>
         </div>
       </div>

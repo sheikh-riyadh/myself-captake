@@ -24,6 +24,12 @@ const auth_api_service = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["user"],
     }),
+    logout: build.query({
+      query: () => ({
+        url: `logout`,
+      }),
+      invalidatesTags: ["user"],
+    }),
     updateUser: build.mutation({
       query: (data) => ({
         url: "user-update",
@@ -42,4 +48,5 @@ export const {
   useLazyGetUserQuery,
   useUpdateUserMutation,
   useCreateJwtMutation,
+  useLazyLogoutQuery,
 } = auth_api_service;

@@ -15,7 +15,12 @@ const QnA = () => {
   const [currentQuestion, setCurrentQuestion] = useState();
   const { user } = useGetUser();
 
-  const { data, isLoading } = useGetQnAQuery(user?._id);
+  const query = new URLSearchParams({
+    userId: user?._id,
+    email: user?.email,
+  }).toString();
+
+  const { data, isLoading } = useGetQnAQuery(query);
   const navigate = useNavigate();
 
   const handleRedirect = (product) => {
@@ -43,10 +48,10 @@ const QnA = () => {
   return (
     <div>
       {!isLoading ? (
-        <div>
+        <>
           {data?.length ? (
             <div className="grid md:grid-cols-12 gap-5 m-5 h-screen">
-              <div className="md:col-span-4 md:h-[calc(100%-100px)] overflow-y-auto custom-bar w-full border flex flex-col rounded-md bg-white">
+              <div className="md:col-span-4 md:h-[calc(100%-100px)] overflow-y-auto custom-bar w-full flex flex-col rounded-md bg-widget">
                 {data?.map((question) => (
                   <div
                     key={question?._id}
@@ -55,8 +60,8 @@ const QnA = () => {
                     }}
                     className={`px-5 py-5 cursor-pointer ${
                       currentQuestion?._id === question?._id
-                        ? "bg-blue-50"
-                        : null
+                        ? "bg-[#0000002d] text-white"
+                        : "text-white"
                     }`}
                   >
                     <div className="flex gap-5">
@@ -68,7 +73,7 @@ const QnA = () => {
                               ? question?.answer?.logo
                               : question?.question?.productInfo?.productImage
                           }
-                          alt=""
+                          alt="logo"
                         />
                       </div>
                       <div className="flex flex-col gap-1">
@@ -112,7 +117,7 @@ const QnA = () => {
                         </span>
                         {Object?.keys(question?.answer).length ? (
                           <div className="flex flex-col items-center justify-center">
-                            <FaCheckCircle className="text-green-600" />
+                            <FaCheckCircle className="text-[#047857]" />
                           </div>
                         ) : null}
                       </div>
@@ -120,9 +125,9 @@ const QnA = () => {
                   </div>
                 ))}
               </div>
-              <div className="md:col-span-8 md:h-[calc(100%-100px)] custom-bar overflow-y-auto w-full border rounded-md relative bg-white">
+              <div className="md:col-span-8 md:h-[calc(100%-100px)] custom-bar overflow-y-auto w-full rounded-md relative bg-widget text-white">
                 <div>
-                  <div className="border-b flex gap-5 p-2">
+                  <div className="border-b border-black flex gap-5 p-2">
                     <img
                       className="w-16 h-16"
                       src={currentQuestion?.question?.productInfo?.productImage}
@@ -130,7 +135,7 @@ const QnA = () => {
                     />
                     <div className="flex flex-col">
                       <span
-                        className="hover:underline cursor-pointer hover:text-primary"
+                        className="hover:underline cursor-pointer hover:text-[#047857]"
                         onClick={handleRedirect}
                       >
                         {currentQuestion?.question?.productInfo?.title}
@@ -167,7 +172,7 @@ const QnA = () => {
                           <img
                             className="w-full h-full rounded-full"
                             src={currentQuestion?.answer.logo}
-                            alt=""
+                            alt="logo"
                           />
                         </div>
                         <div className="bg-blue-100 p-3 rounded-md relative w-3/6">
@@ -197,17 +202,17 @@ const QnA = () => {
               </div>
             </div>
           ) : (
-            <div className="flex gap-5 flex-col items-center justify-center w-full h-80 bg-white">
+            <div className="flex gap-5 flex-col items-center justify-center w-full h-80">
               <FaClipboard className="text-8xl text-slate" />
-              <span className="font-medium text-xl text-danger capitalize">
+              <span className="font-medium text-xl text-accent capitalize">
                 No data found
               </span>
             </div>
           )}
-        </div>
+        </>
       ) : (
-        <div className="flex flex-col items-center justify-center h-80">
-          <FaFutbol className="text-6xl animate-spin" />
+        <div className="flex flex-col items-center justify-center h-80 bg-widget m-5">
+          <FaFutbol className="text-6xl text-accent animate-spin" />
         </div>
       )}
     </div>

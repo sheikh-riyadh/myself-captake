@@ -32,6 +32,7 @@ const Questions = ({ product }) => {
         userName: user?.fName + "" + user?.lName,
         userId: user?._id,
         userPhoto: user?.photo,
+        email:user?.email
       },
       userQuestion: data.question,
     };

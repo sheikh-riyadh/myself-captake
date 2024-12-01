@@ -3,14 +3,14 @@ import { baseApi } from "../../../api/baseApi";
 const reviewApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getReviews: build.query({
-      query: (userId) => ({
-        url: `review/${userId}`,
+      query: (data) => ({
+        url: `review?${data}`,
       }),
       providesTags: ["review"],
     }),
     getReviewByOrderId: build.query({
-      query: (orderId) => ({
-        url: `review-orderId/${orderId}`,
+      query: (data) => ({
+        url: `review-orderId?${data}`,
       }),
       providesTags: ["review"],
     }),

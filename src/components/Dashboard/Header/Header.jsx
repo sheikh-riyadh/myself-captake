@@ -18,7 +18,7 @@ const Header = () => {
   const [adminMessageModal, setAdminMessageModal] = useState(false);
 
   const { data: MessageData, isLoading: MessageLoading } =
-    useGetAdminMessageQuery();
+    useGetAdminMessageQuery(user?.email);
 
   const todayMessages = MessageData?.filter(
     (message) => message?.date === moment().format("L")

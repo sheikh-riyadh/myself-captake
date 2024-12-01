@@ -16,7 +16,7 @@ const CancelOrder = ({ item }) => {
     try {
       const res = await orderCancel({
         _id: item?._id,
-        data: { userId: item?.userId, status: "cancelled" },
+        data: { userId: item?.userId, email:item?.userInfo?.email, status: "cancelled" },
       });
       if (!res?.error) {
         toast.success("Order cancelled successfully", { id: "order_cancel" });

@@ -11,7 +11,13 @@ import moment from "moment";
 
 const OrderTable = () => {
   const { user } = useGetUser();
-  const { data, isLoading } = useGetOrderQuery(user?._id);
+
+  const query = new URLSearchParams({
+    userId: user?._id,
+    email: user?.email,
+  }).toString();
+
+  const { data, isLoading } = useGetOrderQuery(query);
 
   return (
     <div className="overflow-hidden">

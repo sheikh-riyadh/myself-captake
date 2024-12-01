@@ -7,7 +7,7 @@ import { FaHome } from "react-icons/fa";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Button from "../../Common/Button";
 import Input from "../../Common/Input";
-import { useCreateUserMutation } from "../../../store/main/service/user/auth_api_service";
+import { useCreateJwtMutation, useCreateUserMutation } from "../../../store/main/service/user/auth_api_service";
 import { auth } from "../../../firebase/firebase.config";
 import { addUser } from "../../../store/main/features/user/userSlice";
 import SubmitButton from "../../Common/SubmitButton";
@@ -22,6 +22,7 @@ const Registration = () => {
 
   const disptach = useDispatch();
   const [createUser] = useCreateUserMutation();
+  const [createJwt,{isLoading:jwtLoading}]=useCreateJwtMutation()
 
   const handleRegistration = async (data) => {
     const passwordRegex =
@@ -42,6 +43,7 @@ const Registration = () => {
         data.password
       );
       if (result?.user?.accessToken && result.user.email) {
+        await createJwt({ email: result.user.email });
         delete data?.password;
         const res = await createUser(data);
         if (res?.data?.acknowledged) {
@@ -69,7 +71,7 @@ const Registration = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen w-full my_container">
       <div className="md:w-4/5 lg:w-4/6 xl:w-7/12 bg-white border shadow-lg rounded-xl grid grid-cols-1 md:grid-cols-2 overflow-hidden md:h-2/5 lg:h-[420px] xl:h-4/6">
-        <div className="bg-secondary md:rounded-r-[30%] flex flex-col gap-5 items-center justify-center p-7 text-center text-white relative ltr-animation">
+        <div className="bg-[#047857] md:rounded-r-[30%] flex flex-col gap-5 items-center justify-center p-7 text-center text-white relative ltr-animation">
           <Link to="/" title="Return main website">
             <FaHome className="text-5xl border p-2 rounded-full" />
           </Link>
@@ -78,7 +80,7 @@ const Registration = () => {
             Enter your personal details to use all of the site features
           </span>
           <Link to="/sign-in">
-            <Button className="uppercase w-32">Sign In</Button>
+            <Button className="uppercase w-40 border">Sign In</Button>
           </Link>
         </div>
 
@@ -108,7 +110,7 @@ const Registration = () => {
             one special character
           </span>
           <SubmitButton
-            isLoading={isLoading}
+            isLoading={isLoading || jwtLoading}
             className="font-medium uppercase text-sm w-36"
           >
             Sing Up

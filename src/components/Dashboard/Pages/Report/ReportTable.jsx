@@ -6,7 +6,13 @@ import ViewReport from "./ViewReport";
 
 const ReportTable = () => {
   const { user } = useGetUser();
-  const { data, isLoading } = useGetReportQuery(user?._id);
+
+  const query = new URLSearchParams({
+    id: user?._id,
+    email: user?.email,
+  }).toString();
+
+  const { data, isLoading } = useGetReportQuery(query);
 
   return (
     <div className="overflow-hidden">

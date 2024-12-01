@@ -2,6 +2,14 @@ import PropTypes from "prop-types";
 import { useRef, useMemo } from "react";
 import JoditEditor from "jodit-react";
 
+
+
+
+
+
+
+
+
 const JoditTextArea = ({
   content,
   setContent,
@@ -17,6 +25,13 @@ const JoditTextArea = ({
       required: true,
       height,
       toolbarStickyOffset,
+      theme: "dark",
+      hidePoweredByJodit: true,
+      style: {
+        padding: "20",
+        background: "#1C2822",
+        color: "#fff",
+      },
     }),
     [height, toolbarStickyOffset]
   );

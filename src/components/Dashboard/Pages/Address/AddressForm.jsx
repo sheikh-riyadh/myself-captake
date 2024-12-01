@@ -31,6 +31,7 @@ const AddressForm = ({ updateData, setIsModalOpen }) => {
     const newData = {
       ...data,
       userId: user?._id,
+      email:user?.email
     };
 
     if (selectedAddress?._id === updateData?._id) {

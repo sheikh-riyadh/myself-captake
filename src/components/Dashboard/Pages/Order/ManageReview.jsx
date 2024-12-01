@@ -14,9 +14,13 @@ import SubmitButton from "../../../Common/SubmitButton";
 const ManageReview = ({ item }) => {
   const [rating, setRating] = useState(0);
   const [addReviewModal, setAddReviewModal] = useState(false);
-  const { data, isLoading: reviewLoading } = useGetReviewByOrderIdQuery(
-    item?.orderId
-  );
+
+  const query = new URLSearchParams({
+    orderId: item?.orderId,
+    email: item?.userInfo?.email,
+  }).toString();
+
+  const { data, isLoading: reviewLoading } = useGetReviewByOrderIdQuery(query);
 
   const [addReview, { isLoading, isSuccess }] = useCreateReviewMutation();
 
@@ -59,7 +63,13 @@ const ManageReview = ({ item }) => {
           className="cursor-pointer border border-[#047857] text-center p-2 rounded-full disabled:text-danger"
         >
           {!reviewLoading ? (
-            <>{!data?._id ? <FaRegStar /> : <FaStar className="text-accent cursor-not-allowed" />}</>
+            <>
+              {!data?._id ? (
+                <FaRegStar />
+              ) : (
+                <FaStar className="text-accent cursor-not-allowed" />
+              )}
+            </>
           ) : (
             <FaRegFutbol className="animate-spin" />
           )}
@@ -90,7 +100,7 @@ const ManageReview = ({ item }) => {
                     name="reviewMessage"
                     required
                     key={"review-message"}
-                    className="w-full h-28 bg-transparent border"
+                    className="bg-[#1C2822] text-white rounded-sm w-full h-28"
                     placeholder="Write review message here..."
                   />
                   <SubmitButton isLoading={isLoading}>Save</SubmitButton>
@@ -99,8 +109,8 @@ const ManageReview = ({ item }) => {
             </form>
           ) : (
             <div className="flex flex-col gap-5 items-center justify-center">
-              <FaGrinHearts className="text-8xl text-red-600" />
-              <span className="text-center font-medium text">
+              <FaGrinHearts className="text-8xl text-[#047857]" />
+              <span className="text-center font-medium text text-white">
                 Thanks a ton for sharing your thoughts! Your feedback means the
                 world to us.
               </span>

@@ -14,6 +14,7 @@ import {
   handleQnASize,
 } from "../../../store/dashboard/features/QnA/qnaSlice";
 import { useQnA } from "../../../hooks/useQnAIndex";
+import { useLazyLogoutQuery } from "../../../store/main/service/user/auth_api_service";
 
 const RightSide = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,23 +23,33 @@ const RightSide = () => {
   const { user } = useGetUser();
   const dispatch = useDispatch();
 
-  const { data: QuestionData, isLoading: QuestionLoading } = useGetQnAQuery(
-    user?._id
-  );
+  const query = new URLSearchParams({
+    userId: user?._id,
+    email: user?.email,
+  }).toString();
+
+  const [logout] = useLazyLogoutQuery();
+
+  const { data: QuestionData, isLoading: QuestionLoading } =
+    useGetQnAQuery(query);
   const { data: MessageData, isLoading: MessageLoading } =
-    useGetAdminMessageQuery();
+    useGetAdminMessageQuery(user?.email);
 
   const todayMessages = MessageData?.filter(
     (message) => message?.date === moment().format("L")
   );
 
   const answered = QuestionData?.filter((question) => question?.answer?.answer);
-
   const { isClicked, showSize } = useQnA();
 
   useEffect(() => {
     dispatch(handleQnASize(answered?.length));
   }, [dispatch, answered]);
+
+  const handleLogout = async () => {
+    await logout();
+    dispatch(removeUser());
+  };
 
   return (
     <div className="relative h-full">
@@ -87,7 +98,7 @@ const RightSide = () => {
               </>
             )}
           </div>
-          <div onClick={() => dispatch(removeUser())}>
+          <div onClick={handleLogout}>
             <FaPowerOff className="text-lg cursor-pointer text-white" />
           </div>
         </div>

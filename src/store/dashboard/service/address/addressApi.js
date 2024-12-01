@@ -4,7 +4,7 @@ const addressApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getAddress: build.query({
       query: (data) => ({
-        url: `user-address?${new URLSearchParams(data)}`,
+        url: `user-address?${data}`,
       }),
       providesTags: ["user-address"],
     }),
@@ -26,14 +26,14 @@ const addressApi = baseApi.injectEndpoints({
     }),
     deleteAddress: build.mutation({
       query: (data) => ({
-        url: `user-delete-address?${new URLSearchParams(data)}`,
+        url: `user-delete-address?${data}`,
         method: "DELETE",
       }),
-      invalidatesTags:["user-address"]
+      invalidatesTags: ["user-address"],
     }),
   }),
 });
-  
+
 export const {
   useGetAddressQuery,
   useCreateAddressMutation,

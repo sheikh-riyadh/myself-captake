@@ -47,19 +47,19 @@ const FeedbackForm = () => {
     <div>
       <form
         onSubmit={handleSubmit(handleFeedback)}
-        className="flex flex-col gap-2 bg-white p-5"
+        className="flex flex-col gap-2 bg-widget p-5"
       >
         <SelectInput
           {...register("feedbackType")}
           label="Type"
           required
-          className="border bg-transparent text-sm"
+          className="bg-[#1C2822] text-white rounded-sm"
         >
           <option value="bug">Bug</option>
           <option value="suggation">Suggation</option>
           <option value="other">Other</option>
         </SelectInput>
-        <span className="py-2 block font-medium text-sm">
+        <span className="py-2 block font-medium text-sm text-white">
           Feedback content <span className="text-danger">*</span>
         </span>
         <div>
