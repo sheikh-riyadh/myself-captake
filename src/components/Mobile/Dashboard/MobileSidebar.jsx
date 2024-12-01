@@ -37,7 +37,7 @@ const MobileSidebar = ({
     >
       <div
         className={cn(
-          "bg-white shadow-lg  overflow-y-auto custom-bar",
+          "bg-widget shadow-lg  overflow-y-auto custom-bar",
           className
         )}
       >
@@ -47,7 +47,7 @@ const MobileSidebar = ({
               <span className="font-bold">{title}</span>
               <FaCircleXmark
                 onClick={() => onClose()}
-                className="text-2xl text-danger duration-300 cursor-pointer"
+                className="text-2xl text-accent duration-300 cursor-pointer"
               />
             </div>
           ) : null}

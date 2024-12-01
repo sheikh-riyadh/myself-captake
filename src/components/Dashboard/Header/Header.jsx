@@ -35,7 +35,7 @@ const Header = () => {
         <div>
           <FaBars
             onClick={() => setIsModalOpen((prev) => !prev)}
-            className="block lg:hidden  text-2xl"
+            className="block lg:hidden  text-2xl text-white"
           />
         </div>
         <div className="flex items-center gap-3">
