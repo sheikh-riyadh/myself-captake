@@ -35,7 +35,7 @@ const ProductViewModal = ({
     >
       <div
         className={cn(
-          "bg-white rounded-lg p-5 shadow-lg w-[350px] h-[600px] md:w-[700px] md:h-[450px] lg:w-[800px] lg:h-[600px]  overflow-y-auto custom-bar",
+          "bg-bg_primary rounded-lg p-5 shadow-lg w-[350px] h-[600px] md:w-[700px] md:h-[450px] lg:w-[800px] lg:h-[600px]  overflow-y-auto custom-bar",
           className
         )}
       >
@@ -69,13 +69,13 @@ const ProductViewModal = ({
                       }
                     )
                   }
-                  className="text-xl cursor-pointer hover:underline hover:text-primary font-bold"
+                  className="text-xl cursor-pointer hover:underline hover:text-primary font-bold text-white"
                 >
                   {`${productDetails?.title}`}
                 </p>
                 <hr />
                 <div className="h-60 overflow-y-auto custom-bar">
-                  <div
+                  <div className="bg-widget"
                     dangerouslySetInnerHTML={{
                       __html: productDetails?.description,
                     }}

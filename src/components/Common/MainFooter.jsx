@@ -55,9 +55,9 @@ const MainFooter = () => {
                 <Link to="/dashboard">
                   <span>Accout</span>
                 </Link>{" "}
-                <Link to="/">
-                  <span>Channel</span>
-                </Link>
+                <a href="https://seller-center-32880.web.app/" target="_blank">
+                  <span>Create Channel</span>
+                </a>
               </div>
             </div>
             <div className="flex flex-col lg:items-center gap-5">

@@ -27,7 +27,7 @@ const LeftSide = ({ product }) => {
       <div className="flex items-center gap-3">
         {product?.videoURL && (
           <FaPlay
-            className="border w-14 h-14 rounded p-3"
+            className="border w-14 h-14 rounded p-3 cursor-pointer"
             onClick={() => setIsOpen((prev) => !prev)}
           />
         )}

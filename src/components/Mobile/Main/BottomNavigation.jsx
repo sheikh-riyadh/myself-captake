@@ -14,7 +14,7 @@ const BottomNavigation = () => {
   const { userCart } = useGetCart();
 
   return (
-    <div className="flex items-center bg-stech my_container py-3 justify-between gap-5  w-full fixed bottom-0 z-50 border-t xl:hidden">
+    <div className="flex items-center bg-widget my_container py-3 justify-between gap-5  w-full fixed bottom-0 z-50 border-t xl:hidden">
       <Link to={"/cart"} className="flex flex-col items-center gap-y-2">
         <FaShoppingBasket className="text-xl text-white" />
         <span className="text-[#ffffff80]">{`Cart (${userCart?.length})`}</span>
