@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  limit: 20,
+  limit: 10,
   page: 1,
   sortedValue: -1,
 };

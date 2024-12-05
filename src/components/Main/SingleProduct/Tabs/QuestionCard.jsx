@@ -1,22 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaCommentAlt } from "react-icons/fa";
 import { useGetProductQuestionsQuery } from "../../../../store/main/service/questions/questionsApi";
 import PropTypes from "prop-types";
 import LoadingSpinner from "../../../Common/LoadingSpinner";
 import { RiMessage2Fill, RiQuestionnaireFill } from "react-icons/ri";
 import moment from "moment";
+import Pagination from "../../../Common/Pagination";
 
 const QuestionCard = ({ productId, setTotalQuestion }) => {
-  const { data, isLoading } = useGetProductQuestionsQuery(productId);
+  const [currentPage, setCurrentPage] = useState(1);
+  const query = new URLSearchParams({
+    productId,
+    page: currentPage,
+  }).toString();
+
+  const { data, isLoading } = useGetProductQuestionsQuery(query);
+  const pages = Math.ceil(Math.abs(data?.total ?? 0) / 10);
+
   useEffect(() => {
-    setTotalQuestion(data?.length);
+    setTotalQuestion(data?.total);
   }, [setTotalQuestion, data]);
 
   return (
     <div>
       {!isLoading ? (
         <div>
-          {!data?.length ? (
+          {!data?.data?.length ? (
             <div className="flex flex-col justify-center items-center">
               <div className="relative mt-2">
                 <FaCommentAlt className="text-5xl text-gray-400" />
@@ -31,7 +40,7 @@ const QuestionCard = ({ productId, setTotalQuestion }) => {
             </div>
           ) : (
             <div className="flex flex-col gap-5">
-              {data?.map((question) => (
+              {data?.data?.map((question) => (
                 <div
                   key={question?._id}
                   className="flex flex-col gap-5 bg-white p-5 border rounded-md"
@@ -67,6 +76,12 @@ const QuestionCard = ({ productId, setTotalQuestion }) => {
                   </div>
                 </div>
               ))}
+              <Pagination
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                pages={pages}
+                key={"product_question_pagination"}
+              />
             </div>
           )}
         </div>

@@ -43,7 +43,7 @@ const ProductViewModal = ({
           <div className="flex items-end justify-end">
             <FaCircleXmark
               onClick={() => onClose()}
-              className="text-2xl hover:text-danger duration-300 cursor-pointer"
+              className="text-2xl text-accent duration-300 cursor-pointer mb-3"
             />
           </div>
           {productDetails ? (
@@ -69,13 +69,14 @@ const ProductViewModal = ({
                       }
                     )
                   }
-                  className="text-xl cursor-pointer hover:underline hover:text-primary font-bold text-white"
+                  className="text-xl cursor-pointer font-bold text-white"
                 >
                   {`${productDetails?.title}`}
                 </p>
                 <hr />
                 <div className="h-60 overflow-y-auto custom-bar">
-                  <div className="bg-widget"
+                  <div
+                    className="bg-widget text-white p-5"
                     dangerouslySetInnerHTML={{
                       __html: productDetails?.description,
                     }}

@@ -175,9 +175,9 @@ const QnA = () => {
                             alt="logo"
                           />
                         </div>
-                        <div className="bg-blue-100 p-3 rounded-md relative w-3/6">
+                        <div className="bg-[#1c2822] p-3 rounded-md relative w-3/6">
                           <span>{currentQuestion?.answer?.answer}</span>
-                          <FaMousePointer className="absolute -top-3 text-xl -rotate-12 text-blue-100" />
+                          <FaMousePointer className="absolute -top-3 text-xl -rotate-12 text-[#1c2822]" />
                         </div>
                       </div>
                     </div>

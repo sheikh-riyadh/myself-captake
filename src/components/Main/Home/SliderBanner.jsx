@@ -22,7 +22,7 @@ const SliderBanner = () => {
               {data?.type === "image" ? (
                 <Swiper
                   autoplay={{
-                    delay: 2500,
+                    delay: 6000,
                     disableOnInteraction: false,
                   }}
                   style={customSliderBullets()}

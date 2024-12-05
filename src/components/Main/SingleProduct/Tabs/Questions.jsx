@@ -32,7 +32,7 @@ const Questions = ({ product }) => {
         userName: user?.fName + "" + user?.lName,
         userId: user?._id,
         userPhoto: user?.photo,
-        email:user?.email
+        email: user?.email,
       },
       userQuestion: data.question,
     };
@@ -54,7 +54,9 @@ const Questions = ({ product }) => {
     <>
       <div className="white">
         <div className="bg-gray-100 p-2">
-          <p className="font-medium">{`Question about this product (${totalQuestion})`}</p>
+          <p className="font-medium">{`Question about this product (${
+            totalQuestion ? totalQuestion : 0
+          })`}</p>
         </div>
 
         {user?._id ? (
@@ -99,7 +101,9 @@ const Questions = ({ product }) => {
                       <div className="md:col-span-4 xl:col-span-3">
                         <SubmitButton
                           isLoading={isLoading}
-                          className={" rounded-none w-full uppercase bg-[#047857]"}
+                          className={
+                            " rounded-none w-full uppercase bg-[#047857]"
+                          }
                         >
                           Submit
                         </SubmitButton>
@@ -111,7 +115,7 @@ const Questions = ({ product }) => {
             )}
           </>
         ) : (
-          <div className="flex items-center gap-2 p-5">
+          <div className="flex flex-wrap items-center gap-2 p-5">
             <Link
               to="/sign-in"
               className="text-[#047857] underline cursor-pointer"

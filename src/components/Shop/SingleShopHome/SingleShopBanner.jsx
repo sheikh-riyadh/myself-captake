@@ -74,7 +74,7 @@ const SingleShopBanner = ({ sellerId }) => {
                 {data?.banner?.type === "image" ? (
                   <Swiper
                     autoplay={{
-                      delay: 2500,
+                      delay: 6000,
                       disableOnInteraction: false,
                     }}
                     style={customSliderBullets()}

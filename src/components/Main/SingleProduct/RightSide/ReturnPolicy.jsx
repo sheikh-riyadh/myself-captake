@@ -7,7 +7,7 @@ const ReturnPolicy = ({ sellerId }) => {
   return (
     <>
       {!isLoading ? (
-        <div className={"text-white bg-widget"}  dangerouslySetInnerHTML={{ __html: data?.content }}></div>
+        <div className={"text-white bg-[#1c2822] p-5 rounded-md"}  dangerouslySetInnerHTML={{ __html: data?.content }}></div>
       ) : (
         <LoadingSpinner />
       )}

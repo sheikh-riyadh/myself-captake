@@ -1,26 +1,19 @@
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { handleFilter } from "../../../store/main/features/allSeller/allSellerSlice";
-import { useAllSellerFilter } from "../../../hooks/useAllSellerFilter";
-const StoreFilterTop = ({ data }) => {
-  const dispatch = useDispatch();
-  const { sortedValue } = useAllSellerFilter();
-
+const StoreFilterTop = ({ total, setLimit, setSortedValue, sortedValue }) => {
   return (
     <div className="my-14">
       <div className="border-b-2 p-5 bg-white rounded-xl">
         <div className="flex items-center justify-between gap-5">
-          <span className="font-semibold">Total store : {data?.length}</span>
+          <span className="font-semibold">
+            Total store : {total ? total : 0}
+          </span>
           <div className="flex flex-wrap items-center gap-5">
             <div className="items-center gap-2 hidden md:flex">
               <span className="font-semibold">Store Limit:</span>
               <select
-                onChange={(e) =>
-                  dispatch(handleFilter({ limit: e.target.value }))
-                }
+                onChange={(e) => setLimit(e.target.value)}
                 className="focus:outline-none border p-1 rounded-md text-base"
               >
-                <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="30">30</option>
                 <option value="50">50</option>
@@ -29,9 +22,7 @@ const StoreFilterTop = ({ data }) => {
             <div className="items-center gap-2 hidden md:flex">
               <span className="font-semibold">Sort by:</span>
               <select
-                onChange={(e) =>
-                  dispatch(handleFilter({ sortedValue: e.target.value }))
-                }
+                onChange={(e) => setSortedValue(e.target.value)}
                 defaultValue={sortedValue}
                 className="focus:outline-none border p-1 rounded-md text-base"
               >
@@ -47,6 +38,9 @@ const StoreFilterTop = ({ data }) => {
 };
 
 StoreFilterTop.propTypes = {
-  data: PropTypes.array,
+  total: PropTypes.number,
+  setLimit: PropTypes.func,
+  setSortedValue: PropTypes.func,
+  sortedValue: PropTypes.string,
 };
 export default StoreFilterTop;

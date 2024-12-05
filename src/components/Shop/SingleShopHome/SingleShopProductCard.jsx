@@ -123,7 +123,7 @@ const SingleShopProductCard = ({ className, imageSize, product }) => {
           <div className="flex flex-col gap-3">
             <GiShoppingBag
               onClick={handleCart}
-              className={`w-9 h-9 p-2 rounded-full  shadow-md border hover:bg-primary hover:text-white duration-500 cursor-pointer ${
+              className={`w-9 h-9 p-2 rounded-full  shadow-md border hover:bg-accent hover:text-white duration-500 cursor-pointer ${
                 userCart?.find((cart) => cart?._id === product?._id)
                   ? "bg-[#047857] text-white"
                   : "bg-white"
@@ -131,7 +131,7 @@ const SingleShopProductCard = ({ className, imageSize, product }) => {
             />
             <FaHeart
               onClick={handleWishlist}
-              className={`w-9 h-9 p-2 rounded-full  shadow-md border hover:bg-primary hover:text-white duration-500 cursor-pointer ${
+              className={`w-9 h-9 p-2 rounded-full  shadow-md border hover:bg-accent hover:text-white duration-500 cursor-pointer ${
                 userWishlist?.find((list) => list?._id === product?._id)
                   ? "bg-[#047857] text-white"
                   : "bg-white"
@@ -139,7 +139,7 @@ const SingleShopProductCard = ({ className, imageSize, product }) => {
             />
             <FaSearch
               onClick={() => setIsOpen((prev) => !prev)}
-              className="w-9 h-9 p-2 rounded-full bg-white shadow-md border hover:bg-primary hover:text-white duration-500 cursor-pointer"
+              className="w-9 h-9 p-2 rounded-full bg-white shadow-md border hover:bg-accent hover:text-white duration-500 cursor-pointer"
             />
           </div>
         </div>

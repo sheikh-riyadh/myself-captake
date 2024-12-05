@@ -1,14 +1,10 @@
-import { useDispatch } from "react-redux";
-import { handleFilter } from "../../../store/main/features/category/categorySlice";
-import { useLocation } from "react-router-dom";
-import { useCategoryFilter } from "../../../hooks/useCategoryFilter";
 
-const CategoryFilterTop = () => {
-  const dispatch = useDispatch();
+import { useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
+
+const CategoryFilterTop = ({ setLimit, setSortedValue }) => {
   const location = useLocation();
   const categoryData = location.state.payload;
-
-  const { limit, sortedValue } = useCategoryFilter();
 
   return (
     <div className="my-14">
@@ -19,13 +15,10 @@ const CategoryFilterTop = () => {
             <div className="items-center gap-2 hidden md:flex">
               <span className="font-semibold">Limit:</span>
               <select
-                onChange={(e) =>
-                  dispatch(handleFilter({ limit: e.target.value }))
-                }
+                onChange={(e) => setLimit(e.target.value)}
                 className="focus:outline-none border p-1 rounded-md text-base"
-                defaultValue={limit}
+                defaultValue="10"
               >
-                <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="30">30</option>
                 <option value="50">50</option>
@@ -34,14 +27,12 @@ const CategoryFilterTop = () => {
             <div className="items-center gap-2 hidden md:flex">
               <span className="font-semibold">Sort by:</span>
               <select
-                onChange={(e) =>
-                  dispatch(handleFilter({ sortedValue: e.target.value }))
-                }
+                onChange={(e) => setSortedValue(e.target.value)}
                 className="focus:outline-none border p-1 rounded-md text-base"
-                defaultValue={sortedValue}
+                defaultValue="1"
               >
-                <option value="-1">{`Price (Low -> High)`}</option>
-                <option value="1">{`Price (High -> Low)`}</option>
+                <option value="1">{`Price (Low -> High)`}</option>
+                <option value="-1">{`Price (High -> Low)`}</option>
               </select>
             </div>
           </div>
@@ -49,6 +40,11 @@ const CategoryFilterTop = () => {
       </div>
     </div>
   );
+};
+
+CategoryFilterTop.propTypes = {
+  setLimit: PropTypes.func,
+  setSortedValue: PropTypes.func,
 };
 
 export default CategoryFilterTop;

@@ -20,7 +20,7 @@ const ReviewCarousel = () => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        style={customSliderBullets(15, "#dc3545", "#2222228e", 15, 50, 5)}
+        style={customSliderBullets(15, "#abd006", "#2222228e", 15, 50, 5)}
         loop={true}
         pagination={{
           dynamicBullets: true,

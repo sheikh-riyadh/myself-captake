@@ -34,7 +34,7 @@ const Table = ({ columns, tableData, className }) => {
           </thead>
           <tbody
             className={cn(
-              `text-accent text-sm font-light bg-widget`,
+              `text-white text-sm font-light bg-widget`,
               className
             )}
           >

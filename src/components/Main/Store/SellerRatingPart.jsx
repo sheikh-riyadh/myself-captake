@@ -4,8 +4,9 @@ import { useGetReviewBySellerIdQuery } from "../../../store/main/service/review/
 const SellerRatingPart = ({ seller }) => {
   const query = new URLSearchParams({
     sellerId: seller?._id,
-    limit: 0,
+    limit: 10,
     sortedValue: 1,
+    page: 1,
   });
 
   const { data, isLoading } = useGetReviewBySellerIdQuery({
@@ -17,7 +18,7 @@ const SellerRatingPart = ({ seller }) => {
       <div className="flex items-center gap-1">
         <FaStar className="text-accent" />
         {!isLoading ? (
-          <span className="font-semibold">{`(${data?.length} Reviews)`}</span>
+          <span className="font-semibold">{`(${data?.total} Reviews)`}</span>
         ) : (
           <FaSpinner className="animate-spin" />
         )}

@@ -2,7 +2,7 @@ import bang from "../../../assets/Main/Review/bangladash-map-b2140c86.svg";
 import Button from "../../Common/Button";
 const MapSection = () => {
   return (
-    <div className="bg-stech mt-10">
+    <div className="bg-widget mt-10">
       <div className="grid grid-cols-1 md:grid-cols-2 items-center mb-10 xl:mb-20 p-5 lg:p-10 my_container gap-10">
         <div>
           <img src={bang} alt="bangladesh_land_photo" />

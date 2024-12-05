@@ -17,13 +17,13 @@ const Brands = ({ sellerId }) => {
             </div>
             <Marquee>
               <div className="flex items-center gap-10">
-                {data?.brands?.map((brand) => (
+                {data?.map((brand) => (
                   <img
                     title={brand?.brandName}
                     key={brand?.brandName}
                     src={brand?.brandPhoto}
                     alt="brand_image"
-                    className="w-36"
+                    className="w-28"
                   />
                 ))}
               </div>

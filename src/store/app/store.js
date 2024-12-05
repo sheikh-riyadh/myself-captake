@@ -17,10 +17,7 @@ import userReducer from "../main/features/user/userSlice";
 import userCartReducer from "../main/features/cart/userCartSlice.js";
 import userWishlistReducer from "../main/features/wishlist/wishlistSlice.js";
 import userAddressReducer from "../dashboard/features/address/addressSlice.js";
-import userReviewFilterReducer from "../shop/features/reviewSlice.js";
-import userAllSellerFilterReducer from "../main/features/allSeller/allSellerSlice.js";
 import userqnaReducer from "../dashboard/features/QnA/qnaSlice.js";
-import userCategoryProductReducer from "../main/features/category/categorySlice.js";
 import { imgbbApi } from "../main/service/imageUpload/imageUploadApi.js";
 
 const persistConfig = {
@@ -37,7 +34,6 @@ const sessionConfig = {
 };
 
 const rootPersistReducers = combineReducers({
-  userReducer,
   userCartReducer,
   userWishlistReducer,
   userqnaReducer,
@@ -46,9 +42,6 @@ const rootPersistReducers = combineReducers({
 const sessionReducers = combineReducers({
   userReducer,
   userAddressReducer,
-  userReviewFilterReducer,
-  userAllSellerFilterReducer,
-  userCategoryProductReducer,
 });
 
 const persistedReducers = persistReducer(persistConfig, rootPersistReducers);

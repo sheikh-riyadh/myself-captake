@@ -4,13 +4,17 @@ import StoreCard from "../../../components/Main/Store/StoreCard";
 import StoreSkeleton from "../../../components/Skeleton/Shop/Store/StoreSkeleton";
 import { useGetAllSellerQuery } from "../../../store/main/service/allSeller/allSellerApi";
 import StoreFilterTop from "../../../components/Main/Store/StoreFilterTop";
-import { useAllSellerFilter } from "../../../hooks/useAllSellerFilter";
+import { useState } from "react";
+import Pagination from "../../../components/Common/Pagination";
 
 const Store = () => {
-  const { limit, page, sortedValue } = useAllSellerFilter();
+  const [limit, setLimit] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [sortedValue, setSortedValue] = useState("1");
+
   const query = new URLSearchParams({
     limit,
-    page,
+    page: currentPage,
     sortedValue,
   });
 
@@ -18,18 +22,25 @@ const Store = () => {
     query: query.toString(),
   });
 
+  const pages = Math.ceil(Math.abs(data?.total ?? 0) / limit);
+
   return (
     <section>
       <div className="my_container my-[80px] lg:my-28 xl:my-[100px]">
         <StoreBanner />
         <div>
-          <StoreFilterTop data={data} />
+          <StoreFilterTop
+            total={data?.total}
+            setLimit={setLimit}
+            setSortedValue={setSortedValue}
+            sortedValue={sortedValue}
+          />
         </div>
         <div>
           {!isLoading ? (
             <div className="flex flex-col gap-5">
-              {data?.length ? (
-                data?.map((seller) => (
+              {data?.data?.length ? (
+                data?.data?.map((seller) => (
                   <StoreCard key={seller?._id} seller={seller} />
                 ))
               ) : (
@@ -40,6 +51,12 @@ const Store = () => {
                   </span>
                 </div>
               )}
+              <Pagination
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                pages={pages}
+                key={"store_pagination"}
+              />
             </div>
           ) : (
             <StoreSkeleton />
