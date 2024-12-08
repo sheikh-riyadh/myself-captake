@@ -87,11 +87,11 @@ const RightSide = () => {
             {!QuestionLoading && (
               <>
                 {!isClicked && showSize ? (
-                  <div className="absolute -top-4 w-5 h-5 bg-danger flex flex-col items-center justify-center rounded-full text-white">
+                  <div className="absolute -top-4 w-5 h-5 bg-accent flex flex-col items-center justify-center rounded-full text-white">
                     <span>{showSize}</span>
                   </div>
                 ) : showSize ? (
-                  <div className="absolute -top-4 w-5 h-5 bg-danger flex flex-col items-center justify-center rounded-full text-white">
+                  <div className="absolute -top-4 w-5 h-5 bg-accent flex flex-col items-center justify-center rounded-full text-white">
                     <span>{showSize}</span>
                   </div>
                 ) : null}

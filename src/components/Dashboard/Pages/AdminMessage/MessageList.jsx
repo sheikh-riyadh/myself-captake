@@ -26,8 +26,8 @@ const MessageList = ({ messages = [], setIsModalOpen, isModalOpen }) => {
   return (
     <div className="z-50 absolute right-0 top-14" ref={modalRef}>
       <div className="flex flex-col items-center justify-center">
-        <div className="max-w-lg bg-widget rounded-lg shadow-lg w-80">
-          <div className="space-y-4 max-h-[400px] overflow-y-auto custom-bar">
+        <div className="max-w-lg bg-[#1c2822] rounded-lg shadow-lg w-80 p-5">
+          <div className="space-y-4 max-h-[400px] overflow-y-auto bar-hidden">
             {messages?.map((message) => (
               <div
                 onClick={() => {
@@ -42,9 +42,15 @@ const MessageList = ({ messages = [], setIsModalOpen, isModalOpen }) => {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-white">
-                    {message.title}
+                    {message.title?.length > 30
+                      ? `${message?.title?.slice(0, 30)}...`
+                      : message?.title}
                   </p>
-                  <p className="text-sm text-white">{message.message}</p>
+                  <p className="text-sm text-white">
+                    {message.message?.length > 50
+                      ? `${message?.message?.slice(0, 50)}...`
+                      : message?.message}
+                  </p>
                   <p className="text-xs text-white">{message.date}</p>
                 </div>
               </div>
