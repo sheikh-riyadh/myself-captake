@@ -6,6 +6,7 @@ import SingleShopReviews from "../../components/Shop/SingleShopHome/SingleShopRe
 import { smoothScroll } from "../../utils/scrollToTop";
 import MostViewProduct from "../../components/Shop/SingleShopHome/MostViewProduct";
 import LatestProduct from "../../components/Shop/SingleShopHome/LatestProduct";
+import MostReviewProducts from "../../components/Shop/SingleShopHome/MostReviewProducts";
 
 const SingleShopHome = () => {
   smoothScroll();
@@ -16,12 +17,21 @@ const SingleShopHome = () => {
       <div className="my_container">
         <SingleShopBanner sellerId={sellerId} />
         <Notice sellerId={sellerId} />
+        <div className="flex flex-col gap-y-10 xl:gap-y-20">
+        <div className="flex flex-col gap-y-10">
+          <div className="flex flex-col items-center justify-center">
+            <h2 className="font-bold text-lg">Most-Reviewed Products</h2>
+            <span>Discover Top-Rated Products for You!</span>
+          </div>
+          <MostReviewProducts sellerId={sellerId} />
+        </div>
         <div className="flex flex-col gap-y-10">
           <div className="flex flex-col items-center justify-center">
             <h2 className="font-bold text-lg">Latest products</h2>
-            <span>Check & Get Your Desired Product!</span>
+            <span>Discover the Newest Arrivals for You!</span>
           </div>
           <LatestProduct sellerId={sellerId} />
+        </div>
         </div>
         <MostViewProduct sellerId={sellerId} />
       </div>

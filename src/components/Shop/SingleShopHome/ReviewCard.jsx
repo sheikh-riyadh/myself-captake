@@ -33,6 +33,17 @@ const ReviewCard = ({ data }) => {
             <p className="text font-medium">{data?.reviewMessage}</p>
           </div>
         </div>
+        <div className="mt-5">
+          {data?.productInfo?.map((product, index) => (
+            <div key={index}>
+              <img
+                className="w-20 h-20"
+                src={product?.image}
+                alt="user_image"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

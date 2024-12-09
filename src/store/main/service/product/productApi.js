@@ -9,13 +9,13 @@ const productApi = baseApi.injectEndpoints({
       providesTags: ["views"],
     }),
     getMostViewsProduct: build.query({
-      query: () => ({
-        url: `most-views-products`,
+      query: (data) => ({
+        url: `most-views-products?${data}`,
       }),
     }),
     getRatingProduct: build.query({
-      query: (sellerId) => ({
-        url: `seller-rating-products/${sellerId}`,
+      query: (data) => ({
+        url: `seller-rating-products?${data}`,
       }),
     }),
     searchProduct: build.query({

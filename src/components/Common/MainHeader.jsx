@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   FaHeart,
   FaSearch,
@@ -17,6 +17,9 @@ const MainHeader = () => {
   const [inputValue, setInputValue] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { pathname } = useLocation();
+  const sellerId = pathname?.split("/")?.[2];
 
   const { user } = useGetUser();
   const { userCart } = useGetCart();
@@ -44,8 +47,9 @@ const MainHeader = () => {
   const query = searchValue
     ? new URLSearchParams({
         title: searchValue,
-        limit: 0,
+        limit: 10,
         page: 1,
+        sellerId,
       }).toString()
     : null;
 

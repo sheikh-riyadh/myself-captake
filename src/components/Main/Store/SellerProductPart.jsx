@@ -4,15 +4,20 @@ import { useGetRatingProductQuery } from "../../../store/main/service/product/pr
 import { FaClipboard } from "react-icons/fa";
 
 const SellerProductPart = ({ seller }) => {
-  const { data, isLoading } = useGetRatingProductQuery(seller?._id);
+  const query = new URLSearchParams({
+    sellerId: seller?._id,
+    page: 0,
+    limit: 4,
+  }).toString();
 
+  const { data, isLoading } = useGetRatingProductQuery(query);
   return (
     <>
       {!isLoading ? (
         <div className="h-full">
-          {data?.length ? (
+          {data?.data?.length ? (
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-5">
-              {data?.slice(0, 4)?.map((product) => (
+              {data?.data?.map((product) => (
                 <ProductCard
                   key={product?._id}
                   product={product}

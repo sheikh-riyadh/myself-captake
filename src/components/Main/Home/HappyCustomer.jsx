@@ -3,7 +3,7 @@ import Button from "../../Common/Button";
 import { Link } from "react-router-dom";
 const HappyCustomer = () => {
   return (
-    <div className="p-10 bg-widget rounded-sm">
+    <div className="p-10 bg-widget rounded-sm mt-10 xl:mt-20">
       <div className="flex flex-wrap justify-between items-center gap-5">
         <div className="flex flex-wrap items-center gap-5 text-white">
           <div>
