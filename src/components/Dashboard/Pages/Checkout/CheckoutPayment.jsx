@@ -36,7 +36,7 @@ const CheckoutPayment = () => {
 
   const shippingCost = userCart?.reduce((total, item) => {
     if (!sellerIds.includes(item.sellerId)) {
-      total += item?.deliveryCharge;
+      total += item?.deliveryCharge??0;
       sellerIds.push(item?.sellerId);
     }
     return total;

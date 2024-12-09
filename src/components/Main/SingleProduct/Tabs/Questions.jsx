@@ -29,7 +29,7 @@ const Questions = ({ product }) => {
         fullInfo: product,
       },
       userInfo: {
-        userName: user?.fName + "" + user?.lName,
+        userName: user?.fName + " " + user?.lName,
         userId: user?._id,
         userPhoto: user?.photo,
         email: user?.email,

@@ -50,7 +50,7 @@ const SingleShopProductCard = ({ className, imageSize, product }) => {
       buyQnt: 1,
       stock: product?.stock,
       brand: product?.brand,
-      deliveryCharge: product?.deliveryCharge,
+      deliveryCharge: product?.deliveryCharge??0,
     };
     dispatch(add_to_cart(cartData));
   };
@@ -69,7 +69,7 @@ const SingleShopProductCard = ({ className, imageSize, product }) => {
       buyQnt: 1,
       stock: product?.stock,
       brand: product?.brand,
-      deliveryCharge: product?.deliveryCharge,
+      deliveryCharge: product?.deliveryCharge??0,
     };
     dispatch(add_to_wishlist(wishlistData));
   };

@@ -13,7 +13,7 @@ const ReviewCard = ({ data }) => {
             alt="user_image"
           />
           <span className="font-bold">
-            {data?.userInfo?.fName + "" + data?.userInfo?.lName}{" "}
+            {data?.userInfo?.fName + " " + data?.userInfo?.lName}{" "}
           </span>
         </div>
         <div className="flex flex-col gap-4 mt-3">

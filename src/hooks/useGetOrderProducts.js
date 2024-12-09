@@ -19,7 +19,7 @@ export const useGetOrderProducts = ({ paymentMethod }) => {
         productsInfo: [cart],
         sellerId: cart?.sellerId,
         userId: user?._id,
-        deliveryCharge: cart?.deliveryCharge,
+        deliveryCharge: cart?.deliveryCharge??0,
       });
     } else {
       const existSellerProduct = orderItems?.find(

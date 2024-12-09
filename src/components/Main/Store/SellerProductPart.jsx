@@ -29,7 +29,7 @@ const SellerProductPart = ({ seller }) => {
           ) : (
             <div className="flex gap-5 flex-col items-center justify-center w-full h-full bg-white">
               <FaClipboard className="text-8xl text-slate" />
-              <span className="font-medium text-xl text-danger capitalize">
+              <span className="font-bold text-xl text-accent capitalize">
                 No data found
               </span>
             </div>
