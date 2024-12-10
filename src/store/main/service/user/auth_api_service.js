@@ -21,6 +21,9 @@ const auth_api_service = baseApi.injectEndpoints({
         url: "jwt",
         method: "POST",
         body: data,
+        headers: {
+          "Content-Type": "application/json",
+        },
       }),
       invalidatesTags: ["user"],
     }),
