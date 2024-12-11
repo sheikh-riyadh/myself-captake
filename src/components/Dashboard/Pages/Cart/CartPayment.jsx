@@ -7,18 +7,13 @@ import toast from "react-hot-toast";
 const CartPayment = () => {
   const { userCart } = useGetCart();
   const navigate = useNavigate();
-  const sellerIds = [];
 
   const total = userCart?.reduce((total, item) => {
     return (total += item?.buyQnt * item?.price);
   }, 0);
 
   const shippingCost = userCart?.reduce((total, item) => {
-    if (!sellerIds.includes(item.sellerId)) {
-      total += parseInt(item?.deliveryCharge ?? 0);
-      sellerIds.push(item?.sellerId);
-    }
-    return total;
+    return (total += parseInt(item?.deliveryCharge) ?? 0);
   }, 0);
 
   const totalItem = userCart?.reduce((total, item) => {

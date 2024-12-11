@@ -24,7 +24,6 @@ const CheckoutPayment = () => {
 
   const { userCart } = useGetCart();
   const { selectedAddress } = useAddress();
-  const sellerIds = [];
 
   const total = userCart?.reduce((total, item) => {
     return (total += item?.buyQnt * item?.price);
@@ -35,11 +34,7 @@ const CheckoutPayment = () => {
   }, 0);
 
   const shippingCost = userCart?.reduce((total, item) => {
-    if (!sellerIds.includes(item.sellerId)) {
-      total += parseInt(item?.deliveryCharge ?? 0);
-      sellerIds.push(item?.sellerId);
-    }
-    return total;
+    return (total += parseInt(item?.deliveryCharge) ?? 0);
   }, 0);
 
   const orderSummery = [
