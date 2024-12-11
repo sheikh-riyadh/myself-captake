@@ -15,7 +15,7 @@ const CartPayment = () => {
 
   const shippingCost = userCart?.reduce((total, item) => {
     if (!sellerIds.includes(item.sellerId)) {
-      total += item?.deliveryCharge??0;
+      total += parseInt(item?.deliveryCharge ?? 0);
       sellerIds.push(item?.sellerId);
     }
     return total;
@@ -57,7 +57,12 @@ const CartPayment = () => {
       </div>
       <div className="flex items-center justify-between text-sm pt-3 font-bold">
         <span>Total</span>
-        <span>TK {numberWithCommas(parseInt(Math.round(total))+parseInt(shippingCost))}</span>
+        <span>
+          TK{" "}
+          {numberWithCommas(
+            parseInt(Math.round(total)) + parseInt(shippingCost)
+          )}
+        </span>
       </div>
 
       {/* Place order button */}
