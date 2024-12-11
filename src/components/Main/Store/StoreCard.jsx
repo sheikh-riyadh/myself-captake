@@ -17,7 +17,7 @@ const StoreCard = ({ seller }) => {
                   src={seller?.logo}
                   alt="store_logo"
                 />
-                <h2 className="font-bold underline text-xl">
+                <h2 className="font-bold underline text-xl uppercase">
                   {seller?.businessName}
                 </h2>
               </div>

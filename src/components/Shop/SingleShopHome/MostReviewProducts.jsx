@@ -1,4 +1,3 @@
-
 import { useGetRatingProductQuery } from "../../../store/main/service/product/productApi";
 import PropTypes from "prop-types";
 import { numberWithCommas } from "../../../utils/numberWithComma";
@@ -7,15 +6,14 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const MostReviewProducts = ({ sellerId }) => {
-
   const query = new URLSearchParams({
     sellerId,
-    page:0,
-    limit:10,
+    page: 0,
+    limit: 10,
     star: 4,
   }).toString();
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
+
   const handleRedirect = (product) => {
     if (product) {
       navigate(
@@ -33,9 +31,14 @@ const MostReviewProducts = ({ sellerId }) => {
 
   const { data, isLoading } = useGetRatingProductQuery(query);
 
-
   return (
-    <>
+    <div
+      className={`flex flex-col gap-y-10 ${!data?.data?.length && "hidden"}`}
+    >
+      <div className="flex flex-col items-center justify-center">
+        <h2 className="font-bold text-lg">Most-Reviewed Products</h2>
+        <span>Discover Top-Rated Products for You!</span>
+      </div>
       {!isLoading ? (
         <div>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-5">
@@ -96,7 +99,7 @@ const MostReviewProducts = ({ sellerId }) => {
           <FaSpinner className="animate-spin text-2xl" />
         </div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -18,20 +18,16 @@ const SingleShopHome = () => {
         <SingleShopBanner sellerId={sellerId} />
         <Notice sellerId={sellerId} />
         <div className="flex flex-col gap-y-10 xl:gap-y-20">
-        <div className="flex flex-col gap-y-10">
-          <div className="flex flex-col items-center justify-center">
-            <h2 className="font-bold text-lg">Most-Reviewed Products</h2>
-            <span>Discover Top-Rated Products for You!</span>
+          <div>
+            <MostReviewProducts sellerId={sellerId} />
           </div>
-          <MostReviewProducts sellerId={sellerId} />
-        </div>
-        <div className="flex flex-col gap-y-10">
-          <div className="flex flex-col items-center justify-center">
-            <h2 className="font-bold text-lg">Latest products</h2>
-            <span>Discover the Newest Arrivals for You!</span>
+          <div className="flex flex-col gap-y-10">
+            <div className="flex flex-col items-center justify-center">
+              <h2 className="font-bold text-lg">Latest products</h2>
+              <span>Discover the Newest Arrivals for You!</span>
+            </div>
+            <LatestProduct sellerId={sellerId} />
           </div>
-          <LatestProduct sellerId={sellerId} />
-        </div>
         </div>
         <MostViewProduct sellerId={sellerId} />
       </div>
