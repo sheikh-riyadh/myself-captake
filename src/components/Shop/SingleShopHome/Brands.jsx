@@ -15,7 +15,7 @@ const Brands = ({ sellerId }) => {
               <h2 className="font-bold text-lg">Top Brands</h2>
               <span>Meet our top brands!</span>
             </div>
-            <div className="flex items-center ga'">
+            <div className="flex items-center gap-5">
               <Marquee>
                 <div className="flex items-center gap-10">
                   {data?.map((brand) => (
@@ -24,7 +24,7 @@ const Brands = ({ sellerId }) => {
                       key={brand?.brandName}
                       src={brand?.brandPhoto}
                       alt="brand_image"
-                      className="w-28"
+                      className="w-28 mx-5"
                     />
                   ))}
                 </div>
