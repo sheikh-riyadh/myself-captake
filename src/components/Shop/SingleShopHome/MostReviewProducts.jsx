@@ -33,7 +33,9 @@ const MostReviewProducts = ({ sellerId }) => {
 
   return (
     <div
-      className={`flex flex-col gap-y-10 ${!data?.data?.length && "hidden"}`}
+      className={`flex flex-col gap-y-10 ${
+        data?.rating === "no" ? "hidden" : !data?.data?.length ? "hidden" : null
+      }`}
     >
       <div className="flex flex-col items-center justify-center">
         <h2 className="font-bold text-lg">Most-Reviewed Products</h2>
