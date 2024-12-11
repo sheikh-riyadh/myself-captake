@@ -19,14 +19,14 @@ export const useGetOrderProducts = ({ paymentMethod }) => {
         productsInfo: [cart],
         sellerId: cart?.sellerId,
         userId: user?._id,
-        deliveryCharge: cart?.deliveryCharge ?? 0,
+        deliveryCharge: parseInt(cart?.deliveryCharge) ?? 0,
       });
     } else {
       const existSellerProduct = orderItems?.find(
         (product) => product?.sellerId === cart?.sellerId
       );
       existSellerProduct?.productsInfo?.push(cart);
-      existSellerProduct.deliveryCharge += cart?.deliveryCharge ?? 0;
+      existSellerProduct.deliveryCharge += parseInt(cart?.deliveryCharge) ?? 0;
     }
   });
   return orderItems;
