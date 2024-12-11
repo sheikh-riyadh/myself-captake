@@ -87,7 +87,7 @@ const ProductViewModal = ({
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center h-full w-full">
-              <ReactPlayer url={src} controls width="100%" height="450px" />
+              <ReactPlayer url={src} controls width="100%" height="510px" />
             </div>
           )}
         </div>
