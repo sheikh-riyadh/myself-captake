@@ -40,8 +40,10 @@ const SingleShopBanner = ({ sellerId }) => {
                       src={data?.store?.logo}
                       alt="shop_logo"
                     />
-                    <h2 className="font-bold text-3xl text-black uppercase">
-                      {data?.store?.businessName}
+                    <h2 title={data?.store?.businessName} className="font-bold text-3xl text-black uppercase">
+                      {data?.store?.businessName?.length > 10
+                        ? `${data?.store?.businessName?.slice(0, 10)}...`
+                        : data?.store?.businessName}
                     </h2>
                     <div className="flex items-center gap-2 text-lg font-bold">
                       <FaEnvelope className="text-base" />

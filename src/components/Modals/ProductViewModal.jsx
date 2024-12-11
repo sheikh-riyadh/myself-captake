@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { FaCircleXmark } from "react-icons/fa6";
 import cn from "../../utils/cn";
+import ReactPlayer from "react-player";
 
 const ProductViewModal = ({
   isOpen = true,
@@ -85,20 +86,12 @@ const ProductViewModal = ({
               </div>
             </div>
           ) : (
-            <div>
-              <p className="hover:underline hover:text-primary font-bold">{`MSI Stealth 16 Studio A13VG-407BD Core i9 13th Gen`}</p>
-              <video controls className="w-full h-full">
-                <source
-                  src={`${
-                    src
-                      ? src
-                      : "https://d3cn6pl0719mpa.cloudfront.net/Lenovo-Ideapad-1-(2023)-Review---Unboxing,-benchmarks-and-more-1716443962546.mp4"
-                  }`}
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+            <ReactPlayer
+            url={src}
+            controls
+            width="100%"
+            height="100%"
+          />
           )}
         </div>
       </div>

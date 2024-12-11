@@ -15,19 +15,21 @@ const Brands = ({ sellerId }) => {
               <h2 className="font-bold text-lg">Top Brands</h2>
               <span>Meet our top brands!</span>
             </div>
-            <Marquee>
-              <div className="flex items-center gap-10">
-                {data?.map((brand) => (
-                  <img
-                    title={brand?.brandName}
-                    key={brand?.brandName}
-                    src={brand?.brandPhoto}
-                    alt="brand_image"
-                    className="w-28"
-                  />
-                ))}
-              </div>
-            </Marquee>
+            <div className="flex items-center ga'">
+              <Marquee>
+                <div className="flex items-center gap-10">
+                  {data?.map((brand) => (
+                    <img
+                      title={brand?.brandName}
+                      key={brand?.brandName}
+                      src={brand?.brandPhoto}
+                      alt="brand_image"
+                      className="w-28"
+                    />
+                  ))}
+                </div>
+              </Marquee>
+            </div>
           </div>
         </div>
       ) : (

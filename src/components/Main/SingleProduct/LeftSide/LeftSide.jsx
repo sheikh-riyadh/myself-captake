@@ -45,7 +45,7 @@ const LeftSide = ({ product }) => {
           ))}
         </PhotoProvider>
         <div>
-          {isOpen && <ProductViewModal onClose={setIsOpen} isOpen={isOpen} />}
+          {isOpen && <ProductViewModal onClose={setIsOpen} isOpen={isOpen} src={product?.videoURL} />}
         </div>
       </div>
     </div>
