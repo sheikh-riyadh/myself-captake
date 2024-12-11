@@ -26,7 +26,7 @@ export const useGetOrderProducts = ({ paymentMethod }) => {
         (product) => product?.sellerId === cart?.sellerId
       );
       existSellerProduct?.productsInfo?.push(cart);
-      existSellerProduct.deliveryCharge = cart?.deliveryCharge ?? 0;
+      existSellerProduct.deliveryCharge += cart?.deliveryCharge ?? 0;
     }
   });
   return orderItems;
