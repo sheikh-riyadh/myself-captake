@@ -13,9 +13,6 @@ const SellerRatingPart = ({ seller }) => {
     query: query.toString(),
   });
 
-  console.log({sellerId:seller?._id})
-
-
   return (
     <div>
       <span className="font-semibold">Rating and reviews</span>
