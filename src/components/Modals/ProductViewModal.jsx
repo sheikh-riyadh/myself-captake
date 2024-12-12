@@ -36,7 +36,7 @@ const ProductViewModal = ({
     >
       <div
         className={cn(
-          "bg-bg_primary rounded-lg p-5 shadow-lg w-[350px] h-[600px] md:w-[700px] md:h-[450px] lg:w-[800px] lg:h-[600px]  overflow-y-auto custom-bar",
+          "bg-bg_primary rounded-lg p-5 shadow-lg w-[350px] h-[470px] md:w-[700px] md:h-[450px] lg:w-[800px] lg:h-[600px]  overflow-y-auto custom-bar",
           className
         )}
       >
